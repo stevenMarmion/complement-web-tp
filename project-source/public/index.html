@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/script.js" defer type="module"></script>
+    <link rel="stylesheet" href="style/index.css">
     <title>Consultation - personnages</title>
 </head>
 <body>
@@ -22,6 +24,12 @@
     <button id="validate-creation" class="isHidden">
         Créer
     </button>
+
+    <div id="personnages-description"></div>
+
+    <h2 id="title-filters" class="isHidden">Rechercher par :</h2>
+    <div id="all-filters" class="isFlexed"></div>
+    <button id="search-button" class="isHidden">Rechercher</button>
 
     <div class="modal" id="modal">
         <div class="modal-back"></div>
