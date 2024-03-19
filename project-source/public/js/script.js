@@ -27,16 +27,13 @@ const route = {
 // Nous permet de définir la nomenclature de mes colonnes de tableau
 const headingTable = [
     "Id",
-    "Code ville",
-    "Code zip",
-    "Nom de ville",
-    "Latitude",
-    "Longitude",
-    "Nom de département",
-    "Numéro de département",
-    "Nom de région",
-    "Nom de région (GeoJson)",
-    "Actions"
+    "Nom Prénom",
+    "Race",
+    "Equipement",
+    "Capacités",
+    "Force",
+    "Intelligence",
+    "Agilité",
 ]
 
 // Me permet de définir au préalable mes champs de filtres sur ma page
@@ -116,12 +113,20 @@ const inputMapCreating = {
     },
 };
 
+// Me permet de remplir le cache et de charger les données avant n'importe quelle requête ==> on prédit le clique souris sur "Voir les villes"
+const rep = await fetch('/personnages');
+var cache = rep.json();
+console.log(cache);
+
+// Me permet de stocker la taille initiale des données
+const datasLenght = Object.keys(cache).length;
+
 async function routes(url, id) {
     if (url in route) {
         let object = new route[url](url) // optimise le switch case, avec le dico, on créer dans tous les cas l'objet dès le début sans condition de test
         switch (url) {
             case "/personnages":
-                cache = await object.recupPersonnagesInArray();
+                cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
                 Rendering.renderDisplayPersonnages(headingTable, cache);
                 break;
@@ -174,13 +179,13 @@ async function routes(url, id) {
                 break;
             
             case "/equipements":
-                cache = await object.recupPersonnagesInArray();
+                cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
                 Rendering.renderDisplayPersonnages(headingTable, cache);
                 break;
 
             case "/capacites":
-                cache = await object.recupPersonnagesInArray();
+                cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
                 Rendering.renderDisplayPersonnages(headingTable, cache);
                 break;
