@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation - personnages</title>
+</head>
+<body>
+    <h1>Bienvenue dans la page de consultation des personnages</h1>
+    <button id="voir-personnages" class="isVisible">
+        Voir les personnages
+    </button>
+    <button id="cacher-personnages" class="isHidden">
+        Cacher les personnages
+    </button>
+    <button id="create-personnage-button" class="isVisible">
+        Créer votre personnage
+    </button>
+    <div id="create-personnages" class="isFlexedWrap">
+        <!-- Là où tous les inputs field accessible pour créer un personnage  -->
+    </div>
+    <button id="validate-creation" class="isHidden">
+        Créer
+    </button>
+
+    <div class="modal" id="modal">
+        <div class="modal-back"></div>
+        <div class="modal-container">
+            <div id="modify-personnage" class="isFlexedWrap"></div>
+            <button id="validate-editing" class="isHidden">
+                Modifier
+            </button>
+            <button id="close-popup" class="isHidden">
+                Fermer
+            </button>
+        </div>
+    </div>
+</body>
+</html>
