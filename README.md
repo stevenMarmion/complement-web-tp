@@ -30,4 +30,4 @@ gestion de ce type de personnages. Ces bonshommes pourraient évoluer selon cert
 - Outil de recherche
 - Système de notation (stockage dans le JSON)
 - Système de favoris client (local data storage)
-- Gestion des images (lazy loading)
+- Gestion des images (lazy loading) ==> Afficher l'image ssi la page est actuellement scroller sur la ou les image(s)
