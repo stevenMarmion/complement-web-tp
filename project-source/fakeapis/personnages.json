@@ -1,5 +1,119 @@
 {
-    "equipement":[
+    "personnages":[
+        {
+            "id":"1",
+            "nom_prenom":"Depont Samuel",
+            "race":"homme",
+            "equipements":[1],
+            "capacite":[1],
+            "force":1,
+            "intelligence":1,
+            "agilite":1
+        },
+        {
+            "id":"2",
+            "nom_prenom":"Marmion Steven",
+            "race":"elf",
+            "equipements":[2,3,4],
+            "capacite":[2,3],
+            "force":5,
+            "intelligence":12,
+            "agilite":10
+        },
+        {
+            "id":"3",
+            "nom_prenom":"Niveau Samuel",
+            "race":"orc",
+            "equipements":[5,6],
+            "capacite":[4,5],
+            "force":15,
+            "intelligence":2,
+            "agilite":2
+        },
+        {
+            "id":"4",
+            "nom_prenom":"tretre nio",
+            "race":"goblin",
+            "equipements":[],
+            "capacite":[6],
+            "force":3,
+            "intelligence":1,
+            "agilite":8
+        },
+        {
+            "id":"5",
+            "nom_prenom":"Malleron Daniel",
+            "race":"nain",
+            "equipements":[7,8,9],
+            "capacite":[7,8],
+            "force":10,
+            "intelligence":2,
+            "agilite":5
+        },
+        {
+            "id":"6",
+            "nom_prenom":"Simon Gael",
+            "race":"gnome",
+            "equipements":[10,11,12],
+            "capacite":[9,10],
+            "force":8,
+            "intelligence":8,
+            "agilite":8
+        } 
+    ],
+    "capacites":[
+        {
+            "id":1,
+            "nom":"labourage",
+            "desciption":"permet de labourer en seulement une demi-journée douze hectar de champs"
+        },
+        {
+            "id":2,
+            "nom":"pluie de flèches",
+            "desciption":"fait tomber une pluie de flèches sur ces ennemis"
+        },
+        {
+            "id":3,
+            "nom":"saut elfique",
+            "desciption":"une capacite elfique leur permettant de se déplacer rapidement dans les forets, fait un trés grand saut"
+        },
+        {
+            "id":4,
+            "nom":"tourbillon",
+            "desciption":"fait tournoyer l'arme tenue en main"
+        },
+        {
+            "id":5,
+            "nom":"labourage",
+            "desciption":""
+        },
+        {
+            "id":6,
+            "nom":"labourage",
+            "desciption":""
+        },
+        {
+            "id":7,
+            "nom":"labourage",
+            "desciption":""
+        },
+        {
+            "id":8,
+            "nom":"labourage",
+            "desciption":""
+        },
+        {
+            "id":9,
+            "nom":"labourage",
+            "desciption":""
+        },
+        {
+            "id":10,
+            "nom":"labourage",
+            "desciption":""
+        }
+    ],
+    "equipements":[
         {
             "id":1,
             "nom":"fourche",
