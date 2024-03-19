@@ -107,6 +107,24 @@
             "prerequis_force":5,
             "prerequis_intelligence":8,
             "prerequis_agilite":8
-        }
+        },
+        {
+            "id":13,
+            "nom":"sac de caillou explosif",
+            "rarete":"mythique",
+            "description":"ce sac infini permet de lancer des caillous explosifs sur vos ennemies",
+            "prerequis_force":8,
+            "prerequis_intelligence":1,
+            "prerequis_agilite":1
+        },
+        {
+            "id":14,
+            "nom":"ceinture du hibou",
+            "rarete":"rare",
+            "description":"permet de faire pivoter la partie supérieur de votre corp a 180 degres, d'origine golemique",
+            "prerequis_force":1,
+            "prerequis_intelligence":1,
+            "prerequis_agilite":1
+        },
     ]
 }

@@ -22,33 +22,43 @@
         },
         {
             "id":5,
-            "nom":"labourage",
-            "desciption":""
+            "nom":"cri de guerre",
+            "desciption":"heritage orc, ce cri effraie toute les creatures temporairement"
         },
         {
             "id":6,
-            "nom":"labourage",
-            "desciption":""
+            "nom":"proliferation",
+            "desciption":"capacite unique aux homme rats, elle permet d'appeller tout les rats proche"
         },
         {
             "id":7,
-            "nom":"labourage",
-            "desciption":""
+            "nom":"nyctalope",
+            "desciption":"issue de l'origine souterainne des nains, ce trait leur permet de voir la nuit"
         },
         {
             "id":8,
-            "nom":"labourage",
-            "desciption":""
+            "nom":"coups precis",
+            "desciption":"un coup leur permettant d'infliger un coup critique assurement, fonctionne mieux sur les materiaux dur"
         },
         {
             "id":9,
-            "nom":"labourage",
-            "desciption":""
+            "nom":"discretion du gnome",
+            "desciption":"une capacite herité des anciens gnomes qui se cacher des grand-pieds"
         },
         {
             "id":10,
-            "nom":"labourage",
-            "desciption":""
+            "nom":"fuite",
+            "desciption":"la fuite"
+        },
+        {
+            "id":11,
+            "nom":"grolem",
+            "desciption":"cet capacite unique au golem leur permet d'augmenter leur masse lors d'une roulade"
+        },
+        {
+            "id":12,
+            "nom":"guerison golemique",
+            "desciption":"permet a un golem de se soigenr en mangeant des morceau de sont element"
         }
 
     ]

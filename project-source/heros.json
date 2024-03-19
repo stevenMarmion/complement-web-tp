@@ -33,7 +33,7 @@
         {
             "id":"4",
             "nom_prenom":"tretre nio",
-            "race":"goblin",
+            "race":"homme rat",
             "equipements":[],
             "capacite":[6],
             "force":3,
@@ -59,6 +59,16 @@
             "force":8,
             "intelligence":8,
             "agilite":8
+        },
+        {
+            "id":"7",
+            "nom_prenom":"Tremine Marin",
+            "race":"golem de pierre",
+            "equipements":[13,14],
+            "capacite":[11,12],
+            "force":17,
+            "intelligence":1,
+            "agilite":1
         }
         
     ]
