@@ -15,7 +15,7 @@ class ModifyFactory {
         this.#url = url;
     }
 
-    async putPersonnages(id, data) {
+    async putPersonnage(id, data) {
         if (Object.keys(data).length !== 11) {
             // signifie que tous les champs ne sont pas remplis car il en faut 11
             throw new Error("Datas provided are not fully completed...")

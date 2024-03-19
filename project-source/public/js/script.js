@@ -10,6 +10,7 @@ import CreateFactory from "./createFactory.js";
 import ModifyFactory from "./modifyFactory.js";
 import DeleteFactory from "./deleteFactory.js";
 import GetFactory from "./getFactory.js";
+import Rendering from "./rendering.js";
 
 const route = {
     "/personnages" : GetFactory,
@@ -122,52 +123,51 @@ async function routes(url, id) {
             case "/personnages":
                 cache = await object.recupPersonnagesInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayCities(headingTable, cache);
+                Rendering.renderDisplayPersonnages(headingTable, cache);
                 break;
             
             case "/personnages?":
                 object.getFiltersOn();
                 cache = await object.recupPersonnagesInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayCities(headingTable, cache);
+                Rendering.renderDisplayPersonnages(headingTable, cache);
                 break;
             
             case "/personnages?_sort":
                 object.getSortOn();
                 cache = await object.recupPersonnagesInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayCities(headingTable, cache);
+                Rendering.renderDisplayPersonnages(headingTable, cache);
                 break;
 
             case "/personnages?_page":
-                console.log(currentPage, perPage, id)
                 currentPage = object.actionPaginationValide(currentPage, perPage, id);
                 object.getDatasByPage(currentPage, perPage);
                 cache = await object.recupPersonnagesInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayCities(headingTable, cache.data);
+                Rendering.renderDisplayPersonnages(headingTable, cache.data);
                 break;
 
             case "/personnages/post":
                 let data = object.recupValuesOnInputs();
-                const responseCreation = await object.postCity(data);
+                const responseCreation = await object.postPersonnage(data);
                 if (responseCreation.status == 200) {
-                    Rendering.makeCreatedCityInputsEmpty();
+                    Rendering.makeCreatedPersonnageInputsEmpty();
                     await routes("/personnages", null);
                 }
                 break;
 
             case "/personnages/put":
                 let dataToModify = object.recupValuesOnInputs();
-                const responseModify = await object.putCity(id, dataToModify);
+                const responseModify = await object.putPersonnage(id, dataToModify);
                 if (responseModify.status == 200) {
-                    Rendering.makeCreatedCityInputsEmpty();
+                    Rendering.makeCreatedPersonnageInputsEmpty();
                     await routes("/personnages", null);
                 }
                 break;
 
             case "/personnages/delete":
-                const responseDelete = await object.deleteCity(id);
+                const responseDelete = await object.deletePersonnage(id);
                 if (responseDelete.status == 200) {
                     await routes("/personnages", null);
                 }
@@ -176,13 +176,13 @@ async function routes(url, id) {
             case "/equipements":
                 cache = await object.recupPersonnagesInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayCities(headingTable, cache);
+                Rendering.renderDisplayPersonnages(headingTable, cache);
                 break;
 
             case "/capacites":
                 cache = await object.recupPersonnagesInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayCities(headingTable, cache);
+                Rendering.renderDisplayPersonnages(headingTable, cache);
                 break;
 
             default:
@@ -216,3 +216,9 @@ buttonSort.addEventListener('click', async function(e) {
     let url = '/personnages?_sort';
     await routes(url, null);
 });
+
+Rendering.createInputsFilters(inputsMap);
+Rendering.createInputSelect(inputsMap);
+Rendering.createInputsCreate(inputMapCreating);
+
+export { routes, inputMapCreating };
