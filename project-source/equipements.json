@@ -1,0 +1,112 @@
+{
+    "equipement":[
+        {
+            "id":1,
+            "nom":"fourche",
+            "rarete":"commun",
+            "description":"un simple fourche de paysan",
+            "prerequis_force":0,
+            "prerequis_intelligence":0,
+            "prerequis_agilite":0
+        },
+        {
+            "id":2,
+            "nom":"arc magique",
+            "rarete":"rare",
+            "description":"un arc pouvant tiré des flèches magique",
+            "prerequis_force":2,
+            "prerequis_intelligence":10,
+            "prerequis_agilite":8
+        },
+        {
+            "id":3,
+            "nom":"carquois ardent",
+            "rarete":"rare",
+            "description":"un carquois permettant d'enflammer les flèches tiré",
+            "prerequis_force":0,
+            "prerequis_intelligence":10,
+            "prerequis_agilite":4
+        },
+        {
+            "id":4,
+            "nom":"sandales du roi puant",
+            "rarete":"legendaire",
+            "description":"les sandales du roi puant, elles permettent de faire fuir toute créature sensible a l'odeur, ou de les atttirer",
+            "prerequis_force":0,
+            "prerequis_intelligence":0,
+            "prerequis_agilite":0
+        },
+        {
+            "id":5,
+            "nom":"la hache",
+            "rarete":"mythique",
+            "description":"juste LA hache",
+            "prerequis_force":15,
+            "prerequis_intelligence":0,
+            "prerequis_agilite":0
+        },
+        {
+            "id":6,
+            "nom":"pagne orc",
+            "rarete":"commun",
+            "description":"un simple pagne porté par les orcs, il est trés lourd",
+            "prerequis_force":5,
+            "prerequis_intelligence":0,
+            "prerequis_agilite":0
+        },
+        {
+            "id":7,
+            "nom":"le fouet ardent",
+            "rarete":"rare",
+            "description":"un fouet pouvant embraser les ennemis toucher",
+            "prerequis_force":5,
+            "prerequis_intelligence":0,
+            "prerequis_agilite":5
+        },
+        {
+            "id":8,
+            "nom":"tenue du mineur nain",
+            "rarete":"peu commun",
+            "description":"un tenue complète de mineur nain, elle est équper d'une lampe a huile frontale",
+            "prerequis_force":5,
+            "prerequis_intelligence":2,
+            "prerequis_agilite":0
+        },
+        {
+            "id":9,
+            "nom":"pioche foreuse",
+            "rarete":"rare",
+            "description":"elle est le produit du travaille des plus grands ingénieur nains et permet de creuser 100 fois plus vite qu'avec une pioche standard",
+            "prerequis_force":10,
+            "prerequis_intelligence":0,
+            "prerequis_agilite":5
+        },
+        {
+            "id":10,
+            "nom":"baton de voyage",
+            "rarete":"commun",
+            "description":"le baton typique de tout bon gnome voyageur",
+            "prerequis_force":3,
+            "prerequis_intelligence":3,
+            "prerequis_agilite":3
+        },
+        {
+            "id":11,
+            "nom":"dague empoisoné",
+            "rarete":"rare",
+            "description":"une dague enduite d'un poison mortel",
+            "prerequis_force":4,
+            "prerequis_intelligence":3,
+            "prerequis_agilite":8
+        },
+        {
+            "id":12,
+            "nom":"botte des géants",
+            "rarete":"mythique",
+            "description":"on raconte que ces bottes permettent de parcourir mille lieux en une enjambé",
+            "prerequis_force":5,
+            "prerequis_intelligence":8,
+            "prerequis_agilite":8
+        }
+    ]
+}

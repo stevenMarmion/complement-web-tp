@@ -1,0 +1,55 @@
+{
+    "capacite":[
+        {
+            "id":1,
+            "nom":"labourage",
+            "desciption":"permet de labourer en seulement une demi-journée douze hectar de champs"
+        },
+        {
+            "id":2,
+            "nom":"pluie de flèches",
+            "desciption":"fait tomber une pluie de flèches sur ces ennemis"
+        },
+        {
+            "id":3,
+            "nom":"saut elfique",
+            "desciption":"une capacite elfique leur permettant de se déplacer rapidement dans les forets, fait un trés grand saut"
+        },
+        {
+            "id":4,
+            "nom":"tourbillon",
+            "desciption":"fait tournoyer l'arme tenue en main"
+        },
+        {
+            "id":5,
+            "nom":"labourage",
+            "desciption":""
+        },
+        {
+            "id":6,
+            "nom":"labourage",
+            "desciption":""
+        },
+        {
+            "id":7,
+            "nom":"labourage",
+            "desciption":""
+        },
+        {
+            "id":8,
+            "nom":"labourage",
+            "desciption":""
+        },
+        {
+            "id":9,
+            "nom":"labourage",
+            "desciption":""
+        },
+        {
+            "id":10,
+            "nom":"labourage",
+            "desciption":""
+        }
+
+    ]
+}
