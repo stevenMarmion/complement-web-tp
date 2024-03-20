@@ -1,3 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.city-table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.city-table th, .city-table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+
+.city-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+}
+
+.city-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
 .isVisible {
     display: block;
 }
@@ -6,9 +30,61 @@
     display: none;
 }
 
+button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+    margin-bottom: 2em;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.isFlexed {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
 .isFlexedWrap {
     display: flex;
     flex-wrap: wrap;
+}
+
+input[type="text"] {
+    flex-basis: auto;
+    flex-grow: 1;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: 0 1em 2em 0;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.custom-select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 1em;
+    padding: 5px;
+    width: 200px;
+}
+
+#cities-description img {
+    width: 15px;
+    height: auto;
 }
 
 .modal {
@@ -29,9 +105,4 @@
     padding: 25px;
     background: white;
     transform: translate(-50%, -50%)
-}
-
-.isFlexed {
-    display: flex;
-    flex-wrap: nowrap;
 }
