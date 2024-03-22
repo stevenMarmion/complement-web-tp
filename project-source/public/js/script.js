@@ -1,22 +1,20 @@
 /* pré-requis : lancer le script bash : 
 *  ```bash lancement.sh```
 */
-
-import Capacites from "./capacites.js";
-import Equipements from "./equipements.js";
-import Personnages from "./personnages.js";
 import AboutFactory from "./aboutFactory.js";
 import CreateFactory from "./createFactory.js";
 import ModifyFactory from "./modifyFactory.js";
 import DeleteFactory from "./deleteFactory.js";
 import GetFactory from "./getFactory.js";
 import Rendering from "./rendering.js";
+import FilterFactory from "./filterFactory.js";
 
 const route = {
     "/personnages" : GetFactory,
-    "/personnages?" : AboutFactory,
-    "/personnages?_sort" : AboutFactory,
-    "/personnages?_page" : AboutFactory,
+    "/personnages/" : AboutFactory,
+    "/personnages?" : FilterFactory,
+    "/personnages?_sort" : FilterFactory,
+    "/personnages?_page" : FilterFactory,
     "/personnages/post" : CreateFactory,
     "/personnages/put" : ModifyFactory,
     "/personnages/delete" : DeleteFactory,
@@ -24,20 +22,7 @@ const route = {
     "/capacites" : GetFactory,
 }
 
-// Nous permet de définir la nomenclature de mes colonnes de tableau
-const headingTable = [
-    "Id",
-    "Nom Prénom",
-    "Race",
-    "Equipement",
-    "Capacités",
-    "Force",
-    "Intelligence",
-    "Agilité",
-]
-
 // Me permet de définir au préalable mes champs de filtres sur ma page
-// A completer
 const inputsMap = {
     'insee_code': { 
         id: 'insee_code', 
@@ -128,21 +113,21 @@ async function routes(url, id) {
             case "/personnages":
                 cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(headingTable, cache);
+                Rendering.renderDisplayPersonnages(cache);
                 break;
             
-            case "/personnages?":
-                object.getFiltersOn();
-                cache = await object.recupPersonnagesInArray();
-                Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(headingTable, cache);
+            case "/personnages/":
+                cache = await object.recupPersonnagesInArray(id);
+                console.log(cache);
+                //Rendering.renderHideCreatedInput();
+                //Rendering.renderDisplayPersonnages(cache);
                 break;
             
             case "/personnages?_sort":
                 object.getSortOn();
                 cache = await object.recupPersonnagesInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(headingTable, cache);
+                Rendering.renderDisplayPersonnages(cache);
                 break;
 
             case "/personnages?_page":
@@ -150,7 +135,7 @@ async function routes(url, id) {
                 object.getDatasByPage(currentPage, perPage);
                 cache = await object.recupPersonnagesInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(headingTable, cache.data);
+                Rendering.renderDisplayPersonnages(cache.data);
                 break;
 
             case "/personnages/post":
@@ -181,13 +166,13 @@ async function routes(url, id) {
             case "/equipements":
                 cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(headingTable, cache);
+                Rendering.renderDisplayPersonnages(cache);
                 break;
 
             case "/capacites":
                 cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(headingTable, cache);
+                Rendering.renderDisplayPersonnages(cache);
                 break;
 
             default:

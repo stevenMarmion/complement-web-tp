@@ -32,54 +32,31 @@ class Rendering {
         });
     }
 
-    static renderDisplayPersonnages(headingTable, personnages) {
-        // pour la fonction, on va créer un tableau de données
+    static renderDisplayPersonnages(personnages) {
         let personnagesContainer = document.getElementById('personnages-description');
         personnagesContainer.innerHTML = "";
-        let table = document.createElement('table');
-        table.classList.add('personnage-table');
-        let ligneNomColonne = table.insertRow();
-        for (let nomenclatureColonne in headingTable) {
-            let nomColonne = document.createElement('th');
-            nomColonne.textContent = headingTable[nomenclatureColonne];
-            ligneNomColonne.appendChild(nomColonne);
-        }
         personnages.forEach(personnage => {
-            let ligneDonnees = table.insertRow();
-            for (let donneVille in personnage) {
-                let donnees = ligneDonnees.insertCell();
-                donnees.textContent = personnage[donneVille];
-            }
-            let celluleImages = ligneDonnees.insertCell();
-            let divImgActions = document.createElement('div');
-            divImgActions.classList.add('isFlexed');
-
-            let buttonPen = document.createElement('button');
-            let buttonTrash = document.createElement('button');
-            buttonPen.setAttribute('id', `modify-${personnage["id"]}`);;
-            buttonTrash.setAttribute('id', `delete-${personnage["id"]}`);
-            let pen = document.createElement('img');
-            let trash = document.createElement('img');
-            pen.src = './assets/pen.png';
-            trash.src = './assets/trash.png';
-
-            buttonPen.appendChild(pen);
-            buttonTrash.appendChild(trash);
-            buttonPen.addEventListener('click', async function() {
-                Rendering.displayPopupModify(personnage);
-            });
-            buttonTrash.addEventListener('click', async function() {
-                console.log('~ Click on delete personnage button... ~ Preparing deletion... ~');
-                let url = '/personnages/delete';
+            let card = document.createElement('div');
+            card.classList.add('card');
+            let nom = document.createElement('h2');
+            nom.textContent = personnage['nom_prenom'];
+            card.appendChild(nom);
+            nom.addEventListener('click', async function() {
+                console.log('~ Click on detail personnage title... ~ Preparing datas... ~');
+                let url = '/personnages/';
                 await routes(url, `${personnage["id"]}`);
-            });
-            divImgActions.appendChild(buttonPen);
-            divImgActions.appendChild(buttonTrash);
-
-            celluleImages.appendChild(divImgActions);
+            })
+            let race = document.createElement('p');
+            race.textContent = 'Race: ' + personnage['race'];
+            card.appendChild(race);
+            let agilite = document.createElement('p');
+            agilite.textContent = 'Agilité: ' + personnage['agilite'];
+            card.appendChild(agilite);
+            let force = document.createElement('p');
+            force.textContent = 'Force: ' + personnage['force'];
+            card.appendChild(force);
+            personnagesContainer.appendChild(card);
         });
-        personnagesContainer.appendChild(table);
-
         document.getElementById('voir-personnages').classList.remove('isVisible');
         document.getElementById('voir-personnages').classList.add('isHidden');
         document.getElementById('cacher-personnages').classList.remove('isHidden');
@@ -92,19 +69,16 @@ class Rendering {
         document.getElementById('title-sort').classList.add('isVisible');
         document.getElementById('sort-button').classList.remove('isHidden');
         document.getElementById('sort-button').classList.add('isVisible');
-
         document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
-            // permet de sélectionner tous les champs de filtre
             element.classList.remove('isHidden');
             element.classList.add('isVisible');
         });
-
         document.querySelectorAll('select').forEach(element => { 
-            // permet de sélectionner tous les select de ma page ( il y en a qu'un )
             element.classList.remove('isHidden');
             element.classList.add('isVisible');
         });
     }
+       
 
     static renderShowCreatedInput() {
         document.getElementById('validate-creation').classList.remove('isHidden')
