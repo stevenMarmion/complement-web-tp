@@ -119,8 +119,7 @@ async function routes(url, id) {
             case "/personnages/":
                 cache = await object.recupPersonnagesInArray(id);
                 console.log(cache);
-                //Rendering.renderHideCreatedInput();
-                //Rendering.renderDisplayPersonnages(cache);
+                Rendering.RenderDisplayDetailPersonnage(cache);
                 break;
             
             case "/personnages?_sort":

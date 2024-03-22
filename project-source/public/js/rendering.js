@@ -78,7 +78,58 @@ class Rendering {
             element.classList.add('isVisible');
         });
     }
-       
+    
+    static RenderDisplayDetailPersonnage(personnage) {
+        let personnagesContainer = document.getElementById('personnages-description');
+        personnagesContainer.classList.remove('isVisible');
+        personnagesContainer.classList.add('isHidden');
+        let detailContainer = document.getElementById('detail-personnage');
+        detailContainer.innerHTML = "";
+        let nom = document.createElement('h2');
+        nom.textContent = 'Nom: ' + personnage['nom_prenom'];
+        detailContainer.appendChild(nom);
+        let race = document.createElement('p');
+        race.textContent = 'Race: ' + personnage['race'];
+        detailContainer.appendChild(race);
+        let agilite = document.createElement('p');
+        agilite.textContent = 'Agilité: ' + personnage['agilite'];
+        detailContainer.appendChild(agilite);
+        let force = document.createElement('p');
+        force.textContent = 'Force: ' + personnage['force'];
+        detailContainer.appendChild(force);
+        let intelligence = document.createElement('p');
+        intelligence.textContent = 'Intelligence: ' + personnage['intelligence'];
+        detailContainer.appendChild(intelligence);
+        if (personnage['capacite'].length > 0) {
+            let capacite = document.createElement('p');
+            capacite.textContent = 'Capacités:';
+            detailContainer.appendChild(capacite);
+    
+            let capaciteList = document.createElement('ul');
+            personnage['capacite'].forEach(cap => {
+                let capaciteItem = document.createElement('li');
+                capaciteItem.textContent = cap;
+                capaciteList.appendChild(capaciteItem);
+            });
+            detailContainer.appendChild(capaciteList);
+        }
+
+        if (personnage['equipements'].length > 0) {
+            let equipements = document.createElement('p');
+            equipements.textContent = 'Équipements:';
+            detailContainer.appendChild(equipements);
+    
+            let equipementsList = document.createElement('ul');
+            personnage['equipements'].forEach(equip => {
+                let equipItem = document.createElement('li');
+                equipItem.textContent = equip;
+                equipementsList.appendChild(equipItem);
+            });
+            detailContainer.appendChild(equipementsList);
+        }
+        detailContainer.classList.remove('isHidden');
+    }
+    
 
     static renderShowCreatedInput() {
         document.getElementById('validate-creation').classList.remove('isHidden')
