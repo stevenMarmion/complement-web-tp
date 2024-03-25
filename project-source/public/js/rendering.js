@@ -90,6 +90,7 @@ class Rendering {
             element.classList.remove('isVisible');
             element.classList.add('isHidden');
         });
+        
         let buttonAccueil = document.getElementById('go-to-home');
         buttonAccueil.classList.remove('isHidden');
         buttonAccueil.addEventListener('click', async function() {
@@ -101,7 +102,47 @@ class Rendering {
         let detailContainer = document.getElementById('detail-personnage');
         detailContainer.innerHTML = "";
         detailContainer.classList.add('card');
-        detailContainer.classList.add('isVisible')
+        detailContainer.classList.add('isVisible');
+        let favButton = document.createElement('button');
+        let favImage = document.createElement('img');
+        if (personnage['estFav'] === false) {
+            favImage.src = '../assets/not-fav.png';
+        } else {
+            favImage.src = '../assets/fav.png';
+        }
+        favImage.alt = 'Fav Icon';
+        favImage.classList.add('fav-icon');
+        favButton.appendChild(favImage);
+        
+        favButton.addEventListener('click', async function() {
+            console.log('~ Click on fav button... ~ Change fav status... ~');
+            if (personnage['estFav'] === false) {
+                personnage['estFav'] = true;
+                console.log('~ Click on fav button... ~ Preparing modify button and datas... ~');
+                await fetch(`/personnages/${personnage['id']}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(personnage)
+                });
+                favImage.src = '../assets/fav.png';
+            } else {
+                personnage['estFav'] = false;
+                console.log('~ Click on fav button... ~ Preparing modify button and datas... ~');
+                await fetch(`/personnages/${personnage['id']}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(personnage)
+                });
+                favImage.src = '../assets/not-fav.png';
+            }
+        });
+        
+        detailContainer.appendChild(favButton);
+        
         let nom = document.createElement('h2');
         nom.textContent = 'Nom: ' + personnage['nom_prenom'];
         detailContainer.appendChild(nom);
@@ -117,6 +158,7 @@ class Rendering {
         let intelligence = document.createElement('p');
         intelligence.textContent = 'Intelligence: ' + personnage['intelligence'];
         detailContainer.appendChild(intelligence);
+        
         if (personnage['capacite'].length > 0) {
             let capacite = document.createElement('p');
             capacite.textContent = 'Capacités:';
@@ -130,7 +172,7 @@ class Rendering {
             });
             detailContainer.appendChild(capaciteList);
         }
-
+    
         if (personnage['equipements'].length > 0) {
             let equipements = document.createElement('p');
             equipements.textContent = 'Équipements:';
@@ -145,7 +187,7 @@ class Rendering {
             detailContainer.appendChild(equipementsList);
         }
         detailContainer.classList.remove('isHidden');
-    }
+    }    
     
 
     static renderShowCreatedInput() {

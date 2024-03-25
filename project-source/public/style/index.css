@@ -183,3 +183,8 @@ input[type="text"]:focus {
 #voir-personnages, #create-personnage-button {
     margin: 0 1em;
 }
+
+#detail-personnage img {
+    width: 20px;
+    height: 20px;
+}
