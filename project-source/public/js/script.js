@@ -179,6 +179,15 @@ buttonSort.addEventListener('click', async function(e) {
     await routes(url, null);
 });
 
+let buttonManageFav = document.getElementById('manage-fav-button');
+buttonManageFav.addEventListener('click', async function(e) {
+    console.log('~ Click on manage fav button... ~ Loading and fetch datas... ~');
+    let url = '/personnages?estFav=1';
+    const rep = await fetch(url);
+    var cache = await rep.json();
+    Rendering.renderDisplayFav(cache);
+});
+
 Rendering.createInputsFilters(inputsMap);
 Rendering.createInputSelect(inputsMap);
 Rendering.createInputsCreate(inputMapCreating);

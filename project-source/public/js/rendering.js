@@ -34,6 +34,9 @@ class Rendering {
         let detailPerso = document.getElementById('detail-personnage');
         detailPerso.classList.remove('isVisible');
         detailPerso.classList.add('isHidden');
+        let manageFav = document.getElementById('manage-fav-button');
+        manageFav.classList.remove('isHidden');
+        manageFav.classList.add('isVisible');
         let personnagesContainer = document.getElementById('personnages-description');
         personnagesContainer.innerHTML = "";
         personnages.forEach(personnage => {
@@ -105,7 +108,7 @@ class Rendering {
         detailContainer.classList.add('isVisible');
         let favButton = document.createElement('button');
         let favImage = document.createElement('img');
-        if (personnage['estFav'] === false) {
+        if (personnage['estFav'] === 0) {
             favImage.src = '../assets/not-fav.png';
         } else {
             favImage.src = '../assets/fav.png';
@@ -116,29 +119,21 @@ class Rendering {
         
         favButton.addEventListener('click', async function() {
             console.log('~ Click on fav button... ~ Change fav status... ~');
-            if (personnage['estFav'] === false) {
-                personnage['estFav'] = true;
-                console.log('~ Click on fav button... ~ Preparing modify button and datas... ~');
-                await fetch(`/personnages/${personnage['id']}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(personnage)
-                });
+            if (personnage['estFav'] === 0) {
+                personnage['estFav'] = 1;
                 favImage.src = '../assets/fav.png';
             } else {
-                personnage['estFav'] = false;
-                console.log('~ Click on fav button... ~ Preparing modify button and datas... ~');
-                await fetch(`/personnages/${personnage['id']}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(personnage)
-                });
+                personnage['estFav'] = 0;
                 favImage.src = '../assets/not-fav.png';
             }
+            console.log('~ Click on fav button... ~ Preparing modify button and datas... ~');
+            await fetch(`/personnages/${personnage['id']}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(personnage)
+            });
         });
         
         detailContainer.appendChild(favButton);
@@ -186,10 +181,46 @@ class Rendering {
             });
             detailContainer.appendChild(equipementsList);
         }
+        let evaluationContainer = document.createElement('div');
+        evaluationContainer.classList.add('evaluation-container');
+        for (let i = 1; i <= 5; i++) {
+            let starButton = document.createElement('button');
+            starButton.id = i;
+            starButton.addEventListener('click', async function() {
+                console.log('~ Click on evaluate button... ~ Change notation status... ~');
+                personnage['note'] == i ? personnage['note'] = i - 1 : personnage['note'] = i;
+                await fetch(`/personnages/${personnage['id']}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(personnage)
+                });
+                Rendering.updateStarImages(personnage['note']);
+            });
+            let starImage = document.createElement('img');
+            i <= personnage['note'] ? starImage.src = '../assets/star-yellow.png' : starImage.src = '../assets/star.png';
+            starImage.alt = 'Star Icon';
+            starImage.classList.add('star-icon');
+            starButton.appendChild(starImage);
+            evaluationContainer.appendChild(starButton);
+        }
+        detailContainer.appendChild(evaluationContainer);
         detailContainer.classList.remove('isHidden');
-    }    
-    
+    }
 
+    static updateStarImages(note) {
+        let starButtons = document.querySelectorAll('.evaluation-container button');
+        starButtons.forEach((button, index) => {
+            let starImage = button.querySelector('img');
+            if (index < note) {
+                starImage.src = '../assets/star-yellow.png';
+            } else {
+                starImage.src = '../assets/star.png';
+            }
+        });
+    }
+    
     static renderShowCreatedInput() {
         document.getElementById('validate-creation').classList.remove('isHidden')
         document.getElementById('validate-creation').classList.add('isVisible')
@@ -289,6 +320,50 @@ class Rendering {
         document.getElementById('close-popup').style.display = 'none';
         document.getElementById('validate-editing').style.display = 'none';
         document.getElementById('modal').style.display = 'none';
+    }
+
+    static renderDisplayFav(personnages) {
+        document.querySelectorAll('.isVisible').forEach(element => {
+            element.classList.remove('isVisible');
+            element.classList.add('isHidden');
+        });
+        let buttonAccueil = document.getElementById('go-to-home');
+        buttonAccueil.classList.remove('isHidden');
+        buttonAccueil.addEventListener('click', async function() {
+            console.log('~ Click on Home button... ~ Go to home... ~');
+            let url = '/personnages';
+            await routes(url, null);
+        });
+        buttonAccueil.classList.add('isVisible');
+        let detailContainer = document.getElementById('personnages-description');
+        detailContainer.innerHTML = "";
+        personnages.forEach(personnage => {
+            let card = document.createElement('div');
+            card.classList.add('card');
+            card.classList.add('isVisible');
+            let nom = document.createElement('h2');
+            nom.textContent = personnage['nom_prenom'];
+            card.appendChild(nom);
+            let race = document.createElement('p');
+            race.textContent = 'Race: ' + personnage['race'];
+            card.appendChild(race);
+            let agilite = document.createElement('p');
+            agilite.textContent = 'Agilité: ' + personnage['agilite'];
+            card.appendChild(agilite);
+            let force = document.createElement('p');
+            force.textContent = 'Force: ' + personnage['force'];
+            card.appendChild(force);
+            let detailButton = document.createElement('button');
+            detailButton.textContent = 'Détail';
+            detailButton.classList.add('button-primary')
+            detailButton.addEventListener('click', async function() {
+                console.log('~ Click on detail button... ~ Preparing datas... ~');
+                let url = '/personnages/';
+                await routes(url, `${personnage["id"]}`);
+            });
+            card.appendChild(detailButton);
+            detailContainer.appendChild(card);
+        });
     }
 }
 
