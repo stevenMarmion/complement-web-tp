@@ -3,7 +3,6 @@ import { routes, inputMapCreating } from "./script.js";
 class Rendering {
 
     static renderHidePersonnages() {
-        // pour celle-ci, on cache tout
         let personnagesContainer = document.getElementById('personnages-description');
         personnagesContainer.innerHTML = "";
         document.getElementById('voir-personnages').classList.remove('isHidden');
@@ -18,34 +17,32 @@ class Rendering {
         document.getElementById('title-sort').classList.add('isHidden');
         document.getElementById('sort-button').classList.remove('isVisible');
         document.getElementById('sort-button').classList.add('isHidden');
-
         document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
-            // permet de sélectionner tous les inputs des filtres
             element.classList.remove('isVisible');
             element.classList.add('isHidden');
         });
-
         document.querySelectorAll('select').forEach(element => { 
-            // permet de sélectionner tous les select de ma page ( il y en a qu'un seul dans ma page )
             element.classList.remove('isVisible');
             element.classList.add('isHidden');
         });
     }
 
     static renderDisplayPersonnages(personnages) {
+        let buttonAccueil = document.getElementById('go-to-home');
+        buttonAccueil.classList.remove('isVisible');
+        buttonAccueil.classList.add('isHidden');
+        let detailPerso = document.getElementById('detail-personnage');
+        detailPerso.classList.remove('isVisible');
+        detailPerso.classList.add('isHidden');
         let personnagesContainer = document.getElementById('personnages-description');
         personnagesContainer.innerHTML = "";
         personnages.forEach(personnage => {
             let card = document.createElement('div');
             card.classList.add('card');
+            card.classList.add('isVisible');
             let nom = document.createElement('h2');
             nom.textContent = personnage['nom_prenom'];
             card.appendChild(nom);
-            nom.addEventListener('click', async function() {
-                console.log('~ Click on detail personnage title... ~ Preparing datas... ~');
-                let url = '/personnages/';
-                await routes(url, `${personnage["id"]}`);
-            })
             let race = document.createElement('p');
             race.textContent = 'Race: ' + personnage['race'];
             card.appendChild(race);
@@ -55,6 +52,15 @@ class Rendering {
             let force = document.createElement('p');
             force.textContent = 'Force: ' + personnage['force'];
             card.appendChild(force);
+            let detailButton = document.createElement('button');
+            detailButton.textContent = 'Détail';
+            detailButton.classList.add('button-primary')
+            detailButton.addEventListener('click', async function() {
+                console.log('~ Click on detail button... ~ Preparing datas... ~');
+                let url = '/personnages/';
+                await routes(url, `${personnage["id"]}`);
+            });
+            card.appendChild(detailButton);
             personnagesContainer.appendChild(card);
         });
         document.getElementById('voir-personnages').classList.remove('isVisible');
@@ -77,14 +83,25 @@ class Rendering {
             element.classList.remove('isHidden');
             element.classList.add('isVisible');
         });
-    }
+    }    
     
     static RenderDisplayDetailPersonnage(personnage) {
-        let personnagesContainer = document.getElementById('personnages-description');
-        personnagesContainer.classList.remove('isVisible');
-        personnagesContainer.classList.add('isHidden');
+        document.querySelectorAll('.isVisible').forEach(element => {
+            element.classList.remove('isVisible');
+            element.classList.add('isHidden');
+        });
+        let buttonAccueil = document.getElementById('go-to-home');
+        buttonAccueil.classList.remove('isHidden');
+        buttonAccueil.addEventListener('click', async function() {
+            console.log('~ Click on Home button... ~ Go to home... ~');
+            let url = '/personnages';
+            await routes(url, null);
+        });
+        buttonAccueil.classList.add('isVisible');
         let detailContainer = document.getElementById('detail-personnage');
         detailContainer.innerHTML = "";
+        detailContainer.classList.add('card');
+        detailContainer.classList.add('isVisible')
         let nom = document.createElement('h2');
         nom.textContent = 'Nom: ' + personnage['nom_prenom'];
         detailContainer.appendChild(nom);

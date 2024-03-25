@@ -24,79 +24,52 @@ const route = {
 
 // Me permet de définir au préalable mes champs de filtres sur ma page
 const inputsMap = {
-    'insee_code': { 
-        id: 'insee_code', 
-        placeholder: 'Code INSEE' 
+    'nom_prenom': { 
+        id: 'nom_prenom', 
+        placeholder: 'Nom et prénom' 
     },
-    'zip_code': { 
-        id: 'zip_code', 
-        placeholder: 'Code zip' 
+    'race': { 
+        id: 'race', 
+        placeholder: 'Race' 
     },
-    'label': { 
-        id: 'label', 
-        placeholder: 'Nom de ville' 
+    'force': { 
+        id: 'force', 
+        placeholder: 'Force' 
     },
-    'department_name': { 
-        id: 'department_name', 
-        placeholder: 'Nom de département' 
+    'intelligence': { 
+        id: 'intelligence', 
+        placeholder: 'Intelligence' 
     },
-    'department_number': { 
-        id: 'department_number', 
-        placeholder: 'Numéro de département' 
-    },
-    'region_name': { 
-        id: 'region_name', 
-        placeholder: 'Nom de région' 
+    'agilite': { 
+        id: 'agilite', 
+        placeholder: 'Agilité' 
     }
 };
 
 // Me permet de définir mes champs de création d'un personnage au préalable
 const inputMapCreating = {
-    'insee_code': { 
-        id: 'insee_code', 
-        placeholder: 'Code INSEE' 
+    'nom_prenom': { 
+        id: 'nom_prenom', 
+        placeholder: 'Nom et prénom' 
     },
-    'city_code': { 
-        id: 'city_code', 
-        placeholder: 'Code de ville' 
+    'race': { 
+        id: 'race', 
+        placeholder: 'Race' 
     },
-    'zip_code': { 
-        id: 'zip_code', 
-        placeholder: 'Code zip' 
+    'force': { 
+        id: 'force', 
+        placeholder: 'Force' 
     },
-    'label': { 
-        id: 'label', 
-        placeholder: 'Nom de ville' 
+    'intelligence': { 
+        id: 'intelligence', 
+        placeholder: 'Intelligence' 
     },
-    'latitude': { 
-        id: 'latitude', 
-        placeholder: 'Latitude' 
-    },
-    'longitude': { 
-        id: 'longitude', 
-        placeholder: 'Longitude' 
-    },
-    'department_name': { 
-        id: 'department_name', 
-        placeholder: 'Nom de département' 
-    },
-    'department_number': { 
-        id: 'department_number', 
-        placeholder: 'Numéro de département' 
-    },
-    'region_name': { 
-        id: 'region_name', 
-        placeholder: 'Nom de région' 
-    },
-    'region_geojson_name': { 
-        id: 'region_geojson_name', 
-        placeholder: 'Nom de région (GeoJSON)' 
-    },
-    'id': {
-        id: 'id', 
-        placeholder: 'ID' 
-    },
+    'agilite': { 
+        id: 'agilite', 
+        placeholder: 'Agilité' 
+    }
 };
+
 
 // Me permet de remplir le cache et de charger les données avant n'importe quelle requête ==> on prédit le clique souris sur "Voir les villes"
 const rep = await fetch('/personnages');
