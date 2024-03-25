@@ -113,7 +113,7 @@ input[type="text"]:focus {
     transform: translate(-50%, -50%);
 }
 
-#personnages-description {
+#personnages-description, #capacites-description, #equipements-description {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

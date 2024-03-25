@@ -13,7 +13,7 @@
       "force": 1,
       "intelligence": 1,
       "agilite": 1,
-      "estFav": 0,
+      "estFav": 1,
       "note": 0
     },
     {
@@ -108,52 +108,52 @@
     {
       "id": "1",
       "nom": "labourage",
-      "desciption": "permet de labourer en seulement une demi-journée douze hectar de champs"
+      "description": "permet de labourer en seulement une demi-journée douze hectar de champs"
     },
     {
       "id": "2",
       "nom": "pluie de flèches",
-      "desciption": "fait tomber une pluie de flèches sur ces ennemis"
+      "description": "fait tomber une pluie de flèches sur ces ennemis"
     },
     {
       "id": "3",
       "nom": "saut elfique",
-      "desciption": "une capacite elfique leur permettant de se déplacer rapidement dans les forets, fait un trés grand saut"
+      "description": "une capacite elfique leur permettant de se déplacer rapidement dans les forets, fait un trés grand saut"
     },
     {
       "id": "4",
       "nom": "tourbillon",
-      "desciption": "fait tournoyer l'arme tenue en main"
+      "description": "fait tournoyer l'arme tenue en main"
     },
     {
       "id": "5",
       "nom": "labourage",
-      "desciption": ""
+      "description": ""
     },
     {
       "id": "6",
       "nom": "labourage",
-      "desciption": ""
+      "description": ""
     },
     {
       "id": "7",
       "nom": "labourage",
-      "desciption": ""
+      "description": ""
     },
     {
       "id": "8",
       "nom": "labourage",
-      "desciption": ""
+      "description": ""
     },
     {
       "id": "9",
       "nom": "labourage",
-      "desciption": ""
+      "description": ""
     },
     {
       "id": "10",
       "nom": "labourage",
-      "desciption": ""
+      "description": ""
     }
   ],
   "equipements": [

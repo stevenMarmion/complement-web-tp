@@ -91,7 +91,6 @@ async function routes(url, id) {
             
             case "/personnages/":
                 cache = await object.recupPersonnagesInArray(id);
-                console.log(cache);
                 Rendering.RenderDisplayDetailPersonnage(cache);
                 break;
             
@@ -138,13 +137,13 @@ async function routes(url, id) {
             case "/equipements":
                 cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(cache);
+                Rendering.renderDisplayEquipements(cache);
                 break;
 
             case "/capacites":
                 cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(cache);
+                Rendering.renderDisplayCapacites(cache);
                 break;
 
             default:
@@ -160,9 +159,33 @@ buttonVoirPersonnages.addEventListener('click', async function(e) {
     await routes(url, null);
 });
 
+let buttonVoirCapacties = document.getElementById('voir-capacites');
+buttonVoirCapacties.addEventListener('click', async function(e) {
+    console.log('~ Click on capacités button... ~ Loading and fetch datas... ~');
+    let url = '/capacites';
+    await routes(url, null);
+});
+
+let buttonVoirEquipements = document.getElementById('voir-equipements');
+buttonVoirEquipements.addEventListener('click', async function(e) {
+    console.log('~ Click on équipements button... ~ Loading and fetch datas... ~');
+    let url = '/equipements';
+    await routes(url, null);
+});
+
 let buttonHidePersonnages = document.getElementById('cacher-personnages');
 buttonHidePersonnages.addEventListener('click', function(e) {
     Rendering.renderHidePersonnages();
+});
+
+let buttonHideCapacites = document.getElementById('cacher-capacites');
+buttonHideCapacites.addEventListener('click', function(e) {
+    Rendering.renderHideCapacites();
+});
+
+let buttonHideEquipements = document.getElementById('cacher-equipements');
+buttonHideEquipements.addEventListener('click', function(e) {
+    Rendering.renderHideEquipements();
 });
 
 let buttonSearch = document.getElementById('search-button');
