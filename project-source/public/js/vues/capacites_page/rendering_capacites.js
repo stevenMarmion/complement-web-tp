@@ -44,16 +44,6 @@ class RenderingCapacites {
 
         Rendering.renderHidden(document.getElementById('voir-capacites'));
         Rendering.renderVisible(document.getElementById('cacher-capacites'));
-        Rendering.renderVisible(document.getElementById('title-filters'));
-        Rendering.renderVisible(document.getElementById('search-button'));
-        Rendering.renderVisible(document.getElementById('title-sort'));
-
-        document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
-            Rendering.renderVisible(element);
-        });
-        document.querySelectorAll('select').forEach(element => { 
-            Rendering.renderVisible(element);
-        });
     }
 }
 

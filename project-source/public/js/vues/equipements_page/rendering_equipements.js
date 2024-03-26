@@ -54,17 +54,6 @@ class RenderingEquipements {
 
         Rendering.renderHidden(document.getElementById('voir-equipements'));
         Rendering.renderVisible(document.getElementById('cacher-equipements'));
-        Rendering.renderVisible(document.getElementById('voir-capacites'));
-        Rendering.renderVisible(document.getElementById('title-filters'));
-        Rendering.renderVisible(document.getElementById('search-button'));
-        Rendering.renderVisible(document.getElementById('title-sort'));
-
-        document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
-            Rendering.renderVisible(element);
-        });
-        document.querySelectorAll('select').forEach(element => { 
-            Rendering.renderVisible(element);
-        });
     }
 
     static renderDisplayDetailEquipements(equipement) {
