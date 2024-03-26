@@ -8,7 +8,10 @@
             "capacite":[1],
             "force":1,
             "intelligence":1,
-            "agilite":1
+            "agilite":1,
+            "estFav":0,
+            "note":0
+
         },
         {
             "id":"2",
@@ -18,7 +21,9 @@
             "capacite":[2,3],
             "force":5,
             "intelligence":12,
-            "agilite":10
+            "agilite":1,
+            "estFav":0,
+            "note":0
         },
         {
             "id":"3",
@@ -28,7 +33,9 @@
             "capacite":[4,5],
             "force":15,
             "intelligence":2,
-            "agilite":2
+            "agilite":2,
+            "estFav":0,
+            "note":0
         },
         {
             "id":"4",
@@ -38,7 +45,9 @@
             "capacite":[6],
             "force":3,
             "intelligence":1,
-            "agilite":8
+            "agilite":8,
+            "estFav":0,
+            "note":0
         },
         {
             "id":"5",
@@ -48,7 +57,9 @@
             "capacite":[7,8],
             "force":10,
             "intelligence":2,
-            "agilite":5
+            "agilite":5,
+            "estFav":0,
+            "note":0
         },
         {
             "id":"6",
@@ -58,7 +69,9 @@
             "capacite":[9,10],
             "force":8,
             "intelligence":8,
-            "agilite":8
+            "agilite":8,
+            "estFav":0,
+            "note":0
         },
         {
             "id":"7",
@@ -68,7 +81,9 @@
             "capacite":[11,12],
             "force":17,
             "intelligence":1,
-            "agilite":1
+            "agilite":1,
+            "estFav":0,
+            "note":0
         }
         
     ],
