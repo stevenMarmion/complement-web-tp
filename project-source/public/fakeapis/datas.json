@@ -1,5 +1,5 @@
 {
-    "personnage":[
+    "personnages":[
         {
             "id":"1",
             "nom_prenom":"Depont Samuel",
@@ -86,7 +86,7 @@
         }
         
     ],
-    "capacite":[
+    "capacites":[
         {
             "id":1,
             "nom":"labourage",
@@ -149,7 +149,7 @@
         }
 
     ],
-    "equipement":[
+    "equipements":[
         {
             "id":1,
             "nom":"fourche",
