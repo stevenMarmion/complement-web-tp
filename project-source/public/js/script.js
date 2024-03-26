@@ -1,13 +1,13 @@
 /* pré-requis : lancer le script bash : 
 *  ```bash lancement.sh```
 */
-import AboutFactory from "./aboutFactory.js";
-import CreateFactory from "./createFactory.js";
-import ModifyFactory from "./modifyFactory.js";
-import DeleteFactory from "./deleteFactory.js";
-import GetFactory from "./getFactory.js";
-import Rendering from "./rendering.js";
-import FilterFactory from "./filterFactory.js";
+import AboutFactory from "./services/about/aboutFactory.js";
+import CreateFactory from "./services/post/createFactory.js";
+import ModifyFactory from "./services/put/modifyFactory.js";
+import DeleteFactory from "./services/delete/deleteFactory.js";
+import GetFactory from "./services/get/getFactory.js";
+import Rendering from "./vues/rendering.js";
+import FilterFactory from "./services/get/filterFactory.js";
 
 const route = {
     "/personnages" : GetFactory,
