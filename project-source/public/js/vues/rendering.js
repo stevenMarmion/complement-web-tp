@@ -3,20 +3,16 @@ import inputMapCreating from '../utils/inputs.js';
 class Rendering {
     
     static renderShowCreatedInput() {
-        document.getElementById('validate-creation').classList.remove('isHidden')
-        document.getElementById('validate-creation').classList.add('isVisible')
-        document.getElementById('create-personnage-button').classList.remove('isVisible');
-        document.getElementById('create-personnage-button').classList.add('isHidden');
+        Rendering.renderHidden(document.getElementById('validate-creation'));
+        Rendering.renderHidden(document.getElementById('create-personnage-button'));
         document.querySelectorAll('#create-personnage input[type="text"]').forEach(element => { 
             Rendering.renderVisible(element);
         });
     }
 
     static renderHideCreatedInput() {
-        document.getElementById('validate-creation').classList.remove('isVisible')
-        document.getElementById('validate-creation').classList.add('isHidden')
-        document.getElementById('create-personnage-button').classList.remove('isHidden');
-        document.getElementById('create-personnage-button').classList.add('isVisible');
+        Rendering.renderVisible(document.getElementById('validate-creation'));
+        Rendering.renderVisible(document.getElementById('create-personnage-button'));
         document.querySelectorAll('#create-personnage input[type="text"]').forEach(element => { 
             Rendering.renderHidden(element);
         });
@@ -25,7 +21,7 @@ class Rendering {
     static createInputSelect(inputsMap) {
         let inputContainer = document.getElementById('select-sorted-columns');
         let selectElement = document.createElement('select');
-        selectElement.classList.add('isHidden');
+        Rendering.renderHidden(selectElement);
         selectElement.classList.add('custom-select');
         selectElement.id = 'input-select-sorted-columns';
 
