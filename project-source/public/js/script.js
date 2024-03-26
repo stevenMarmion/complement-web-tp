@@ -155,13 +155,6 @@ buttonSearch.addEventListener('click', async function(e) {
     await routes(url, null);
 });
 
-let buttonSort = document.getElementById('sort-button');
-buttonSort.addEventListener('click', async function(e) {
-    console.log('~ Click on sort button... ~ Loading and fetch datas by sorted columns... ~');
-    let url = '/personnages?_sort';
-    await routes(url, null);
-});
-
 let buttonManageFav = document.getElementById('manage-fav-button');
 buttonManageFav.addEventListener('click', async function(e) {
     console.log('~ Click on manage fav button... ~ Loading and fetch datas... ~');
@@ -174,5 +167,12 @@ buttonManageFav.addEventListener('click', async function(e) {
 Rendering.createInputsFilters(Utils.inputsMap);
 Rendering.createInputSelect(Utils.inputsMap);
 Rendering.createInputsCreate(Utils.inputMapCreating);
+
+let selectSort = document.querySelector('#input-select-sorted-columns');
+selectSort.addEventListener('change', async function(e) {
+    console.log('~ Click on sort button... ~ Loading and fetch datas by sorted columns... ~');
+    let url = '/personnages?_sort';
+    await routes(url, null);
+});
 
 export default routes;
