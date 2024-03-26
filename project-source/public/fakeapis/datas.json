@@ -201,7 +201,8 @@
       "description": "un simple fourche de paysan",
       "prerequis_force": 0,
       "prerequis_intelligence": 0,
-      "prerequis_agilite": 0
+      "prerequis_agilite": 0,
+      "image": "./assets/fourche.jpg"
     },
     {
       "id": "2",
@@ -210,16 +211,18 @@
       "description": "un arc pouvant tiré des flèches magique",
       "prerequis_force": 2,
       "prerequis_intelligence": 10,
-      "prerequis_agilite": 8
+      "prerequis_agilite": 8,
+      "image": "./assets/arc.png"
     },
     {
       "id": "3",
-      "nom": "carquois ardent",
+      "nom": "carquois infini",
       "rarete": "rare",
-      "description": "un carquois permettant d'enflammer les flèches tiré",
+      "description": "un carquois permettant de tiré des flèches infiniment",
       "prerequis_force": 0,
       "prerequis_intelligence": 10,
-      "prerequis_agilite": 4
+      "prerequis_agilite": 4,
+      "image": "./assets/carquois.jpg"
     },
     {
       "id": "4",
@@ -228,7 +231,8 @@
       "description": "les sandales du roi puant, elles permettent de faire fuir toute créature sensible a l'odeur, ou de les atttirer",
       "prerequis_force": 0,
       "prerequis_intelligence": 0,
-      "prerequis_agilite": 0
+      "prerequis_agilite": 0,
+      "image": "./assets/sandale.jpg"
     },
     {
       "id": "5",
@@ -237,7 +241,8 @@
       "description": "juste LA hache",
       "prerequis_force": 15,
       "prerequis_intelligence": 0,
-      "prerequis_agilite": 0
+      "prerequis_agilite": 0,
+      "image": "./assets/hache.webp"
     },
     {
       "id": "6",
@@ -246,7 +251,8 @@
       "description": "un simple pagne porté par les orcs, il est trés lourd",
       "prerequis_force": 5,
       "prerequis_intelligence": 0,
-      "prerequis_agilite": 0
+      "prerequis_agilite": 0,
+      "image": "./assets/pagne.webp"
     },
     {
       "id": "7",
@@ -255,7 +261,8 @@
       "description": "un fouet pouvant embraser les ennemis toucher",
       "prerequis_force": 5,
       "prerequis_intelligence": 0,
-      "prerequis_agilite": 5
+      "prerequis_agilite": 5,
+      "image": "./assets/fouet.png"
     },
     {
       "id": "8",
@@ -264,7 +271,8 @@
       "description": "un tenue complète de mineur nain, elle est équper d'une lampe a huile frontale",
       "prerequis_force": 5,
       "prerequis_intelligence": 2,
-      "prerequis_agilite": 0
+      "prerequis_agilite": 0,
+      "image": "./assets/nain.png"
     },
     {
       "id": "9",
@@ -273,7 +281,8 @@
       "description": "elle est le produit du travaille des plus grands ingénieur nains et permet de creuser 100 fois plus vite qu'avec une pioche standard",
       "prerequis_force": 10,
       "prerequis_intelligence": 0,
-      "prerequis_agilite": 5
+      "prerequis_agilite": 5,
+      "image": "./assets/pioche.png"
     },
     {
       "id": "10",
@@ -282,7 +291,8 @@
       "description": "le baton typique de tout bon gnome voyageur",
       "prerequis_force": 3,
       "prerequis_intelligence": 3,
-      "prerequis_agilite": 3
+      "prerequis_agilite": 3,
+      "image": "./assets/baton.jpeg"
     },
     {
       "id": "11",
@@ -291,7 +301,8 @@
       "description": "une dague enduite d'un poison mortel",
       "prerequis_force": 4,
       "prerequis_intelligence": 3,
-      "prerequis_agilite": 8
+      "prerequis_agilite": 8,
+      "image": "./assets/dague.jpeg"
     },
     {
       "id": "12",
@@ -300,7 +311,8 @@
       "description": "on raconte que ces bottes permettent de parcourir mille lieux en une enjambé",
       "prerequis_force": 5,
       "prerequis_intelligence": 8,
-      "prerequis_agilite": 8
+      "prerequis_agilite": 8,
+      "image": "./assets/botte.jpg"
     },
     {
       "id": "13",
@@ -309,7 +321,8 @@
       "description": "ce sac infini permet de lancer des caillous explosifs sur vos ennemies",
       "prerequis_force": 8,
       "prerequis_intelligence": 1,
-      "prerequis_agilite": 1
+      "prerequis_agilite": 1,
+      "image": "./assets/sac_caillou.jpg"
     },
     {
       "id": "14",
@@ -318,7 +331,8 @@
       "description": "permet de faire pivoter la partie supérieur de votre corp a 180 degres, d'origine golemique",
       "prerequis_force": 1,
       "prerequis_intelligence": 1,
-      "prerequis_agilite": 1
+      "prerequis_agilite": 1,
+      "image": "./assets/ceinture.jpg"
     }
   ]
 }

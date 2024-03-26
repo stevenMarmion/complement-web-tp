@@ -30,16 +30,18 @@ class RenderingEquipements {
 
         equipements.forEach(equipement => {
             let card = document.createElement('div');
+            let divInfo = document.createElement('div');
+            let divImage = document.createElement('div');
             card.classList.add('card');
             
             Rendering.renderVisible(card);
 
             let nom = document.createElement('h2');
             nom.textContent = equipement['nom'];
-            card.appendChild(nom);
+            divInfo.appendChild(nom);
             let descr = document.createElement('p');
             descr.textContent = 'Description: ' + equipement['description'];
-            card.appendChild(descr);
+            divInfo.appendChild(descr);
             let detailButton = document.createElement('button');
             detailButton.textContent = 'Détail';
             detailButton.classList.add('button-primary')
@@ -48,8 +50,17 @@ class RenderingEquipements {
                 let url = '/equipements/';
                 await routes(url, `${equipement["id"]}`);
             });
-            card.appendChild(detailButton);
+            divInfo.appendChild(detailButton);
             equipementsContainer.appendChild(card);
+            let image = document.createElement('img');
+            let divInter = document.createElement('div');
+            divInter.classList.add("div-inter-equip");
+            image.setAttribute("src",equipement["image"]);
+            divImage.classList.add("div-image-equip")
+            divImage.appendChild(image);
+            divInter.appendChild(divInfo);
+            divInter.appendChild(divImage);
+            card.appendChild(divInter);
         });
 
         Rendering.renderHidden(document.getElementById('voir-equipements'));

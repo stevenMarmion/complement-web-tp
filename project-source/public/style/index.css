@@ -183,19 +183,36 @@ input[type="text"]:focus {
     height: 20px;
 }
 
-.div-image img{
+
+
+.div-image-perso img{
     width: 150px;
     height: auto;
     border-radius: 10px;
     filter: drop-shadow(20px 7px 5px #504848a8);
 }
-.div-inter{
+.div-inter-perso{
     display: flex;
 }
 
-.div-inter div{
+.div-inter-perso div{
     padding: 10px 10px 10px 10px;
 }
+
+.div-image-equip img{
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    filter: drop-shadow(20px 7px 5px #504848a8);
+}
+.div-inter-equip{
+    display: flex;
+}
+
+.div-inter-equip div{
+    padding: 10px 10px 10px 10px;
+}
+
 
 .isHidden {
     display: none;

@@ -46,7 +46,7 @@ class RenderingPersonnage {
           
             let divInfo = document.createElement('div');
             let divImage = document.createElement('div');
-            divImage.classList.add('div-image');
+            divImage.classList.add('div-image-perso');
             
             let nom = document.createElement('h2');
             nom.textContent = personnage['nom_prenom'];
@@ -76,7 +76,7 @@ class RenderingPersonnage {
             let divIntermediaire = document.createElement('div');
             divIntermediaire.appendChild(divInfo);
             divIntermediaire.appendChild(divImage);
-            divIntermediaire.classList.add('div-inter');
+            divIntermediaire.classList.add('div-inter-perso');
             card.appendChild(divIntermediaire);
 
 
