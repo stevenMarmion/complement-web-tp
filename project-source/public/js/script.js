@@ -6,9 +6,16 @@ import CreateFactory from "./services/post/createFactory.js";
 import ModifyFactory from "./services/put/modifyFactory.js";
 import DeleteFactory from "./services/delete/deleteFactory.js";
 import GetFactory from "./services/get/getFactory.js";
-import Rendering from "./vues/rendering.js";
 import FilterFactory from "./services/get/filterFactory.js";
-import { inputMapCreating, inputsMap } from './utils/inputs.js';
+
+import Rendering from "./vues/rendering.js";
+import RenderingCapacites from "./vues/capacites_page/rendering_capacites.js";
+import RenderingEquipements from "./vues/equipements_page/rendering_equipements.js";
+import RenderingFav from "./vues/fav_page/rendering_fav.js";
+import RenderingPersonnage from "./vues/personnages_page/rendering_personnage.js";
+
+
+import Utils from './utils/inputs.js';
 
 const route = {
     "/personnages" : GetFactory,
@@ -39,19 +46,19 @@ async function routes(url, id) {
             case "/personnages":
                 cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(cache);
+                RenderingPersonnage.renderDisplayPersonnages(cache);
                 break;
             
             case "/personnages/":
                 cache = await object.recupPersonnagesInArray(id);
-                Rendering.RenderDisplayDetailPersonnage(cache);
+                RenderingPersonnage.RenderDisplayDetailPersonnage(cache);
                 break;
             
             case "/personnages?_sort":
                 object.getSortOn();
                 cache = await object.recupPersonnagesInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(cache);
+                RenderingPersonnage.renderDisplayPersonnages(cache);
                 break;
 
             case "/personnages?_page":
@@ -59,7 +66,7 @@ async function routes(url, id) {
                 object.getDatasByPage(currentPage, perPage);
                 cache = await object.recupPersonnagesInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(cache.data);
+                RenderingPersonnage.renderDisplayPersonnages(cache.data);
                 break;
 
             case "/personnages/post":
@@ -90,13 +97,13 @@ async function routes(url, id) {
             case "/equipements":
                 cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayEquipements(cache);
+                RenderingEquipements.renderDisplayEquipements(cache);
                 break;
 
             case "/capacites":
                 cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayCapacites(cache);
+                RenderingCapacites.renderDisplayCapacites(cache);
                 break;
 
             default:
@@ -128,17 +135,17 @@ buttonVoirEquipements.addEventListener('click', async function(e) {
 
 let buttonHidePersonnages = document.getElementById('cacher-personnages');
 buttonHidePersonnages.addEventListener('click', function(e) {
-    Rendering.renderHidePersonnages();
+    RenderingPersonnage.renderHidePersonnages();
 });
 
 let buttonHideCapacites = document.getElementById('cacher-capacites');
 buttonHideCapacites.addEventListener('click', function(e) {
-    Rendering.renderHideCapacites();
+    RenderingCapacites.renderHideCapacites();
 });
 
 let buttonHideEquipements = document.getElementById('cacher-equipements');
 buttonHideEquipements.addEventListener('click', function(e) {
-    Rendering.renderHideEquipements();
+    RenderingEquipements.renderHideEquipements();
 });
 
 let buttonSearch = document.getElementById('search-button');
@@ -154,12 +161,12 @@ buttonManageFav.addEventListener('click', async function(e) {
     let url = '/personnages?estFav=1';
     const rep = await fetch(url);
     var cache = await rep.json();
-    Rendering.renderDisplayFav(cache);
+    RenderingFav.renderDisplayFav(cache);
 });
 
-Rendering.createInputsFilters(inputsMap);
-Rendering.createInputSelect(inputsMap);
-Rendering.createInputsCreate(inputMapCreating);
+Rendering.createInputsFilters(Utils.inputsMap);
+Rendering.createInputSelect(Utils.inputsMap);
+Rendering.createInputsCreate(Utils.inputMapCreating);
 
 let selectSort = document.querySelector('#input-select-sorted-columns');
 selectSort.addEventListener('change', async function(e) {
