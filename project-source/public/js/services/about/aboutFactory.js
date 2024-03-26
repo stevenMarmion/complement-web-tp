@@ -4,8 +4,10 @@ class AboutFactory {
     #url = null;
 
     constructor(url) {
-        console.log('Creating AboutFactory Oject first... with URL :' + url)
-        this.#url = url;
+        const decomposition = url.split('/');
+        console.log(decomposition)
+        console.log('Creating AboutFactory Oject first... with URL :' + `${decomposition[1]}/${decomposition[2]}`)
+        this.#url = `${decomposition[1]}/`;
     }
 
     getDatasAbout() {
@@ -31,7 +33,7 @@ class AboutFactory {
 
     async recupDatasAboutInArray(id) {
         this.setURL(this.getURL(), id);
-        console.log('Recup personnage datas on personnage by filters : \n' + this.getURL())
+        console.log('Recup datas about by filters : \n' + this.getURL())
         this.setDatasAbout(await this.fetchPersonnages());
         return this.getDatasAbout();
     }

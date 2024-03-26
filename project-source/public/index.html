@@ -16,30 +16,30 @@
     </header>
     <main>
         <div class="button-container">
-            <button id="voir-personnages" class="isVisible button-primary">
-                Voir les personnages
-            </button>
-            <button id="cacher-personnages" class="isHidden button-secondary">
-                Cacher les personnages
-            </button>
-            <button id="voir-capacites" class="isVisible button-primary">
-                Voir les capacités existantes
-            </button>
-            <button id="cacher-capacites" class="isHidden button-secondary">
-                Cacher les capacités
-            </button>
-            <button id="voir-equipements" class="isVisible button-primary">
-                Voir les équipements disponible
-            </button>
-            <button id="cacher-equipements" class="isHidden button-secondary">
-                Cacher les équipements
-            </button>
-            <button id="create-personnage-button" class="isVisible button-primary">
-                Créer votre personnage
-            </button>
-            <button id="manage-fav-button" class="isVisible button-primary">
-                Gérer ces favoris
-            </button>
+            <a id="voir-personnages" class="isVisible" href="#/personnages">
+                <button id="voir-personnages-btn" class="button-primary">Voir les personnages</button>
+            </a>
+            <a id="cacher-personnages" class="isHidden" href="">
+                <button id="cacher-personnages-btn" class="button-secondary">Cacher les personnages</button>
+            </a>
+            <a id="voir-capacites" class="isVisible" href="#/capacites">
+                <button id="voir-capacites-btn" class="button-primary">Voir les capacités existantes</button>
+            </a>
+            <a id="cacher-capacites" class="isHidden" href="">
+                <button id="cacher-capacites-btn" class="button-secondary">Cacher les capacités</button>
+            </a>
+            <a id="voir-equipements" class="isVisible" href="#/equipements">
+                <button id="voir-equipements-btn" class="button-primary">Voir les équipements disponibles</button>
+            </a>
+            <a id="cacher-equipements" class="isHidden" href="">
+                <button id="cacher-equipements-btn" class="button-secondary">Cacher les équipements</button>
+            </a>
+            <a id="create-personnage-button" class="isVisible" href="">
+                <button id="create-personnage-btn" class="button-primary">Créer votre personnage</button>
+            </a>            
+            <a id="manage-fav-button" class="isVisible" href="#/personnages/favoris">
+                <button id="manage-fav-btn" class="button-primary">Gérer ces favoris</button>
+            </a>
         </div>
         <div id="create-personnage" class="isFlexedWrap">
             <!-- Là où tous les inputs field accessibles pour créer un personnage -->
@@ -55,7 +55,9 @@
         <h2 id="title-sort" class="isHidden">Trier par :</h2>
         <div id="select-sorted-columns"></div>
     
-        <button id="go-to-home" class="isHidden button-primary">Accueil</button>
+        <a id="go-to-home" class="isHidden" href="">
+            <button id="go-to-home-btn" class="button-primary">Accueil</button>
+        </a>
         <div id="personnages-description"></div>
         <div id="detail-personnage"></div>
 

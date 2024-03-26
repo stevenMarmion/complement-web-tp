@@ -4,8 +4,8 @@ class GetFactory {
     #url = null;
 
     constructor(url) {
-        console.log('Creating GetFactory Oject first... with URL :' + url)
-        this.#url = url;
+        console.log('Creating GetFactory Oject first... with URL :' + url.split('/')[1])
+        this.#url = url.split('/')[1];
     }
 
     getDatasFetched() {

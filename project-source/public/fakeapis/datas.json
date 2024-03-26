@@ -13,7 +13,7 @@
       "force": 1,
       "intelligence": 1,
       "agilite": 1,
-      "estFav": 0,
+      "estFav": 1,
       "note": 0,
       "image": "./assets/peasant.jpg"
     },
@@ -107,7 +107,7 @@
       "force": 8,
       "intelligence": 8,
       "agilite": 8,
-      "estFav": 1,
+      "estFav": 0,
       "note": 0,
       "image": "./assets/gnome.png"
     },

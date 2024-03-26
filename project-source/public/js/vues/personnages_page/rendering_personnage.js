@@ -41,9 +41,8 @@ class RenderingPersonnage {
         personnages.forEach(personnage => {
             let card = document.createElement('div');
             card.classList.add('card');
-
             Rendering.renderVisible(card);
-          
+        
             let divInfo = document.createElement('div');
             let divImage = document.createElement('div');
             divImage.classList.add('div-image-perso');
@@ -60,27 +59,25 @@ class RenderingPersonnage {
             let force = document.createElement('p');
             force.textContent = 'Force: ' + personnage['force'];
             divInfo.appendChild(force);
-            let detailButton = document.createElement('button');
-            detailButton.textContent = 'Détail';
-            detailButton.classList.add('button-primary')
-            detailButton.addEventListener('click', async function() {
-                console.log('~ Click on detail button... ~ Preparing datas... ~');
-                let url = '/personnages/';
-                await routes(url, `${personnage["id"]}`);
-            });
-            divInfo.appendChild(detailButton);
+        
+            let detailLink = document.createElement('a');
+            detailLink.setAttribute('href', `#/personnages/detail/${personnage["id"]}`);
+            detailLink.classList.add('button-primary');
+            detailLink.textContent = 'Détail';
+            divInfo.appendChild(detailLink);
+        
             personnagesContainer.appendChild(card);
+        
             let image = document.createElement('img');
-            image.setAttribute("src",personnage['image']);
+            image.setAttribute("src", personnage['image']);
             divImage.appendChild(image);
+        
             let divIntermediaire = document.createElement('div');
             divIntermediaire.appendChild(divInfo);
             divIntermediaire.appendChild(divImage);
             divIntermediaire.classList.add('div-inter-perso');
             card.appendChild(divIntermediaire);
-
-
-        });
+        });        
 
         Rendering.renderHidden(document.getElementById('voir-personnages'));
         Rendering.renderVisible(document.getElementById('cacher-personnages'));

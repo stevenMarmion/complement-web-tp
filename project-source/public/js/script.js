@@ -17,17 +17,20 @@ import RenderingPersonnage from "./vues/personnages_page/rendering_personnage.js
 import Utils from './utils/inputs.js';
 
 const route = {
-    "/personnages" : GetFactory,
-    "/personnages/" : AboutFactory,
+    "#/home": GetFactory,
+    "#/personnages" : GetFactory,
+    "#/capacites" : GetFactory,
+    "#/equipements" : GetFactory,
+    "#/personnages/detail" : AboutFactory,
+    "#/equipements/detail" : AboutFactory,
+    "#/personnages/favoris" : GetFactory,
+
     "/personnages?" : FilterFactory,
     "/personnages?_sort" : FilterFactory,
     "/personnages?_page" : FilterFactory,
     "/personnages/post" : CreateFactory,
     "/personnages/put" : ModifyFactory,
     "/personnages/delete" : DeleteFactory,
-    "/equipements" : GetFactory,
-    "/equipements/" : AboutFactory,
-    "/capacites" : GetFactory,
 }
 
 
@@ -40,18 +43,52 @@ console.log(cache);
 const datasLenght = Object.keys(cache).length;
 
 async function routes(url, id) {
+    if (id!=null) {
+        const decomposition = decomposeURLwithParam(url);
+        url = decomposition[0];
+        id = decomposition[1];
+    }
     if (url in route) {
         let object = new route[url](url) // optimise le switch case, avec le dico, on créer dans tous les cas l'objet dès le début sans condition de test
         switch (url) {
-            case "/personnages":
+            case "#/home":
+                RenderingPersonnage.renderHidePersonnages();
+                RenderingCapacites.renderHideCapacites();
+                RenderingEquipements.renderHideEquipements();
+                break;
+
+            case "#/personnages":
                 cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
                 RenderingPersonnage.renderDisplayPersonnages(cache);
                 break;
+
+            case "#/equipements":
+                cache = await object.recupDatasInArray(id);
+                RenderingEquipements.renderDisplayEquipements(cache);
+                break;
+
+            case "#/capacites":
+                cache = await object.recupDatasInArray();
+                Rendering.renderHideCreatedInput();
+                RenderingCapacites.renderDisplayCapacites(cache);
+                break;
             
-            case "/personnages/":
+            case "#/personnages/detail":
                 cache = await object.recupDatasAboutInArray(id);
                 RenderingPersonnage.RenderDisplayDetailPersonnage(cache);
+                break;
+
+            case "#/equipements/detail":
+                cache = await object.recupDatasAboutInArray(id);
+                RenderingEquipements.renderDisplayDetailEquipements(cache);
+                break;
+        
+            case "#/personnages/favoris":
+                object.setURL('/personnages?estFav=1');
+                cache = await object.recupDatasInArray();
+                console.log(cache)
+                RenderingFav.renderDisplayFav(cache);
                 break;
             
             case "/personnages?_sort":
@@ -93,23 +130,6 @@ async function routes(url, id) {
                     await routes("/personnages", null);
                 }
                 break;
-            
-            case "/equipements":
-                cache = await object.recupDatasInArray();
-                Rendering.renderHideCreatedInput();
-                RenderingEquipements.renderDisplayEquipements(cache);
-                break;
-
-            case "/equipements/":
-                cache = await object.recupDatasAboutInArray(id);
-                RenderingEquipements.renderDisplayDetailEquipements(cache);
-                break;
-
-            case "/capacites":
-                cache = await object.recupDatasInArray();
-                Rendering.renderHideCreatedInput();
-                RenderingCapacites.renderDisplayCapacites(cache);
-                break;
 
             default:
                 break;
@@ -117,56 +137,11 @@ async function routes(url, id) {
     }
 }
 
-let buttonVoirPersonnages = document.getElementById('voir-personnages');
-buttonVoirPersonnages.addEventListener('click', async function(e) {
-    console.log('~ Click on personnages button... ~ Loading and fetch datas... ~');
-    let url = '/personnages';
-    await routes(url, null);
-});
-
-let buttonVoirCapacties = document.getElementById('voir-capacites');
-buttonVoirCapacties.addEventListener('click', async function(e) {
-    console.log('~ Click on capacités button... ~ Loading and fetch datas... ~');
-    let url = '/capacites';
-    await routes(url, null);
-});
-
-let buttonVoirEquipements = document.getElementById('voir-equipements');
-buttonVoirEquipements.addEventListener('click', async function(e) {
-    console.log('~ Click on équipements button... ~ Loading and fetch datas... ~');
-    let url = '/equipements';
-    await routes(url, null);
-});
-
-let buttonHidePersonnages = document.getElementById('cacher-personnages');
-buttonHidePersonnages.addEventListener('click', function(e) {
-    RenderingPersonnage.renderHidePersonnages();
-});
-
-let buttonHideCapacites = document.getElementById('cacher-capacites');
-buttonHideCapacites.addEventListener('click', function(e) {
-    RenderingCapacites.renderHideCapacites();
-});
-
-let buttonHideEquipements = document.getElementById('cacher-equipements');
-buttonHideEquipements.addEventListener('click', function(e) {
-    RenderingEquipements.renderHideEquipements();
-});
-
 let buttonSearch = document.getElementById('search-button');
 buttonSearch.addEventListener('click', async function(e) {
     console.log('~ Click on search button... ~ Loading and fetch datas by filters... ~');
     let url = '/personnages?';
     await routes(url, null);
-});
-
-let buttonManageFav = document.getElementById('manage-fav-button');
-buttonManageFav.addEventListener('click', async function(e) {
-    console.log('~ Click on manage fav button... ~ Loading and fetch datas... ~');
-    let url = '/personnages?estFav=1';
-    const rep = await fetch(url);
-    var cache = await rep.json();
-    RenderingFav.renderDisplayFav(cache);
 });
 
 Rendering.createInputsFilters(Utils.inputsMap);
@@ -179,5 +154,31 @@ selectSort.addEventListener('change', async function(e) {
     let url = '/personnages?_sort';
     await routes(url, null);
 });
+
+window.addEventListener('hashchange', async function() {
+    makeRedirectionHome();
+    await routes(window.location.hash, checkParamOnUrl());
+});
+
+function checkParamOnUrl() {
+    const decomposition = window.location.hash.split('/');
+    if (decomposition.length === 4) {
+        return decomposition[3];
+    }
+    return null;
+}
+
+function decomposeURLwithParam(URL) {
+    const decomposition = window.location.hash.split('/');
+    return [
+        `${decomposition[0]}/${decomposition[1]}/${decomposition[2]}`,
+        decomposition[3]
+    ];
+}
+
+function makeRedirectionHome() {
+    window.location.hash == "" ? window.location.hash = "#/home" : null;
+}
+makeRedirectionHome();
 
 export default routes;

@@ -35,23 +35,22 @@ class RenderingEquipements {
             card.classList.add('card');
             
             Rendering.renderVisible(card);
-
+        
             let nom = document.createElement('h2');
             nom.textContent = equipement['nom'];
             divInfo.appendChild(nom);
             let descr = document.createElement('p');
             descr.textContent = 'Description: ' + equipement['description'];
             divInfo.appendChild(descr);
-            let detailButton = document.createElement('button');
-            detailButton.textContent = 'Détail';
-            detailButton.classList.add('button-primary')
-            detailButton.addEventListener('click', async function() {
-                console.log('~ Click on detail button... ~ Preparing datas... ~');
-                let url = '/equipements/';
-                await routes(url, `${equipement["id"]}`);
-            });
-            divInfo.appendChild(detailButton);
+        
+            let detailLink = document.createElement('a');
+            detailLink.setAttribute('href', `#/equipements/detail/${equipement["id"]}`);
+            detailLink.classList.add('button-primary');
+            detailLink.textContent = 'Détail';
+            divInfo.appendChild(detailLink);
+        
             equipementsContainer.appendChild(card);
+        
             let image = document.createElement('img');
             let divInter = document.createElement('div');
             divInter.classList.add("div-inter-equip");
@@ -61,7 +60,7 @@ class RenderingEquipements {
             divInter.appendChild(divInfo);
             divInter.appendChild(divImage);
             card.appendChild(divInter);
-        });
+        });        
 
         Rendering.renderHidden(document.getElementById('voir-equipements'));
         Rendering.renderVisible(document.getElementById('cacher-equipements'));
