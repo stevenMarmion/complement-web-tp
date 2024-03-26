@@ -15,8 +15,6 @@ class Rendering {
         document.getElementById('search-button').classList.add('isHidden');
         document.getElementById('title-sort').classList.remove('isVisible');
         document.getElementById('title-sort').classList.add('isHidden');
-        document.getElementById('sort-button').classList.remove('isVisible');
-        document.getElementById('sort-button').classList.add('isHidden');
         document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
             element.classList.remove('isVisible');
             element.classList.add('isHidden');
@@ -40,8 +38,6 @@ class Rendering {
         document.getElementById('search-button').classList.add('isHidden');
         document.getElementById('title-sort').classList.remove('isVisible');
         document.getElementById('title-sort').classList.add('isHidden');
-        document.getElementById('sort-button').classList.remove('isVisible');
-        document.getElementById('sort-button').classList.add('isHidden');
         document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
             element.classList.remove('isVisible');
             element.classList.add('isHidden');
@@ -65,8 +61,6 @@ class Rendering {
         document.getElementById('search-button').classList.add('isHidden');
         document.getElementById('title-sort').classList.remove('isVisible');
         document.getElementById('title-sort').classList.add('isHidden');
-        document.getElementById('sort-button').classList.remove('isVisible');
-        document.getElementById('sort-button').classList.add('isHidden');
         document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
             element.classList.remove('isVisible');
             element.classList.add('isHidden');
@@ -113,8 +107,6 @@ class Rendering {
         document.getElementById('search-button').classList.add('isVisible');
         document.getElementById('title-sort').classList.remove('isHidden');
         document.getElementById('title-sort').classList.add('isVisible');
-        document.getElementById('sort-button').classList.remove('isHidden');
-        document.getElementById('sort-button').classList.add('isVisible');
         document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
             element.classList.remove('isHidden');
             element.classList.add('isVisible');
@@ -166,8 +158,6 @@ class Rendering {
         document.getElementById('search-button').classList.add('isVisible');
         document.getElementById('title-sort').classList.remove('isHidden');
         document.getElementById('title-sort').classList.add('isVisible');
-        document.getElementById('sort-button').classList.remove('isHidden');
-        document.getElementById('sort-button').classList.add('isVisible');
         document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
             element.classList.remove('isHidden');
             element.classList.add('isVisible');
@@ -235,8 +225,6 @@ class Rendering {
         document.getElementById('search-button').classList.add('isVisible');
         document.getElementById('title-sort').classList.remove('isHidden');
         document.getElementById('title-sort').classList.add('isVisible');
-        document.getElementById('sort-button').classList.remove('isHidden');
-        document.getElementById('sort-button').classList.add('isVisible');
         document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
             element.classList.remove('isHidden');
             element.classList.add('isVisible');
