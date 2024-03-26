@@ -14,9 +14,7 @@ main {
     display: block;
 }
 
-.isHidden {
-    display: none;
-}
+
 
 .button-primary {
     padding: 10px 20px;
@@ -88,11 +86,6 @@ input[type="text"]:focus {
     width: 200px;
 }
 
-#personnages-description img {
-    width: 15px;
-    height: auto;
-}
-
 .modal {
     display: none;
 }
@@ -126,6 +119,7 @@ input[type="text"]:focus {
     margin: 10px;
     width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .card h2 {
@@ -188,3 +182,22 @@ input[type="text"]:focus {
     width: 20px;
     height: 20px;
 }
+
+.div-image img{
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    filter: drop-shadow(20px 7px 5px #504848a8);
+}
+.div-inter{
+    display: flex;
+}
+
+.div-inter div{
+    padding: 10px 10px 10px 10px;
+}
+
+.isHidden {
+    display: none;
+}
+

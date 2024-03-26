@@ -14,7 +14,8 @@
       "intelligence": 1,
       "agilite": 1,
       "estFav": 0,
-      "note": 0
+      "note": 4,
+      "image": "./assets/peasant.jpg"
     },
     {
       "id": "2",
@@ -32,8 +33,9 @@
       "force": 5,
       "intelligence": 12,
       "agilite": 1,
-      "estFav": 1,
-      "note": 0
+      "estFav": 0,
+      "note": 0,
+      "image": "./assets/elf.png"
     },
     {
       "id": "3",
@@ -51,7 +53,8 @@
       "intelligence": 2,
       "agilite": 2,
       "estFav": 0,
-      "note": 0
+      "note": 0,
+      "image": "./assets/orc.png"
     },
     {
       "id": "4",
@@ -65,7 +68,8 @@
       "intelligence": 1,
       "agilite": 8,
       "estFav": 0,
-      "note": 0
+      "note": 0,
+      "image": "./assets/homme_rat.webp"
     },
     {
       "id": "5",
@@ -84,7 +88,8 @@
       "intelligence": 2,
       "agilite": 5,
       "estFav": 0,
-      "note": 0
+      "note": 0,
+      "image": "./assets/nain.png"
     },
     {
       "id": "6",
@@ -103,7 +108,8 @@
       "intelligence": 8,
       "agilite": 8,
       "estFav": 0,
-      "note": 0
+      "note": 0,
+      "image": "./assets/gnome.png"
     },
     {
       "id": "7",
@@ -121,7 +127,8 @@
       "intelligence": 1,
       "agilite": 1,
       "estFav": 0,
-      "note": 0
+      "note": 0,
+      "image": "./assets/Golem.png"
     }
   ],
   "capacites": [

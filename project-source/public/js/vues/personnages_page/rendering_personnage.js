@@ -5,6 +5,7 @@ class RenderingPersonnage {
 
     static renderHidePersonnages() {
         let personnagesContainer = document.getElementById('personnages-description');
+      
         Rendering.renderEmpty(personnagesContainer);
         Rendering.renderVisible(document.getElementById('voir-personnages'));
         Rendering.renderHidden(document.getElementById('cacher-personnages'));
@@ -42,19 +43,23 @@ class RenderingPersonnage {
             card.classList.add('card');
 
             Rendering.renderVisible(card);
+          
+            let divInfo = document.createElement('div');
+            let divImage = document.createElement('div');
+            divImage.classList.add('div-image');
             
             let nom = document.createElement('h2');
             nom.textContent = personnage['nom_prenom'];
-            card.appendChild(nom);
+            divInfo.appendChild(nom);
             let race = document.createElement('p');
             race.textContent = 'Race: ' + personnage['race'];
-            card.appendChild(race);
+            divInfo.appendChild(race);
             let agilite = document.createElement('p');
             agilite.textContent = 'Agilité: ' + personnage['agilite'];
-            card.appendChild(agilite);
+            divInfo.appendChild(agilite);
             let force = document.createElement('p');
             force.textContent = 'Force: ' + personnage['force'];
-            card.appendChild(force);
+            divInfo.appendChild(force);
             let detailButton = document.createElement('button');
             detailButton.textContent = 'Détail';
             detailButton.classList.add('button-primary')
@@ -63,8 +68,18 @@ class RenderingPersonnage {
                 let url = '/personnages/';
                 await routes(url, `${personnage["id"]}`);
             });
-            card.appendChild(detailButton);
+            divInfo.appendChild(detailButton);
             personnagesContainer.appendChild(card);
+            let image = document.createElement('img');
+            image.setAttribute("src",personnage['image']);
+            divImage.appendChild(image);
+            let divIntermediaire = document.createElement('div');
+            divIntermediaire.appendChild(divInfo);
+            divIntermediaire.appendChild(divImage);
+            divIntermediaire.classList.add('div-inter');
+            card.appendChild(divIntermediaire);
+
+
         });
 
         Rendering.renderHidden(document.getElementById('voir-personnages'));
