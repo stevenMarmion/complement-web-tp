@@ -8,6 +8,7 @@ import DeleteFactory from "./services/delete/deleteFactory.js";
 import GetFactory from "./services/get/getFactory.js";
 import Rendering from "./vues/rendering.js";
 import FilterFactory from "./services/get/filterFactory.js";
+import { inputMapCreating, inputsMap } from './utils/inputs.js';
 
 const route = {
     "/personnages" : GetFactory,
@@ -21,54 +22,6 @@ const route = {
     "/equipements" : GetFactory,
     "/capacites" : GetFactory,
 }
-
-// Me permet de définir au préalable mes champs de filtres sur ma page
-const inputsMap = {
-    'nom_prenom': { 
-        id: 'nom_prenom', 
-        placeholder: 'Nom et prénom' 
-    },
-    'race': { 
-        id: 'race', 
-        placeholder: 'Race' 
-    },
-    'force': { 
-        id: 'force', 
-        placeholder: 'Force' 
-    },
-    'intelligence': { 
-        id: 'intelligence', 
-        placeholder: 'Intelligence' 
-    },
-    'agilite': { 
-        id: 'agilite', 
-        placeholder: 'Agilité' 
-    }
-};
-
-// Me permet de définir mes champs de création d'un personnage au préalable
-const inputMapCreating = {
-    'nom_prenom': { 
-        id: 'nom_prenom', 
-        placeholder: 'Nom et prénom' 
-    },
-    'race': { 
-        id: 'race', 
-        placeholder: 'Race' 
-    },
-    'force': { 
-        id: 'force', 
-        placeholder: 'Force' 
-    },
-    'intelligence': { 
-        id: 'intelligence', 
-        placeholder: 'Intelligence' 
-    },
-    'agilite': { 
-        id: 'agilite', 
-        placeholder: 'Agilité' 
-    }
-};
 
 
 // Me permet de remplir le cache et de charger les données avant n'importe quelle requête ==> on prédit le clique souris sur "Voir les villes"
@@ -215,4 +168,4 @@ Rendering.createInputsFilters(inputsMap);
 Rendering.createInputSelect(inputsMap);
 Rendering.createInputsCreate(inputMapCreating);
 
-export { routes, inputMapCreating };
+export default routes;

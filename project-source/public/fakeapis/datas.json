@@ -1,281 +1,317 @@
 {
-    "personnages":[
-        {
-            "id":"1",
-            "nom_prenom":"Depont Samuel",
-            "race":"homme",
-            "equipements":[1],
-            "capacite":[1],
-            "force":1,
-            "intelligence":1,
-            "agilite":1,
-            "estFav":0,
-            "note":0
-        },
-        {
-            "id":"2",
-            "nom_prenom":"Marmion Steven",
-            "race":"elf",
-            "equipements":[2,3,4],
-            "capacite":[2,3],
-            "force":5,
-            "intelligence":12,
-            "agilite":1,
-            "estFav":0,
-            "note":0
-        },
-        {
-            "id":"3",
-            "nom_prenom":"Niveau Samuel",
-            "race":"orc",
-            "equipements":[5,6],
-            "capacite":[4,5],
-            "force":15,
-            "intelligence":2,
-            "agilite":2,
-            "estFav":0,
-            "note":0
-        },
-        {
-            "id":"4",
-            "nom_prenom":"tretre nio",
-            "race":"homme rat",
-            "equipements":[],
-            "capacite":[6],
-            "force":3,
-            "intelligence":1,
-            "agilite":8,
-            "estFav":0,
-            "note":0
-        },
-        {
-            "id":"5",
-            "nom_prenom":"Malleron Daniel",
-            "race":"nain",
-            "equipements":[7,8,9],
-            "capacite":[7,8],
-            "force":10,
-            "intelligence":2,
-            "agilite":5,
-            "estFav":0,
-            "note":0
-        },
-        {
-            "id":"6",
-            "nom_prenom":"Simon Gael",
-            "race":"gnome",
-            "equipements":[10,11,12],
-            "capacite":[9,10],
-            "force":8,
-            "intelligence":8,
-            "agilite":8,
-            "estFav":0,
-            "note":0
-        },
-        {
-            "id":"7",
-            "nom_prenom":"Tremine Marin",
-            "race":"golem de pierre",
-            "equipements":[13,14],
-            "capacite":[11,12],
-            "force":17,
-            "intelligence":1,
-            "agilite":1,
-            "estFav":0,
-            "note":0
-        }
-        
-    ],
-    "capacites":[
-        {
-            "id":1,
-            "nom":"labourage",
-            "desciption":"permet de labourer en seulement une demi-journée douze hectar de champs"
-        },
-        {
-            "id":2,
-            "nom":"pluie de flèches",
-            "desciption":"fait tomber une pluie de flèches sur ces ennemis"
-        },
-        {
-            "id":3,
-            "nom":"saut elfique",
-            "desciption":"une capacite elfique leur permettant de se déplacer rapidement dans les forets, fait un trés grand saut"
-        },
-        {
-            "id":4,
-            "nom":"tourbillon",
-            "desciption":"fait tournoyer l'arme tenue en main"
-        },
-        {
-            "id":5,
-            "nom":"cri de guerre",
-            "desciption":"heritage orc, ce cri effraie toute les creatures temporairement"
-        },
-        {
-            "id":6,
-            "nom":"proliferation",
-            "desciption":"capacite unique aux homme rats, elle permet d'appeller tout les rats proche"
-        },
-        {
-            "id":7,
-            "nom":"nyctalope",
-            "desciption":"issue de l'origine souterainne des nains, ce trait leur permet de voir la nuit"
-        },
-        {
-            "id":8,
-            "nom":"coups precis",
-            "desciption":"un coup leur permettant d'infliger un coup critique assurement, fonctionne mieux sur les materiaux dur"
-        },
-        {
-            "id":9,
-            "nom":"discretion du gnome",
-            "desciption":"une capacite herité des anciens gnomes qui se cacher des grand-pieds"
-        },
-        {
-            "id":10,
-            "nom":"fuite",
-            "desciption":"la fuite"
-        },
-        {
-            "id":11,
-            "nom":"grolem",
-            "desciption":"cet capacite unique au golem leur permet d'augmenter leur masse lors d'une roulade"
-        },
-        {
-            "id":12,
-            "nom":"guerison golemique",
-            "desciption":"permet a un golem de se soigenr en mangeant des morceau de sont element"
-        }
-
-    ],
-    "equipements":[
-        {
-            "id":1,
-            "nom":"fourche",
-            "rarete":"commun",
-            "description":"un simple fourche de paysan",
-            "prerequis_force":0,
-            "prerequis_intelligence":0,
-            "prerequis_agilite":0
-        },
-        {
-            "id":2,
-            "nom":"arc magique",
-            "rarete":"rare",
-            "description":"un arc pouvant tiré des flèches magique",
-            "prerequis_force":2,
-            "prerequis_intelligence":10,
-            "prerequis_agilite":8
-        },
-        {
-            "id":3,
-            "nom":"carquois ardent",
-            "rarete":"rare",
-            "description":"un carquois permettant d'enflammer les flèches tiré",
-            "prerequis_force":0,
-            "prerequis_intelligence":10,
-            "prerequis_agilite":4
-        },
-        {
-            "id":4,
-            "nom":"sandales du roi puant",
-            "rarete":"legendaire",
-            "description":"les sandales du roi puant, elles permettent de faire fuir toute créature sensible a l'odeur, ou de les atttirer",
-            "prerequis_force":0,
-            "prerequis_intelligence":0,
-            "prerequis_agilite":0
-        },
-        {
-            "id":5,
-            "nom":"la hache",
-            "rarete":"mythique",
-            "description":"juste LA hache",
-            "prerequis_force":15,
-            "prerequis_intelligence":0,
-            "prerequis_agilite":0
-        },
-        {
-            "id":6,
-            "nom":"pagne orc",
-            "rarete":"commun",
-            "description":"un simple pagne porté par les orcs, il est trés lourd",
-            "prerequis_force":5,
-            "prerequis_intelligence":0,
-            "prerequis_agilite":0
-        },
-        {
-            "id":7,
-            "nom":"le fouet ardent",
-            "rarete":"rare",
-            "description":"un fouet pouvant embraser les ennemis toucher",
-            "prerequis_force":5,
-            "prerequis_intelligence":0,
-            "prerequis_agilite":5
-        },
-        {
-            "id":8,
-            "nom":"tenue du mineur nain",
-            "rarete":"peu commun",
-            "description":"un tenue complète de mineur nain, elle est équper d'une lampe a huile frontale",
-            "prerequis_force":5,
-            "prerequis_intelligence":2,
-            "prerequis_agilite":0
-        },
-        {
-            "id":9,
-            "nom":"pioche foreuse",
-            "rarete":"rare",
-            "description":"elle est le produit du travaille des plus grands ingénieur nains et permet de creuser 100 fois plus vite qu'avec une pioche standard",
-            "prerequis_force":10,
-            "prerequis_intelligence":0,
-            "prerequis_agilite":5
-        },
-        {
-            "id":10,
-            "nom":"baton de voyage",
-            "rarete":"commun",
-            "description":"le baton typique de tout bon gnome voyageur",
-            "prerequis_force":3,
-            "prerequis_intelligence":3,
-            "prerequis_agilite":3
-        },
-        {
-            "id":11,
-            "nom":"dague empoisoné",
-            "rarete":"rare",
-            "description":"une dague enduite d'un poison mortel",
-            "prerequis_force":4,
-            "prerequis_intelligence":3,
-            "prerequis_agilite":8
-        },
-        {
-            "id":12,
-            "nom":"botte des géants",
-            "rarete":"mythique",
-            "description":"on raconte que ces bottes permettent de parcourir mille lieux en une enjambé",
-            "prerequis_force":5,
-            "prerequis_intelligence":8,
-            "prerequis_agilite":8
-        },
-        {
-            "id":13,
-            "nom":"sac de caillou explosif",
-            "rarete":"mythique",
-            "description":"ce sac infini permet de lancer des caillous explosifs sur vos ennemies",
-            "prerequis_force":8,
-            "prerequis_intelligence":1,
-            "prerequis_agilite":1
-        },
-        {
-            "id":14,
-            "nom":"ceinture du hibou",
-            "rarete":"rare",
-            "description":"permet de faire pivoter la partie supérieur de votre corp a 180 degres, d'origine golemique",
-            "prerequis_force":1,
-            "prerequis_intelligence":1,
-            "prerequis_agilite":1
-        }
-    ]
-
+  "personnages": [
+    {
+      "id": "1",
+      "nom_prenom": "Depont Samuel",
+      "race": "homme",
+      "equipements": [
+        1
+      ],
+      "capacite": [
+        1
+      ],
+      "force": 1,
+      "intelligence": 1,
+      "agilite": 1,
+      "estFav": 0,
+      "note": 0
+    },
+    {
+      "id": "2",
+      "nom_prenom": "Marmion Steven",
+      "race": "elf",
+      "equipements": [
+        2,
+        3,
+        4
+      ],
+      "capacite": [
+        2,
+        3
+      ],
+      "force": 5,
+      "intelligence": 12,
+      "agilite": 1,
+      "estFav": 0,
+      "note": 0
+    },
+    {
+      "id": "3",
+      "nom_prenom": "Niveau Samuel",
+      "race": "orc",
+      "equipements": [
+        5,
+        6
+      ],
+      "capacite": [
+        4,
+        5
+      ],
+      "force": 15,
+      "intelligence": 2,
+      "agilite": 2,
+      "estFav": 0,
+      "note": 0
+    },
+    {
+      "id": "4",
+      "nom_prenom": "tretre nio",
+      "race": "homme rat",
+      "equipements": [],
+      "capacite": [
+        6
+      ],
+      "force": 3,
+      "intelligence": 1,
+      "agilite": 8,
+      "estFav": 0,
+      "note": 0
+    },
+    {
+      "id": "5",
+      "nom_prenom": "Malleron Daniel",
+      "race": "nain",
+      "equipements": [
+        7,
+        8,
+        9
+      ],
+      "capacite": [
+        7,
+        8
+      ],
+      "force": 10,
+      "intelligence": 2,
+      "agilite": 5,
+      "estFav": 0,
+      "note": 0
+    },
+    {
+      "id": "6",
+      "nom_prenom": "Simon Gael",
+      "race": "gnome",
+      "equipements": [
+        10,
+        11,
+        12
+      ],
+      "capacite": [
+        9,
+        10
+      ],
+      "force": 8,
+      "intelligence": 8,
+      "agilite": 8,
+      "estFav": 0,
+      "note": 0
+    },
+    {
+      "id": "7",
+      "nom_prenom": "Tremine Marin",
+      "race": "golem de pierre",
+      "equipements": [
+        13,
+        14
+      ],
+      "capacite": [
+        11,
+        12
+      ],
+      "force": 17,
+      "intelligence": 1,
+      "agilite": 1,
+      "estFav": 0,
+      "note": 0
+    }
+  ],
+  "capacites": [
+    {
+      "id": 1,
+      "nom": "labourage",
+      "description": "permet de labourer en seulement une demi-journée douze hectar de champs"
+    },
+    {
+      "id": 2,
+      "nom": "pluie de flèches",
+      "description": "fait tomber une pluie de flèches sur ces ennemis"
+    },
+    {
+      "id": 3,
+      "nom": "saut elfique",
+      "description": "une capacite elfique leur permettant de se déplacer rapidement dans les forets, fait un trés grand saut"
+    },
+    {
+      "id": 4,
+      "nom": "tourbillon",
+      "description": "fait tournoyer l'arme tenue en main"
+    },
+    {
+      "id": 5,
+      "nom": "cri de guerre",
+      "description": "heritage orc, ce cri effraie toute les creatures temporairement"
+    },
+    {
+      "id": 6,
+      "nom": "proliferation",
+      "description": "capacite unique aux homme rats, elle permet d'appeller tout les rats proche"
+    },
+    {
+      "id": 7,
+      "nom": "nyctalope",
+      "description": "issue de l'origine souterainne des nains, ce trait leur permet de voir la nuit"
+    },
+    {
+      "id": 8,
+      "nom": "coups precis",
+      "description": "un coup leur permettant d'infliger un coup critique assurement, fonctionne mieux sur les materiaux dur"
+    },
+    {
+      "id": 9,
+      "nom": "discretion du gnome",
+      "description": "une capacite herité des anciens gnomes qui se cacher des grand-pieds"
+    },
+    {
+      "id": 10,
+      "nom": "fuite",
+      "description": "la fuite"
+    },
+    {
+      "id": 11,
+      "nom": "grolem",
+      "description": "cet capacite unique au golem leur permet d'augmenter leur masse lors d'une roulade"
+    },
+    {
+      "id": 12,
+      "nom": "guerison golemique",
+      "description": "permet a un golem de se soigenr en mangeant des morceau de sont element"
+    }
+  ],
+  "equipements": [
+    {
+      "id": 1,
+      "nom": "fourche",
+      "rarete": "commun",
+      "description": "un simple fourche de paysan",
+      "prerequis_force": 0,
+      "prerequis_intelligence": 0,
+      "prerequis_agilite": 0
+    },
+    {
+      "id": 2,
+      "nom": "arc magique",
+      "rarete": "rare",
+      "description": "un arc pouvant tiré des flèches magique",
+      "prerequis_force": 2,
+      "prerequis_intelligence": 10,
+      "prerequis_agilite": 8
+    },
+    {
+      "id": 3,
+      "nom": "carquois ardent",
+      "rarete": "rare",
+      "description": "un carquois permettant d'enflammer les flèches tiré",
+      "prerequis_force": 0,
+      "prerequis_intelligence": 10,
+      "prerequis_agilite": 4
+    },
+    {
+      "id": 4,
+      "nom": "sandales du roi puant",
+      "rarete": "legendaire",
+      "description": "les sandales du roi puant, elles permettent de faire fuir toute créature sensible a l'odeur, ou de les atttirer",
+      "prerequis_force": 0,
+      "prerequis_intelligence": 0,
+      "prerequis_agilite": 0
+    },
+    {
+      "id": 5,
+      "nom": "la hache",
+      "rarete": "mythique",
+      "description": "juste LA hache",
+      "prerequis_force": 15,
+      "prerequis_intelligence": 0,
+      "prerequis_agilite": 0
+    },
+    {
+      "id": 6,
+      "nom": "pagne orc",
+      "rarete": "commun",
+      "description": "un simple pagne porté par les orcs, il est trés lourd",
+      "prerequis_force": 5,
+      "prerequis_intelligence": 0,
+      "prerequis_agilite": 0
+    },
+    {
+      "id": 7,
+      "nom": "le fouet ardent",
+      "rarete": "rare",
+      "description": "un fouet pouvant embraser les ennemis toucher",
+      "prerequis_force": 5,
+      "prerequis_intelligence": 0,
+      "prerequis_agilite": 5
+    },
+    {
+      "id": 8,
+      "nom": "tenue du mineur nain",
+      "rarete": "peu commun",
+      "description": "un tenue complète de mineur nain, elle est équper d'une lampe a huile frontale",
+      "prerequis_force": 5,
+      "prerequis_intelligence": 2,
+      "prerequis_agilite": 0
+    },
+    {
+      "id": 9,
+      "nom": "pioche foreuse",
+      "rarete": "rare",
+      "description": "elle est le produit du travaille des plus grands ingénieur nains et permet de creuser 100 fois plus vite qu'avec une pioche standard",
+      "prerequis_force": 10,
+      "prerequis_intelligence": 0,
+      "prerequis_agilite": 5
+    },
+    {
+      "id": 10,
+      "nom": "baton de voyage",
+      "rarete": "commun",
+      "description": "le baton typique de tout bon gnome voyageur",
+      "prerequis_force": 3,
+      "prerequis_intelligence": 3,
+      "prerequis_agilite": 3
+    },
+    {
+      "id": 11,
+      "nom": "dague empoisoné",
+      "rarete": "rare",
+      "description": "une dague enduite d'un poison mortel",
+      "prerequis_force": 4,
+      "prerequis_intelligence": 3,
+      "prerequis_agilite": 8
+    },
+    {
+      "id": 12,
+      "nom": "botte des géants",
+      "rarete": "mythique",
+      "description": "on raconte que ces bottes permettent de parcourir mille lieux en une enjambé",
+      "prerequis_force": 5,
+      "prerequis_intelligence": 8,
+      "prerequis_agilite": 8
+    },
+    {
+      "id": 13,
+      "nom": "sac de caillou explosif",
+      "rarete": "mythique",
+      "description": "ce sac infini permet de lancer des caillous explosifs sur vos ennemies",
+      "prerequis_force": 8,
+      "prerequis_intelligence": 1,
+      "prerequis_agilite": 1
+    },
+    {
+      "id": 14,
+      "nom": "ceinture du hibou",
+      "rarete": "rare",
+      "description": "permet de faire pivoter la partie supérieur de votre corp a 180 degres, d'origine golemique",
+      "prerequis_force": 1,
+      "prerequis_intelligence": 1,
+      "prerequis_agilite": 1
+    }
+  ]
 }
