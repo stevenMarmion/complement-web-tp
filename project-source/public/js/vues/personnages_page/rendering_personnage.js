@@ -15,8 +15,6 @@ class RenderingPersonnage {
         document.getElementById('search-button').classList.add('isHidden');
         document.getElementById('title-sort').classList.remove('isVisible');
         document.getElementById('title-sort').classList.add('isHidden');
-        document.getElementById('sort-button').classList.remove('isVisible');
-        document.getElementById('sort-button').classList.add('isHidden');
         document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
             element.classList.remove('isVisible');
             element.classList.add('isHidden');
@@ -51,18 +49,21 @@ class RenderingPersonnage {
             let card = document.createElement('div');
             card.classList.add('card');
             card.classList.add('isVisible');
+            let divInfo = document.createElement('div');
+            let divImage = document.createElement('div');
+            divImage.classList.add('div-image');
             let nom = document.createElement('h2');
             nom.textContent = personnage['nom_prenom'];
-            card.appendChild(nom);
+            divInfo.appendChild(nom);
             let race = document.createElement('p');
             race.textContent = 'Race: ' + personnage['race'];
-            card.appendChild(race);
+            divInfo.appendChild(race);
             let agilite = document.createElement('p');
             agilite.textContent = 'Agilité: ' + personnage['agilite'];
-            card.appendChild(agilite);
+            divInfo.appendChild(agilite);
             let force = document.createElement('p');
             force.textContent = 'Force: ' + personnage['force'];
-            card.appendChild(force);
+            divInfo.appendChild(force);
             let detailButton = document.createElement('button');
             detailButton.textContent = 'Détail';
             detailButton.classList.add('button-primary')
@@ -71,8 +72,18 @@ class RenderingPersonnage {
                 let url = '/personnages/';
                 await routes(url, `${personnage["id"]}`);
             });
-            card.appendChild(detailButton);
+            divInfo.appendChild(detailButton);
             personnagesContainer.appendChild(card);
+            let image = document.createElement('img');
+            image.setAttribute("src",personnage['image']);
+            divImage.appendChild(image);
+            let divIntermediaire = document.createElement('div');
+            divIntermediaire.appendChild(divInfo);
+            divIntermediaire.appendChild(divImage);
+            divIntermediaire.classList.add('div-inter');
+            card.appendChild(divIntermediaire);
+
+
         });
         document.getElementById('voir-personnages').classList.remove('isVisible');
         document.getElementById('voir-personnages').classList.add('isHidden');
@@ -84,8 +95,6 @@ class RenderingPersonnage {
         document.getElementById('search-button').classList.add('isVisible');
         document.getElementById('title-sort').classList.remove('isHidden');
         document.getElementById('title-sort').classList.add('isVisible');
-        document.getElementById('sort-button').classList.remove('isHidden');
-        document.getElementById('sort-button').classList.add('isVisible');
         document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
             element.classList.remove('isHidden');
             element.classList.add('isVisible');
