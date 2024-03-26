@@ -1,6 +1,6 @@
 class AboutFactory {
 
-    #personnages = null;
+    #datasAbout = null;
     #url = null;
 
     constructor(url) {
@@ -8,16 +8,16 @@ class AboutFactory {
         this.#url = url;
     }
 
-    getPersonnages() {
-        return this.#personnages;
+    getDatasAbout() {
+        return this.#datasAbout;
     }
 
     getURL() {
         return this.#url;
     }
 
-    setPersonnages(personnages) {
-        this.#personnages = personnages;
+    setDatasAbout(personnages) {
+        this.#datasAbout = personnages;
     }
 
     setURL(url, id) {
@@ -29,11 +29,11 @@ class AboutFactory {
         return await rep.json();
     }
 
-    async recupPersonnagesInArray(id) {
+    async recupDatasAboutInArray(id) {
         this.setURL(this.getURL(), id);
         console.log('Recup personnage datas on personnage by filters : \n' + this.getURL())
-        this.setPersonnages(await this.fetchPersonnages());
-        return this.getPersonnages();
+        this.setDatasAbout(await this.fetchPersonnages());
+        return this.getDatasAbout();
     }
 }
 
