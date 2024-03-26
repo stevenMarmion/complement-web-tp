@@ -44,7 +44,6 @@ class RenderingCapacites {
 
         Rendering.renderHidden(document.getElementById('voir-capacites'));
         Rendering.renderVisible(document.getElementById('cacher-capacites'));
-        Rendering.renderVisible(document.getElementById('voir-capacites'));
         Rendering.renderVisible(document.getElementById('title-filters'));
         Rendering.renderVisible(document.getElementById('search-button'));
         Rendering.renderVisible(document.getElementById('title-sort'));
