@@ -1,22 +1,20 @@
 /* pré-requis : lancer le script bash : 
 *  ```bash lancement.sh```
 */
-
-import Capacites from "./capacites.js";
-import Equipements from "./equipements.js";
-import Personnages from "./personnages.js";
 import AboutFactory from "./aboutFactory.js";
 import CreateFactory from "./createFactory.js";
 import ModifyFactory from "./modifyFactory.js";
 import DeleteFactory from "./deleteFactory.js";
 import GetFactory from "./getFactory.js";
 import Rendering from "./rendering.js";
+import FilterFactory from "./filterFactory.js";
 
 const route = {
     "/personnages" : GetFactory,
-    "/personnages?" : AboutFactory,
-    "/personnages?_sort" : AboutFactory,
-    "/personnages?_page" : AboutFactory,
+    "/personnages/" : AboutFactory,
+    "/personnages?" : FilterFactory,
+    "/personnages?_sort" : FilterFactory,
+    "/personnages?_page" : FilterFactory,
     "/personnages/post" : CreateFactory,
     "/personnages/put" : ModifyFactory,
     "/personnages/delete" : DeleteFactory,
@@ -24,94 +22,54 @@ const route = {
     "/capacites" : GetFactory,
 }
 
-// Nous permet de définir la nomenclature de mes colonnes de tableau
-const headingTable = [
-    "Id",
-    "Nom Prénom",
-    "Race",
-    "Equipement",
-    "Capacités",
-    "Force",
-    "Intelligence",
-    "Agilité",
-]
-
 // Me permet de définir au préalable mes champs de filtres sur ma page
-// A completer
 const inputsMap = {
-    'insee_code': { 
-        id: 'insee_code', 
-        placeholder: 'Code INSEE' 
+    'nom_prenom': { 
+        id: 'nom_prenom', 
+        placeholder: 'Nom et prénom' 
     },
-    'zip_code': { 
-        id: 'zip_code', 
-        placeholder: 'Code zip' 
+    'race': { 
+        id: 'race', 
+        placeholder: 'Race' 
     },
-    'label': { 
-        id: 'label', 
-        placeholder: 'Nom de ville' 
+    'force': { 
+        id: 'force', 
+        placeholder: 'Force' 
     },
-    'department_name': { 
-        id: 'department_name', 
-        placeholder: 'Nom de département' 
+    'intelligence': { 
+        id: 'intelligence', 
+        placeholder: 'Intelligence' 
     },
-    'department_number': { 
-        id: 'department_number', 
-        placeholder: 'Numéro de département' 
-    },
-    'region_name': { 
-        id: 'region_name', 
-        placeholder: 'Nom de région' 
+    'agilite': { 
+        id: 'agilite', 
+        placeholder: 'Agilité' 
     }
 };
 
 // Me permet de définir mes champs de création d'un personnage au préalable
 const inputMapCreating = {
-    'insee_code': { 
-        id: 'insee_code', 
-        placeholder: 'Code INSEE' 
+    'nom_prenom': { 
+        id: 'nom_prenom', 
+        placeholder: 'Nom et prénom' 
     },
-    'city_code': { 
-        id: 'city_code', 
-        placeholder: 'Code de ville' 
+    'race': { 
+        id: 'race', 
+        placeholder: 'Race' 
     },
-    'zip_code': { 
-        id: 'zip_code', 
-        placeholder: 'Code zip' 
+    'force': { 
+        id: 'force', 
+        placeholder: 'Force' 
     },
-    'label': { 
-        id: 'label', 
-        placeholder: 'Nom de ville' 
+    'intelligence': { 
+        id: 'intelligence', 
+        placeholder: 'Intelligence' 
     },
-    'latitude': { 
-        id: 'latitude', 
-        placeholder: 'Latitude' 
-    },
-    'longitude': { 
-        id: 'longitude', 
-        placeholder: 'Longitude' 
-    },
-    'department_name': { 
-        id: 'department_name', 
-        placeholder: 'Nom de département' 
-    },
-    'department_number': { 
-        id: 'department_number', 
-        placeholder: 'Numéro de département' 
-    },
-    'region_name': { 
-        id: 'region_name', 
-        placeholder: 'Nom de région' 
-    },
-    'region_geojson_name': { 
-        id: 'region_geojson_name', 
-        placeholder: 'Nom de région (GeoJSON)' 
-    },
-    'id': {
-        id: 'id', 
-        placeholder: 'ID' 
-    },
+    'agilite': { 
+        id: 'agilite', 
+        placeholder: 'Agilité' 
+    }
 };
+
 
 // Me permet de remplir le cache et de charger les données avant n'importe quelle requête ==> on prédit le clique souris sur "Voir les villes"
 const rep = await fetch('/personnages');
@@ -128,21 +86,19 @@ async function routes(url, id) {
             case "/personnages":
                 cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(headingTable, cache);
+                Rendering.renderDisplayPersonnages(cache);
                 break;
             
-            case "/personnages?":
-                object.getFiltersOn();
-                cache = await object.recupPersonnagesInArray();
-                Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(headingTable, cache);
+            case "/personnages/":
+                cache = await object.recupPersonnagesInArray(id);
+                Rendering.RenderDisplayDetailPersonnage(cache);
                 break;
             
             case "/personnages?_sort":
                 object.getSortOn();
                 cache = await object.recupPersonnagesInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(headingTable, cache);
+                Rendering.renderDisplayPersonnages(cache);
                 break;
 
             case "/personnages?_page":
@@ -150,7 +106,7 @@ async function routes(url, id) {
                 object.getDatasByPage(currentPage, perPage);
                 cache = await object.recupPersonnagesInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(headingTable, cache.data);
+                Rendering.renderDisplayPersonnages(cache.data);
                 break;
 
             case "/personnages/post":
@@ -181,13 +137,13 @@ async function routes(url, id) {
             case "/equipements":
                 cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(headingTable, cache);
+                Rendering.renderDisplayEquipements(cache);
                 break;
 
             case "/capacites":
                 cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
-                Rendering.renderDisplayPersonnages(headingTable, cache);
+                Rendering.renderDisplayCapacites(cache);
                 break;
 
             default:
@@ -203,9 +159,33 @@ buttonVoirPersonnages.addEventListener('click', async function(e) {
     await routes(url, null);
 });
 
+let buttonVoirCapacties = document.getElementById('voir-capacites');
+buttonVoirCapacties.addEventListener('click', async function(e) {
+    console.log('~ Click on capacités button... ~ Loading and fetch datas... ~');
+    let url = '/capacites';
+    await routes(url, null);
+});
+
+let buttonVoirEquipements = document.getElementById('voir-equipements');
+buttonVoirEquipements.addEventListener('click', async function(e) {
+    console.log('~ Click on équipements button... ~ Loading and fetch datas... ~');
+    let url = '/equipements';
+    await routes(url, null);
+});
+
 let buttonHidePersonnages = document.getElementById('cacher-personnages');
 buttonHidePersonnages.addEventListener('click', function(e) {
     Rendering.renderHidePersonnages();
+});
+
+let buttonHideCapacites = document.getElementById('cacher-capacites');
+buttonHideCapacites.addEventListener('click', function(e) {
+    Rendering.renderHideCapacites();
+});
+
+let buttonHideEquipements = document.getElementById('cacher-equipements');
+buttonHideEquipements.addEventListener('click', function(e) {
+    Rendering.renderHideEquipements();
 });
 
 let buttonSearch = document.getElementById('search-button');
@@ -220,6 +200,15 @@ buttonSort.addEventListener('click', async function(e) {
     console.log('~ Click on sort button... ~ Loading and fetch datas by sorted columns... ~');
     let url = '/personnages?_sort';
     await routes(url, null);
+});
+
+let buttonManageFav = document.getElementById('manage-fav-button');
+buttonManageFav.addEventListener('click', async function(e) {
+    console.log('~ Click on manage fav button... ~ Loading and fetch datas... ~');
+    let url = '/personnages?estFav=1';
+    const rep = await fetch(url);
+    var cache = await rep.json();
+    Rendering.renderDisplayFav(cache);
 });
 
 Rendering.createInputsFilters(inputsMap);

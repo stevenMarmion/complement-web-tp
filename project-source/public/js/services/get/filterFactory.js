@@ -1,11 +1,11 @@
-class AboutFactory {
+class FilterFactory {
 
     #personnages = null;
     #url = null;
     #filters = {};
 
     constructor(url) {
-        console.log('Creating AboutFactory Oject first... with URL :' + url)
+        console.log('Creating FilterFactory Oject first... with URL :' + url)
         this.#url = url;
     }
 
@@ -58,4 +58,4 @@ class AboutFactory {
     }
 }
 
-export default AboutFactory;
+export default FilterFactory;

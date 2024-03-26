@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,44 +8,76 @@
     <title>Consultation - personnages</title>
 </head>
 <body>
-    <h1>Bienvenue dans la page de consultation des personnages</h1>
-    <button id="voir-personnages" class="isVisible">
-        Voir les personnages
-    </button>
-    <button id="cacher-personnages" class="isHidden">
-        Cacher les personnages
-    </button>
-    <button id="create-personnage-button" class="isVisible">
-        Créer votre personnage
-    </button>
-    <div id="create-personnage" class="isFlexedWrap">
-        <!-- Là où tous les inputs field accessible pour créer un personnage  -->
-    </div>
-    <button id="validate-creation" class="isHidden">
-        Créer
-    </button>
-
-    <div id="personnages-description"></div>
-
-    <h2 id="title-filters" class="isHidden">Rechercher par :</h2>
-    <div id="all-filters" class="isFlexed"></div>
-    <button id="search-button" class="isHidden">Rechercher</button>
-
-    <h2 id="title-sort" class="isHidden">Trier par :</h2>
-    <div id="select-sorted-columns"></div>
-    <button id="sort-button" class="isHidden">Trier</button>
-
-    <div class="modal" id="modal">
-        <div class="modal-back"></div>
-        <div class="modal-container">
-            <div id="modify-personnage" class="isFlexedWrap"></div>
-            <button id="validate-editing" class="isHidden">
-                Modifier
+    <header>
+        <div class="banner">
+            <h1>Bienvenue dans l'univers des personnages fantastiques</h1>
+            <p>Explorez une gamme diversifiée de personnages avec des races, des capacités et des équipements uniques.</p>
+        </div>
+    </header>
+    <main>
+        <div class="button-container">
+            <button id="voir-personnages" class="isVisible button-primary">
+                Voir les personnages
             </button>
-            <button id="close-popup" class="isHidden">
-                Fermer
+            <button id="cacher-personnages" class="isHidden button-secondary">
+                Cacher les personnages
+            </button>
+            <button id="voir-capacites" class="isVisible button-primary">
+                Voir les capacités existantes
+            </button>
+            <button id="cacher-capacites" class="isHidden button-secondary">
+                Cacher les capacités
+            </button>
+            <button id="voir-equipements" class="isVisible button-primary">
+                Voir les équipements disponible
+            </button>
+            <button id="cacher-equipements" class="isHidden button-secondary">
+                Cacher les équipements
+            </button>
+            <button id="create-personnage-button" class="isVisible button-primary">
+                Créer votre personnage
+            </button>
+            <button id="manage-fav-button" class="isVisible button-primary">
+                Gérer ces favoris
             </button>
         </div>
-    </div>
+        <div id="create-personnage" class="isFlexedWrap">
+            <!-- Là où tous les inputs field accessibles pour créer un personnage -->
+        </div>
+        <button id="validate-creation" class="isHidden button-primary">
+            Créer
+        </button>
+    
+        <h2 id="title-filters" class="isHidden">Rechercher par :</h2>
+        <div id="all-filters" class="isFlexed"></div>
+        <button id="search-button" class="isHidden button-primary">Rechercher</button>
+    
+        <h2 id="title-sort" class="isHidden">Trier par :</h2>
+        <div id="select-sorted-columns"></div>
+        <button id="sort-button" class="isHidden button-primary">Trier</button>
+    
+        <button id="go-to-home" class="isHidden button-primary">Accueil</button>
+        <div id="personnages-description"></div>
+        <div id="detail-personnage"></div>
+
+        <div id="capacites-description"></div>
+        <div id="detail-capacite"></div>
+
+        <div id="equipements-description"></div>
+        <div id="detail-equipement"></div>
+    
+        <div class="modal" id="modal">
+            <div class="modal-back"></div>
+            <div class="modal-container">
+                <div id="modify-personnage" class="isFlexedWrap"></div>
+                <button id="validate-editing" class="isHidden button-primary">
+                    Modifier
+                </button>
+                <button id="close-popup" class="isHidden button-secondary">
+                    Fermer
+                </button>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
