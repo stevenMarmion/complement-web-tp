@@ -14,7 +14,6 @@ import RenderingEquipements from "./vues/equipements_page/rendering_equipements.
 import RenderingFav from "./vues/fav_page/rendering_fav.js";
 import RenderingPersonnage from "./vues/personnages_page/rendering_personnage.js";
 
-
 import Utils from './utils/inputs.js';
 
 const route = {
@@ -27,6 +26,7 @@ const route = {
     "/personnages/put" : ModifyFactory,
     "/personnages/delete" : DeleteFactory,
     "/equipements" : GetFactory,
+    "/equipements/" : AboutFactory,
     "/capacites" : GetFactory,
 }
 
@@ -50,7 +50,7 @@ async function routes(url, id) {
                 break;
             
             case "/personnages/":
-                cache = await object.recupPersonnagesInArray(id);
+                cache = await object.recupDatasAboutInArray(id);
                 RenderingPersonnage.RenderDisplayDetailPersonnage(cache);
                 break;
             
@@ -98,6 +98,11 @@ async function routes(url, id) {
                 cache = await object.recupDatasInArray();
                 Rendering.renderHideCreatedInput();
                 RenderingEquipements.renderDisplayEquipements(cache);
+                break;
+
+            case "/equipements/":
+                cache = await object.recupDatasAboutInArray(id);
+                RenderingEquipements.renderDisplayDetailEquipements(cache);
                 break;
 
             case "/capacites":

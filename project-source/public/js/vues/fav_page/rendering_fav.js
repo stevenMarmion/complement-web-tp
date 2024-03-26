@@ -1,26 +1,29 @@
 import routes from '../../script.js';
+import Rendering from '../rendering.js';
 
 class RenderingFav {
 
     static renderDisplayFav(personnages) {
         document.querySelectorAll('.isVisible').forEach(element => {
-            element.classList.remove('isVisible');
-            element.classList.add('isHidden');
+            Rendering.renderHidden(element);
         });
+
         let buttonAccueil = document.getElementById('go-to-home');
-        buttonAccueil.classList.remove('isHidden');
+        let detailContainer = document.getElementById('personnages-description');
+
         buttonAccueil.addEventListener('click', async function() {
             console.log('~ Click on Home button... ~ Go to home... ~');
             let url = '/personnages';
             await routes(url, null);
         });
-        buttonAccueil.classList.add('isVisible');
-        let detailContainer = document.getElementById('personnages-description');
-        detailContainer.innerHTML = "";
+        
+        Rendering.renderVisible(buttonAccueil);
+        Rendering.renderEmpty(detailContainer);
+
         personnages.forEach(personnage => {
             let card = document.createElement('div');
             card.classList.add('card');
-            card.classList.add('isVisible');
+            Rendering.renderVisible(card);
             let nom = document.createElement('h2');
             nom.textContent = personnage['nom_prenom'];
             card.appendChild(nom);

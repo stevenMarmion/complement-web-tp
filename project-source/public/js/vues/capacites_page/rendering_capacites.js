@@ -1,74 +1,49 @@
 import routes from '../../script.js';
+import Rendering from '../rendering.js';
 
 class RenderingCapacites {
 
     static renderHideCapacites() {
         let capacitesContainer = document.getElementById('capacites-description');
-        capacitesContainer.innerHTML = "";
-        document.getElementById('voir-capacites').classList.remove('isHidden');
-        document.getElementById('voir-capacites').classList.add('isVisible');
-        document.getElementById('cacher-capacites').classList.remove('isVisible');
-        document.getElementById('cacher-capacites').classList.add('isHidden');
-        document.getElementById('title-filters').classList.remove('isVisible');
-        document.getElementById('title-filters').classList.add('isHidden');
-        document.getElementById('search-button').classList.remove('isVisible');
-        document.getElementById('search-button').classList.add('isHidden');
-        document.getElementById('title-sort').classList.remove('isVisible');
-        document.getElementById('title-sort').classList.add('isHidden');
+        Rendering.renderEmpty(capacitesContainer);
+        Rendering.renderVisible(document.getElementById('voir-capacites'));
+        Rendering.renderHidden(document.getElementById('cacher-capacites'));
+        Rendering.renderHidden(document.getElementById('title-filters'));
+        Rendering.renderHidden(document.getElementById('search-button'));
+        Rendering.renderHidden(document.getElementById('title-sort'));
+
         document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
-            element.classList.remove('isVisible');
-            element.classList.add('isHidden');
+            Rendering.renderHidden(element);
         });
         document.querySelectorAll('select').forEach(element => { 
-            element.classList.remove('isVisible');
-            element.classList.add('isHidden');
+            Rendering.renderHidden(element);
         });
     }
 
     static renderDisplayCapacites(capacites) {
         let personnagesContainer = document.getElementById('personnages-description');
-        personnagesContainer.innerHTML = "";
         let capacitesContainer = document.getElementById('capacites-description');
-        capacitesContainer.innerHTML = "";
+
+        Rendering.renderEmpty(personnagesContainer);
+        Rendering.renderEmpty(capacitesContainer);
+
         capacites.forEach(capacite => {
             let card = document.createElement('div');
             card.classList.add('card');
-            card.classList.add('isVisible');
+
+            Rendering.renderVisible(card);
+
             let nom = document.createElement('h2');
             nom.textContent = capacite['nom'];
             card.appendChild(nom);
             let descr = document.createElement('p');
             descr.textContent = 'Description: ' + capacite['description'];
             card.appendChild(descr);
-            let detailButton = document.createElement('button');
-            detailButton.textContent = 'Détail';
-            detailButton.classList.add('button-primary')
-            detailButton.addEventListener('click', async function() {
-                console.log('~ Click on detail button... ~ Preparing datas... ~');
-                let url = '/capacites/';
-                await routes(url, `${capacite["id"]}`);
-            });
-            card.appendChild(detailButton);
             capacitesContainer.appendChild(card);
         });
-        document.getElementById('voir-capacites').classList.remove('isVisible');
-        document.getElementById('voir-capacites').classList.add('isHidden');
-        document.getElementById('cacher-capacites').classList.remove('isHidden');
-        document.getElementById('cacher-capacites').classList.add('isVisible');
-        document.getElementById('title-filters').classList.remove('isHidden');
-        document.getElementById('title-filters').classList.add('isVisible');
-        document.getElementById('search-button').classList.remove('isHidden');
-        document.getElementById('search-button').classList.add('isVisible');
-        document.getElementById('title-sort').classList.remove('isHidden');
-        document.getElementById('title-sort').classList.add('isVisible');
-        document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
-            element.classList.remove('isHidden');
-            element.classList.add('isVisible');
-        });
-        document.querySelectorAll('select').forEach(element => { 
-            element.classList.remove('isHidden');
-            element.classList.add('isVisible');
-        });
+
+        Rendering.renderHidden(document.getElementById('voir-capacites'));
+        Rendering.renderVisible(document.getElementById('cacher-capacites'));
     }
 }
 

@@ -3,24 +3,18 @@ import inputMapCreating from '../utils/inputs.js';
 class Rendering {
     
     static renderShowCreatedInput() {
-        document.getElementById('validate-creation').classList.remove('isHidden')
-        document.getElementById('validate-creation').classList.add('isVisible')
-        document.getElementById('create-personnage-button').classList.remove('isVisible');
-        document.getElementById('create-personnage-button').classList.add('isHidden');
+        Rendering.renderVisible(document.getElementById('validate-creation'));
+        Rendering.renderHidden(document.getElementById('create-personnage-button'));
         document.querySelectorAll('#create-personnage input[type="text"]').forEach(element => { 
-            element.classList.remove('isHidden');
-            element.classList.add('isVisible');
+            Rendering.renderVisible(element);
         });
     }
 
     static renderHideCreatedInput() {
-        document.getElementById('validate-creation').classList.remove('isVisible')
-        document.getElementById('validate-creation').classList.add('isHidden')
-        document.getElementById('create-personnage-button').classList.remove('isHidden');
-        document.getElementById('create-personnage-button').classList.add('isVisible');
+        Rendering.renderHidden(document.getElementById('validate-creation'));
+        Rendering.renderVisible(document.getElementById('create-personnage-button'));
         document.querySelectorAll('#create-personnage input[type="text"]').forEach(element => { 
-            element.classList.remove('isVisible');
-            element.classList.add('isHidden');
+            Rendering.renderHidden(element);
         });
     }
 
@@ -75,20 +69,19 @@ class Rendering {
 
     static makeCreatedPersonnageInputsEmpty() {
         document.querySelectorAll('#create-personnage input[type="text"]').forEach(element => { 
-            element.innerHTML = "";
+            Rendering.renderEmpty(element);
         });
     }
 
     static displayPopupModify(data) {
         let divElement = document.getElementById('modify-personnage');
-        divElement.innerHTML = "";
+        Rendering.renderEmpty(divElement);
         Object.keys(inputMapCreating).forEach(key => {
             let input = inputMapCreating[key];
             let inputElement = document.createElement('input');
             inputElement.setAttribute('type', 'text');
             inputElement.setAttribute('id', input.id);
-            inputElement.classList.remove('isHidden');
-            inputElement.classList.add('isVisible');
+            Rendering.renderVisible(inputElement);
             inputElement.setAttribute('value', data[key]);
             divElement.appendChild(inputElement);
         });
@@ -101,6 +94,20 @@ class Rendering {
         document.getElementById('close-popup').style.display = 'none';
         document.getElementById('validate-editing').style.display = 'none';
         document.getElementById('modal').style.display = 'none';
+    }
+
+    static renderHidden(component) {
+        component.classList.remove('isVisible');
+        component.classList.add('isHidden');
+    }
+
+    static renderVisible(component) {
+        component.classList.remove('isHidden');
+        component.classList.add('isVisible');
+    }
+
+    static renderEmpty(component) {
+        component.innerHTML = "";
     }
 }
 
