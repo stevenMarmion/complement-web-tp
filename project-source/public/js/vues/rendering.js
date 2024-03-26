@@ -1,4 +1,4 @@
-import { routes, inputMapCreating } from "./script.js";
+import { routes, inputMapCreating } from "../script.js";
 
 class Rendering {
 
