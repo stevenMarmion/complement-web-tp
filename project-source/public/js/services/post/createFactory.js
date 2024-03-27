@@ -3,6 +3,7 @@ class CreateFactory {
     #url = null;
 
     constructor(url) {
+        console.log('Creating CreateFactory Oject first... with URL :' + url)
         this.#url = url;
     }
 
@@ -11,6 +12,7 @@ class CreateFactory {
     }
 
     setURL(url) {
+        console.log('Setting URL CreateFactory Oject... with URL :' + url);
         this.#url = url;
     }
 

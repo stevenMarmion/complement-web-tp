@@ -12,6 +12,7 @@ class ModifyFactory {
     }
 
     setURL(url) {
+        console.log('Setting URL ModifyFactory Oject... with URL :' + url);
         this.#url = url;
     }
 

@@ -21,6 +21,7 @@ class GetFactory {
     }
 
     setURL(url) {
+        console.log('Setting URL GetFactory Oject... with URL :' + url);
         this.#url = url;
     }
 

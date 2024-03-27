@@ -5,7 +5,7 @@ class FilterFactory {
     #filters = {};
 
     constructor(url) {
-        console.log('Creating FilterFactory Oject first... with URL :' + url)
+        console.log('Creating FilterFactory Oject first... with URL :' + url);
         this.#url = url;
     }
 
@@ -22,6 +22,7 @@ class FilterFactory {
     }
 
     setURL(url) {
+        console.log('Setting URL FilterFactory Oject... with URL :' + url);
         this.#url = url;
     }
 

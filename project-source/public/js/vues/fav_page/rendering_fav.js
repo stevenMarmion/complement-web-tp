@@ -9,10 +9,10 @@ class RenderingFav {
         });
 
         let buttonAccueil = document.getElementById('go-to-home');
-        let detailContainer = document.getElementById('personnages-description');
+        let personnagesContainer = document.getElementById('personnages-description');
         
         Rendering.renderVisible(buttonAccueil);
-        Rendering.renderEmpty(detailContainer);
+        Rendering.renderEmpty(personnagesContainer);
 
         personnages.forEach(personnage => {
             let card = document.createElement('div');

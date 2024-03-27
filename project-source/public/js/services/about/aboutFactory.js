@@ -23,6 +23,7 @@ class AboutFactory {
     }
 
     setURL(url, id) {
+        console.log('Setting URL AboutFactory Oject... with URL :' + url);
         this.#url = url + id;
     }
 

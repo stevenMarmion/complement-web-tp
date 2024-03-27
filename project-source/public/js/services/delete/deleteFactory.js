@@ -12,6 +12,7 @@ class DeleteFactory {
     }
 
     setURL(url) {
+        console.log('Setting URL DeleteFactory Oject... with URL :' + url);
         this.#url = url;
     }
 

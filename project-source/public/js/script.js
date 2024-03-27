@@ -87,7 +87,6 @@ async function routes(url, id) {
             case "#/personnages/favoris":
                 object.setURL('/personnages?estFav=1');
                 cache = await object.recupDatasInArray();
-                console.log(cache)
                 RenderingFav.renderDisplayFav(cache);
                 break;
             
