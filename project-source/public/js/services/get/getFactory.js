@@ -1,3 +1,8 @@
+import RenderingCapacites from "../../vues/capacites_page/rendering_capacites";
+import RenderingEquipements from "../../vues/equipements_page/rendering_equipements";
+import RenderingPersonnage from "../../vues/personnages_page/rendering_personnage";
+import Rendering from "../../vues/rendering";
+
 class GetFactory {
 
     #datasFetched = null;
@@ -34,6 +39,23 @@ class GetFactory {
         console.log('Recup referentials datas...')
         this.setDatasFetched(await this.fetchDatas());
         return this.getDatasFetched();
+    }
+
+    render() {
+        Rendering.renderHideCreatedInput();
+        switch(this.getURL()) {
+            case 'personnages':
+                RenderingPersonnage.renderDisplayPersonnages(this.getDatasFetched());
+                break;
+        
+            case 'equipements':
+                RenderingEquipements.renderDisplayEquipements(this.getDatasFetched());
+                break;
+
+            case 'capacites':
+                RenderingCapacites.renderHideCapacites(this.getDatasFetched());
+                break;
+        }
     }
 }
 

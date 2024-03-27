@@ -50,6 +50,8 @@ async function routes(url, id) {
     }
     if (url in route) {
         let object = new route[url](url) // optimise le switch case, avec le dico, on créer dans tous les cas l'objet dès le début sans condition de test
+        object.recupDatasInArray();
+        object.render();
         switch (url) {
             case "#/home":
                 RenderingPersonnage.renderHidePersonnages();
@@ -57,22 +59,22 @@ async function routes(url, id) {
                 RenderingEquipements.renderHideEquipements();
                 break;
 
-            case "#/personnages":
-                cache = await object.recupDatasInArray();
-                Rendering.renderHideCreatedInput();
-                RenderingPersonnage.renderDisplayPersonnages(cache);
-                break;
+            // case "#/personnages":
+            //     cache = await object.recupDatasInArray();
+            //     Rendering.renderHideCreatedInput();
+            //     RenderingPersonnage.renderDisplayPersonnages(cache);
+            //     break;
 
-            case "#/equipements":
-                cache = await object.recupDatasInArray(id);
-                RenderingEquipements.renderDisplayEquipements(cache);
-                break;
+            // case "#/equipements":
+            //     cache = await object.recupDatasInArray();
+            //     RenderingEquipements.renderDisplayEquipements(cache);
+            //     break;
 
-            case "#/capacites":
-                cache = await object.recupDatasInArray();
-                Rendering.renderHideCreatedInput();
-                RenderingCapacites.renderDisplayCapacites(cache);
-                break;
+            // case "#/capacites":
+            //     cache = await object.recupDatasInArray();
+            //     Rendering.renderHideCreatedInput();
+            //     RenderingCapacites.renderDisplayCapacites(cache);
+            //     break;
             
             case "#/personnages/detail":
                 cache = await object.recupDatasAboutInArray(id);
