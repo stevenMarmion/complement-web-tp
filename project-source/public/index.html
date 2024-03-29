@@ -15,70 +15,49 @@
         </div>
     </header>
     <main>
-        <div class="button-container">
+        <div id="button-container" class="button-container">
             <a id="voir-personnages" class="isVisible" href="#/personnages">
                 <button id="voir-personnages-btn" class="button-primary">Voir les personnages</button>
             </a>
-            <a id="cacher-personnages" class="isHidden" href="">
+            <a id="cacher-personnages" class="isHidden" href="#">
                 <button id="cacher-personnages-btn" class="button-secondary">Cacher les personnages</button>
             </a>
             <a id="voir-capacites" class="isVisible" href="#/capacites">
                 <button id="voir-capacites-btn" class="button-primary">Voir les capacités existantes</button>
             </a>
-            <a id="cacher-capacites" class="isHidden" href="">
+            <a id="cacher-capacites" class="isHidden" href="#">
                 <button id="cacher-capacites-btn" class="button-secondary">Cacher les capacités</button>
             </a>
             <a id="voir-equipements" class="isVisible" href="#/equipements">
                 <button id="voir-equipements-btn" class="button-primary">Voir les équipements disponibles</button>
             </a>
-            <a id="cacher-equipements" class="isHidden" href="">
+            <a id="cacher-equipements" class="isHidden" href="#">
                 <button id="cacher-equipements-btn" class="button-secondary">Cacher les équipements</button>
-            </a>
-            <a id="create-personnage-button" class="isVisible" href="">
-                <button id="create-personnage-btn" class="button-primary">Créer votre personnage</button>
-            </a>            
+            </a>       
             <a id="manage-fav-button" class="isVisible" href="#/favoris">
                 <button id="manage-fav-btn" class="button-primary">Gérer ces favoris</button>
             </a>
         </div>
-        <div id="create-personnage" class="isFlexedWrap">
-            <!-- Là où tous les inputs field accessibles pour créer un personnage -->
+
+        <div id="filters" class="isHidden">
+            <h2 id="title-filters">Rechercher par :</h2>
+            <div id="all-filters"></div>
+            <button id="search-button" class="button-primary">Rechercher</button>
+
+            <h2 id="title-sort">Trier par :</h2>
+            <div id="select-sorted-columns"></div>
+
+            <div id="pagination" class="isFlexed">
+                <button id="previous-page" class="button-secondary">Page précédente</button>
+                <button id="next-page" class="button-secondary">Page suivante</button>
+            </div>
         </div>
-        <button id="validate-creation" class="isHidden button-primary">
-            Créer
-        </button>
-    
-        <h2 id="title-filters" class="isHidden">Rechercher par :</h2>
-        <div id="all-filters" class="isFlexed"></div>
-        <button id="search-button" class="isHidden button-primary">Rechercher</button>
-    
-        <h2 id="title-sort" class="isHidden">Trier par :</h2>
-        <div id="select-sorted-columns"></div>
     
         <a id="go-to-home" class="isHidden" href="">
             <button id="go-to-home-btn" class="button-primary">Accueil</button>
         </a>
-        <div id="personnages-description"></div>
-        <div id="detail-personnage"></div>
 
-        <div id="capacites-description"></div>
-        <div id="detail-capacite"></div>
-
-        <div id="equipements-description"></div>
-        <div id="detail-equipement"></div>
-    
-        <div class="modal" id="modal">
-            <div class="modal-back"></div>
-            <div class="modal-container">
-                <div id="modify-personnage" class="isFlexedWrap"></div>
-                <button id="validate-editing" class="isHidden button-primary">
-                    Modifier
-                </button>
-                <button id="close-popup" class="isHidden button-secondary">
-                    Fermer
-                </button>
-            </div>
-        </div>
+        <div id="content"></div>
     </main>
 </body>
 </html>

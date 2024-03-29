@@ -1,6 +1,5 @@
-import RenderingEquipements from "../../vues/equipements_page/rendering_equipements.js";
-import RenderingPersonnage from "../../vues/personnages_page/rendering_personnage.js";
-import Rendering from "../../vues/rendering.js";
+import RenderingEquipements from "../vues/rendering_equipements.js";
+import RenderingPersonnage from "../vues/rendering_personnage.js";
 
 class AboutFactory {
 
@@ -50,7 +49,6 @@ class AboutFactory {
     }
 
     render() {
-        Rendering.renderHideCreatedInput();
         switch(this.getSubject()) {
             case "personnages":
                 RenderingPersonnage.RenderDisplayDetailPersonnage(this.getDatasAbout());

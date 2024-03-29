@@ -1,4 +1,5 @@
 export default class UrlParser {
+
     static checkParamOnUrl() {
         const decomposition = window.location.hash.split('/');
         if (decomposition.length === 4) {
@@ -16,6 +17,10 @@ export default class UrlParser {
     }
     
     static makeRedirectionHome() {
-        window.location.hash == "" ? window.location.hash = "#/home" : null;
+        window.location.hash == "#" ||
+        window.location.hash == "" || 
+        window.location.hash == "/" ? 
+            window.location.hash = "#/home" : 
+            null;
     }
 }

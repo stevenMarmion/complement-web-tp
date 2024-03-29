@@ -1,23 +1,19 @@
-import routes from '../../script.js';
-import Rendering from '../rendering.js';
+import Rendering from './rendering.js';
 
 class RenderingFav {
 
     static renderDisplayFav(personnages) {
-        document.querySelectorAll('.isVisible').forEach(element => {
-            Rendering.renderHidden(element);
-        });
+        Rendering.renderHidden(document.getElementById('button-container'));
+        Rendering.renderHidden(document.getElementById('filters'));
+        let content = document.getElementById('content');
+        Rendering.renderEmpty(content);
 
         let buttonAccueil = document.getElementById('go-to-home');
-        let personnagesContainer = document.getElementById('personnages-description');
-        
         Rendering.renderVisible(buttonAccueil);
-        Rendering.renderEmpty(personnagesContainer);
 
         personnages.forEach(personnage => {
             let card = document.createElement('div');
             card.classList.add('card');
-            Rendering.renderVisible(card);
         
             let divInfo = document.createElement('div');
             let divImage = document.createElement('div');
@@ -42,7 +38,7 @@ class RenderingFav {
             detailLink.textContent = 'Détail';
             divInfo.appendChild(detailLink);
         
-            personnagesContainer.appendChild(card);
+            content.appendChild(card);
         
             let image = document.createElement('img');
             image.setAttribute("src", personnage['image']);

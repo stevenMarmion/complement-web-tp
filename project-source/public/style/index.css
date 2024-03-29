@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     padding: 0;
-    margin: 0;
+    margin: 0 0 5em 0;
     background-color: #f7f7f7;
 }
 
@@ -13,8 +13,6 @@ main {
 .isVisible {
     display: block;
 }
-
-
 
 .button-primary {
     padding: 10px 20px;
@@ -52,16 +50,6 @@ main {
     background-color: #5a6268;
 }
 
-.isFlexed {
-    display: flex;
-    flex-wrap: nowrap;
-}
-
-.isFlexedWrap {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 input[type="text"] {
     flex-basis: auto;
     flex-grow: 1;
@@ -86,30 +74,15 @@ input[type="text"]:focus {
     width: 200px;
 }
 
-.modal {
-    display: none;
-}
-.modal-back {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba( 0, 0, 0, .25 );
-}
-.modal-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    padding: 25px;
-    background: white;
-    transform: translate(-50%, -50%);
-}
-
-#personnages-description, #capacites-description, #equipements-description {
+#content, #filters * {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+#content button img {
+    width: 20px;
+    height: 20px;
 }
 
 .card {
@@ -119,7 +92,6 @@ input[type="text"]:focus {
     margin: 10px;
     width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
 }
 
 .card h2 {
@@ -158,10 +130,12 @@ input[type="text"]:focus {
     padding: 20px;
     text-align: center;
 }
+
 .banner h1 {
     margin: 0;
     font-size: 36px;
 }
+
 .banner p {
     font-size: 18px;
     margin-top: 10px;
@@ -174,16 +148,10 @@ input[type="text"]:focus {
     margin-bottom: 2em;
     margin-top: 2em;
 }
+
 .button-container > button {
     margin: 0 1em;
 }
-
-#detail-personnage img {
-    width: 20px;
-    height: 20px;
-}
-
-
 
 .div-image-perso img{
     width: 150px;
@@ -191,6 +159,7 @@ input[type="text"]:focus {
     border-radius: 10px;
     filter: drop-shadow(20px 7px 5px #504848a8);
 }
+
 .div-inter-perso{
     display: flex;
 }
@@ -205,6 +174,7 @@ input[type="text"]:focus {
     border-radius: 10px;
     filter: drop-shadow(20px 7px 5px #504848a8);
 }
+
 .div-inter-equip{
     display: flex;
 }
@@ -213,8 +183,14 @@ input[type="text"]:focus {
     padding: 10px 10px 10px 10px;
 }
 
-
 .isHidden {
     display: none;
 }
 
+#pagination {
+    justify-content: center;
+}
+
+#go-to-home {
+    margin-top: 4em;
+}

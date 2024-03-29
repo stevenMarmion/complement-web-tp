@@ -1,20 +1,19 @@
-import RenderingCapacites from "../../vues/capacites_page/rendering_capacites.js";
-import RenderingEquipements from "../../vues/equipements_page/rendering_equipements.js";
-import RenderingFav from "../../vues/fav_page/rendering_fav.js";
-import RenderingPersonnage from "../../vues/personnages_page/rendering_personnage.js";
-import Rendering from "../../vues/rendering.js";
+import RenderingCapacites from "../vues/rendering_capacites.js";
+import RenderingEquipements from "../vues/rendering_equipements.js";
+import RenderingFav from "../vues/rendering_fav.js";
+import RenderingPersonnage from "../vues/rendering_personnage.js";
 
 class GetFactory {
 
     #datasFetched = null;
     #url = null;
-    #endPointFavoris = 'personnages?estFav=1'
+    #ENDPOINTFAVORIS = 'personnages?estFav=1'
 
     constructor(url) {
         const urlDecomposition = url.split('/')[1];
         urlDecomposition != 'favoris' ?
             this.#url = urlDecomposition : 
-            this.#url = this.#endPointFavoris;
+            this.#url = this.#ENDPOINTFAVORIS;
         console.log('Creating GetFactory Oject first... with URL :' + this.#url);
     }
 
@@ -47,7 +46,6 @@ class GetFactory {
     }
 
     render() {
-        Rendering.renderHideCreatedInput();
         switch(this.getURL()) {
             case 'personnages':
                 RenderingPersonnage.renderDisplayPersonnages(this.getDatasFetched());
@@ -61,7 +59,7 @@ class GetFactory {
                 RenderingCapacites.renderDisplayCapacites(this.getDatasFetched());
                 break;
 
-            case 'personnages?estFav=1':
+            case this.#ENDPOINTFAVORIS:
                 RenderingFav.renderDisplayFav(this.getDatasFetched());
                 break;
         }

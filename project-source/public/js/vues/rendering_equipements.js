@@ -1,40 +1,25 @@
-import routes from '../../script.js';
-import Rendering from '../rendering.js';
+import routes from '../script.js';
+import Rendering from './rendering.js';
 
 class RenderingEquipements {
 
     static renderHideEquipements() {
-        let equipementsContainer = document.getElementById('equipements-description');
-        Rendering.renderEmpty(equipementsContainer);
+        let content = document.getElementById('content');
+        Rendering.renderEmpty(content);
         Rendering.renderVisible(document.getElementById('voir-equipements'));
         Rendering.renderHidden(document.getElementById('cacher-equipements'));
-        Rendering.renderHidden(document.getElementById('title-filters'));
-        Rendering.renderHidden(document.getElementById('search-button'));
-        Rendering.renderHidden(document.getElementById('title-sort'));
-
-        document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
-            Rendering.renderHidden(element);
-        });
-        document.querySelectorAll('select').forEach(element => { 
-            Rendering.renderHidden(element);
-        });
     }
 
     static renderDisplayEquipements(equipements) {
-        let personnagesContainer = document.getElementById('personnages-description');
-        let capacitesContainer = document.getElementById('capacites-description');
-        let equipementsContainer = document.getElementById('equipements-description');
-        Rendering.renderEmpty(personnagesContainer);
-        Rendering.renderEmpty(capacitesContainer);
-        Rendering.renderEmpty(equipementsContainer);
+        let content = document.getElementById('content');
+        Rendering.renderEmpty(content);
+        Rendering.renderHidden(document.getElementById('filters'));
 
         equipements.forEach(equipement => {
             let card = document.createElement('div');
             let divInfo = document.createElement('div');
             let divImage = document.createElement('div');
             card.classList.add('card');
-            
-            Rendering.renderVisible(card);
         
             let nom = document.createElement('h2');
             nom.textContent = equipement['nom'];
@@ -49,7 +34,7 @@ class RenderingEquipements {
             detailLink.textContent = 'Détail';
             divInfo.appendChild(detailLink);
         
-            equipementsContainer.appendChild(card);
+            content.appendChild(card);
         
             let image = document.createElement('img');
             let divInter = document.createElement('div');
@@ -64,45 +49,43 @@ class RenderingEquipements {
 
         Rendering.renderHidden(document.getElementById('voir-equipements'));
         Rendering.renderVisible(document.getElementById('cacher-equipements'));
+        Rendering.renderVisible(document.getElementById('voir-capacites'));
+        Rendering.renderVisible(document.getElementById('voir-personnages'));
+        Rendering.renderVisible(document.getElementById('manage-fav-button'));
+        Rendering.renderHidden(document.getElementById('cacher-capacites'));
+        Rendering.renderHidden(document.getElementById('cacher-personnages'));
     }
 
     static renderDisplayDetailEquipements(equipement) {
-        document.querySelectorAll('.isVisible').forEach(element => {
-            Rendering.renderHidden(element);
-        });
+        Rendering.renderHidden(document.getElementById('filters'));
+        Rendering.renderHidden(document.getElementById('button-container'));
+        let content = document.getElementById('content');
+        Rendering.renderEmpty(content);
         
         let buttonAccueil = document.getElementById('go-to-home');
-        let detailContainer = document.getElementById('detail-equipement');
-
         buttonAccueil.addEventListener('click', async function() { window.location.hash = '/' });
-
         Rendering.renderVisible(buttonAccueil);
-        Rendering.renderEmpty(detailContainer);
-        Rendering.renderVisible(detailContainer);
 
-        detailContainer.classList.add('card');
+        content.classList.add('card');
         let nom = document.createElement('h2');
         nom.textContent = 'Nom: ' + equipement['nom'];
-        detailContainer.appendChild(nom);
+        content.appendChild(nom);
         let rarete = document.createElement('p');
         rarete.textContent = 'Rareté: ' + equipement['rarete'];
-        detailContainer.appendChild(rarete);
+        content.appendChild(rarete);
         let description = document.createElement('p');
         description.textContent = 'Description: ' + equipement['description'];
-        detailContainer.appendChild(description);
+        content.appendChild(description);
         let prerequis_force = document.createElement('p');
         prerequis_force.textContent = 'Prérequis force: ' + equipement['prerequis_force'];
-        detailContainer.appendChild(prerequis_force);
+        content.appendChild(prerequis_force);
         let prerequis_intelligence = document.createElement('p');
         prerequis_intelligence.textContent = 'Prérequis intelligence: ' + equipement['prerequis_intelligence'];
-        detailContainer.appendChild(prerequis_intelligence);
+        content.appendChild(prerequis_intelligence);
         let prerequis_agilite = document.createElement('p');
         prerequis_agilite.textContent = 'Prérequis agilité: ' + equipement['prerequis_agilite'];
-        detailContainer.appendChild(prerequis_agilite);
-
-        Rendering.renderVisible(detailContainer);
+        content.appendChild(prerequis_agilite);
     }
-
 }
 
 export default RenderingEquipements;

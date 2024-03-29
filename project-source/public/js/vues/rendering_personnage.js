@@ -1,47 +1,34 @@
-import routes from '../../script.js';
-import Rendering from '../rendering.js';
+import routes from '../script.js';
+import Rendering from './rendering.js';
 
 class RenderingPersonnage {
 
     static renderHidePersonnages() {
-        let personnagesContainer = document.getElementById('personnages-description');
-      
-        Rendering.renderEmpty(personnagesContainer);
+        let content = document.getElementById('content');
+        Rendering.renderEmpty(content);
         Rendering.renderVisible(document.getElementById('voir-personnages'));
         Rendering.renderHidden(document.getElementById('cacher-personnages'));
-        Rendering.renderHidden(document.getElementById('title-filters'));
-        Rendering.renderHidden(document.getElementById('search-button'));
-        Rendering.renderHidden(document.getElementById('title-sort'));
-
-        document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
-            Rendering.renderHidden(element);
-        });
-        document.querySelectorAll('select').forEach(element => { 
-            Rendering.renderHidden(element);
-        });
+        Rendering.renderHidden(document.getElementById('filters'));
     }
 
     static renderDisplayPersonnages(personnages) {
         let buttonAccueil = document.getElementById('go-to-home');
-        let detailPerso = document.getElementById('detail-personnage');
         let manageFav = document.getElementById('manage-fav-button');
-        let capacitesContainer = document.getElementById('capacites-description');
-        let equipementsContainer = document.getElementById('equipements-description');
-        let personnagesContainer = document.getElementById('personnages-description');
+        let content = document.getElementById('content');
+        Rendering.renderEmpty(content);
 
         Rendering.renderHidden(buttonAccueil);
-        Rendering.renderHidden(detailPerso);
         Rendering.renderVisible(manageFav);
-        Rendering.renderEmpty(capacitesContainer);
         Rendering.renderVisible(document.getElementById('voir-capacites'));
         Rendering.renderVisible(document.getElementById('voir-equipements'));
-        Rendering.renderEmpty(equipementsContainer);
-        Rendering.renderEmpty(personnagesContainer);
+        Rendering.renderVisible(document.getElementById('manage-fav-button'));
+        Rendering.renderHidden(document.getElementById('cacher-capacites'));
+        Rendering.renderHidden(document.getElementById('cacher-equipements'));
+        Rendering.renderVisible(document.getElementById('filters'));
 
-        personnages.forEach(personnage => {
+        for (let personnage of personnages) {
             let card = document.createElement('div');
             card.classList.add('card');
-            Rendering.renderVisible(card);
         
             let divInfo = document.createElement('div');
             let divImage = document.createElement('div');
@@ -66,7 +53,7 @@ class RenderingPersonnage {
             detailLink.textContent = 'Détail';
             divInfo.appendChild(detailLink);
         
-            personnagesContainer.appendChild(card);
+            content.appendChild(card);
         
             let image = document.createElement('img');
             image.setAttribute("src", personnage['image']);
@@ -77,36 +64,23 @@ class RenderingPersonnage {
             divIntermediaire.appendChild(divImage);
             divIntermediaire.classList.add('div-inter-perso');
             card.appendChild(divIntermediaire);
-        });        
+        };        
 
         Rendering.renderHidden(document.getElementById('voir-personnages'));
         Rendering.renderVisible(document.getElementById('cacher-personnages'));
-        Rendering.renderVisible(document.getElementById('title-filters'));
-        Rendering.renderVisible(document.getElementById('search-button'));
-        Rendering.renderVisible(document.getElementById('title-sort'));
-
-        document.querySelectorAll('#all-filters input[type="text"]').forEach(element => { 
-            Rendering.renderVisible(element);
-        });
-        document.querySelectorAll('select').forEach(element => { 
-            Rendering.renderVisible(element);
-        });
     }
 
     static RenderDisplayDetailPersonnage(personnage) {
-        document.querySelectorAll('.isVisible').forEach(element => {
-            Rendering.renderHidden(element);
-        });
+        let content = document.getElementById('content');
+        Rendering.renderEmpty(content);
+        Rendering.renderHidden(document.getElementById('filters'));
+        Rendering.renderHidden(document.getElementById('button-container'));
         
         let buttonAccueil = document.getElementById('go-to-home');
-        let detailContainer = document.getElementById('detail-personnage');
-
         buttonAccueil.addEventListener('click', async function() { window.location.hash = '/' });
         Rendering.renderVisible(buttonAccueil);
-        Rendering.renderEmpty(detailContainer);
-        Rendering.renderVisible(detailContainer);
 
-        detailContainer.classList.add('card');
+        content.classList.add('card');
         let favButton = document.createElement('button');
         let favImage = document.createElement('img');
         if (personnage['estFav'] === 0) {
@@ -137,28 +111,28 @@ class RenderingPersonnage {
             });
         });
         
-        detailContainer.appendChild(favButton);
+        content.appendChild(favButton);
         
         let nom = document.createElement('h2');
         nom.textContent = 'Nom: ' + personnage['nom_prenom'];
-        detailContainer.appendChild(nom);
+        content.appendChild(nom);
         let race = document.createElement('p');
         race.textContent = 'Race: ' + personnage['race'];
-        detailContainer.appendChild(race);
+        content.appendChild(race);
         let agilite = document.createElement('p');
         agilite.textContent = 'Agilité: ' + personnage['agilite'];
-        detailContainer.appendChild(agilite);
+        content.appendChild(agilite);
         let force = document.createElement('p');
         force.textContent = 'Force: ' + personnage['force'];
-        detailContainer.appendChild(force);
+        content.appendChild(force);
         let intelligence = document.createElement('p');
         intelligence.textContent = 'Intelligence: ' + personnage['intelligence'];
-        detailContainer.appendChild(intelligence);
+        content.appendChild(intelligence);
         
         if (personnage['capacite'].length > 0) {
             let capacite = document.createElement('p');
             capacite.textContent = 'Capacités:';
-            detailContainer.appendChild(capacite);
+            content.appendChild(capacite);
     
             let capaciteList = document.createElement('ul');
             personnage['capacite'].forEach(cap => {
@@ -166,13 +140,13 @@ class RenderingPersonnage {
                 capaciteItem.textContent = cap;
                 capaciteList.appendChild(capaciteItem);
             });
-            detailContainer.appendChild(capaciteList);
+            content.appendChild(capaciteList);
         }
     
         if (personnage['equipements'].length > 0) {
             let equipements = document.createElement('p');
             equipements.textContent = 'Équipements:';
-            detailContainer.appendChild(equipements);
+            content.appendChild(equipements);
     
             let equipementsList = document.createElement('ul');
             personnage['equipements'].forEach(equip => {
@@ -180,7 +154,7 @@ class RenderingPersonnage {
                 equipItem.textContent = equip;
                 equipementsList.appendChild(equipItem);
             });
-            detailContainer.appendChild(equipementsList);
+            content.appendChild(equipementsList);
         }
         let evaluationContainer = document.createElement('div');
         evaluationContainer.classList.add('evaluation-container');
@@ -206,8 +180,7 @@ class RenderingPersonnage {
             starButton.appendChild(starImage);
             evaluationContainer.appendChild(starButton);
         }
-        detailContainer.appendChild(evaluationContainer);
-        Rendering.renderVisible(detailContainer);
+        content.appendChild(evaluationContainer);
     }
 
     static updateStarImages(note) {

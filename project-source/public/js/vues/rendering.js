@@ -1,27 +1,8 @@
-import inputMapCreating from '../utils/utilitaires.js';
-
 class Rendering {
-    
-    static renderShowCreatedInput() {
-        Rendering.renderVisible(document.getElementById('validate-creation'));
-        Rendering.renderHidden(document.getElementById('create-personnage-button'));
-        document.querySelectorAll('#create-personnage input[type="text"]').forEach(element => { 
-            Rendering.renderVisible(element);
-        });
-    }
-
-    static renderHideCreatedInput() {
-        Rendering.renderHidden(document.getElementById('validate-creation'));
-        Rendering.renderVisible(document.getElementById('create-personnage-button'));
-        document.querySelectorAll('#create-personnage input[type="text"]').forEach(element => { 
-            Rendering.renderHidden(element);
-        });
-    }
 
     static createInputSelect(inputsMap) {
         let inputContainer = document.getElementById('select-sorted-columns');
         let selectElement = document.createElement('select');
-        selectElement.classList.add('isHidden');
         selectElement.classList.add('custom-select');
         selectElement.id = 'input-select-sorted-columns';
 
@@ -48,52 +29,9 @@ class Rendering {
             let inputElement = document.createElement('input');
             inputElement.setAttribute('type', 'text');
             inputElement.setAttribute('id', input.id);
-            inputElement.classList.add('isHidden');
             inputElement.setAttribute('placeholder', input.placeholder);
             divElement.appendChild(inputElement);
         });
-    }
-
-    static createInputsCreate(inputsMap) {
-        let divElement = document.getElementById('create-personnage');
-        Object.keys(inputsMap).forEach(key => {
-            let input = inputsMap[key];
-            let inputElement = document.createElement('input');
-            inputElement.setAttribute('type', 'text');
-            inputElement.setAttribute('id', input.id);
-            inputElement.classList.add('isHidden');
-            inputElement.setAttribute('placeholder', input.placeholder);
-            divElement.appendChild(inputElement);
-        });
-    }
-
-    static makeCreatedPersonnageInputsEmpty() {
-        document.querySelectorAll('#create-personnage input[type="text"]').forEach(element => { 
-            Rendering.renderEmpty(element);
-        });
-    }
-
-    static displayPopupModify(data) {
-        let divElement = document.getElementById('modify-personnage');
-        Rendering.renderEmpty(divElement);
-        Object.keys(inputMapCreating).forEach(key => {
-            let input = inputMapCreating[key];
-            let inputElement = document.createElement('input');
-            inputElement.setAttribute('type', 'text');
-            inputElement.setAttribute('id', input.id);
-            Rendering.renderVisible(inputElement);
-            inputElement.setAttribute('value', data[key]);
-            divElement.appendChild(inputElement);
-        });
-        document.getElementById('close-popup').style.display = 'block';
-        document.getElementById('validate-editing').style.display = 'block';
-        document.getElementById('modal').style.display = 'block';
-    }
-
-    static renderHidePopupModify() {
-        document.getElementById('close-popup').style.display = 'none';
-        document.getElementById('validate-editing').style.display = 'none';
-        document.getElementById('modal').style.display = 'none';
     }
 
     static renderHidden(component) {
