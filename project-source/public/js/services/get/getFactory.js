@@ -1,16 +1,21 @@
-import RenderingCapacites from "../../vues/capacites_page/rendering_capacites";
-import RenderingEquipements from "../../vues/equipements_page/rendering_equipements";
-import RenderingPersonnage from "../../vues/personnages_page/rendering_personnage";
-import Rendering from "../../vues/rendering";
+import RenderingCapacites from "../../vues/capacites_page/rendering_capacites.js";
+import RenderingEquipements from "../../vues/equipements_page/rendering_equipements.js";
+import RenderingFav from "../../vues/fav_page/rendering_fav.js";
+import RenderingPersonnage from "../../vues/personnages_page/rendering_personnage.js";
+import Rendering from "../../vues/rendering.js";
 
 class GetFactory {
 
     #datasFetched = null;
     #url = null;
+    #endPointFavoris = 'personnages?estFav=1'
 
     constructor(url) {
-        console.log('Creating GetFactory Oject first... with URL :' + url.split('/')[1])
-        this.#url = url.split('/')[1];
+        const urlDecomposition = url.split('/')[1];
+        urlDecomposition != 'favoris' ?
+            this.#url = urlDecomposition : 
+            this.#url = this.#endPointFavoris;
+        console.log('Creating GetFactory Oject first... with URL :' + this.#url);
     }
 
     getDatasFetched() {
@@ -35,7 +40,7 @@ class GetFactory {
         return await rep.json();
     }
 
-    async recupDatasInArray() {
+    async recupDatasInArray(id) {
         console.log('Recup referentials datas...')
         this.setDatasFetched(await this.fetchDatas());
         return this.getDatasFetched();
@@ -53,7 +58,11 @@ class GetFactory {
                 break;
 
             case 'capacites':
-                RenderingCapacites.renderHideCapacites(this.getDatasFetched());
+                RenderingCapacites.renderDisplayCapacites(this.getDatasFetched());
+                break;
+
+            case 'personnages?estFav=1':
+                RenderingFav.renderDisplayFav(this.getDatasFetched());
                 break;
         }
     }

@@ -9,9 +9,6 @@ import GetFactory from "./services/get/getFactory.js";
 import FilterFactory from "./services/get/filterFactory.js";
 
 import Rendering from "./vues/rendering.js";
-import RenderingCapacites from "./vues/capacites_page/rendering_capacites.js";
-import RenderingEquipements from "./vues/equipements_page/rendering_equipements.js";
-import RenderingFav from "./vues/fav_page/rendering_fav.js";
 import RenderingPersonnage from "./vues/personnages_page/rendering_personnage.js";
 
 import Utils from './utils/inputs.js';
@@ -23,7 +20,7 @@ const route = {
     "#/equipements" : GetFactory,
     "#/personnages/detail" : AboutFactory,
     "#/equipements/detail" : AboutFactory,
-    "#/personnages/favoris" : GetFactory,
+    "#/favoris" : FilterFactory,
 
     "/personnages?" : FilterFactory,
     "/personnages?_sort" : FilterFactory,
@@ -44,53 +41,15 @@ const datasLenght = Object.keys(cache).length;
 
 async function routes(url, id) {
     if (id!=null) {
-        const decomposition = decomposeURLwithParam(url);
+        const decomposition = decomposeURLwithParam();
         url = decomposition[0];
         id = decomposition[1];
     }
     if (url in route) {
         let object = new route[url](url) // optimise le switch case, avec le dico, on créer dans tous les cas l'objet dès le début sans condition de test
-        object.recupDatasInArray();
+        await object.recupDatasInArray(id);
         object.render();
         switch (url) {
-            case "#/home":
-                RenderingPersonnage.renderHidePersonnages();
-                RenderingCapacites.renderHideCapacites();
-                RenderingEquipements.renderHideEquipements();
-                break;
-
-            // case "#/personnages":
-            //     cache = await object.recupDatasInArray();
-            //     Rendering.renderHideCreatedInput();
-            //     RenderingPersonnage.renderDisplayPersonnages(cache);
-            //     break;
-
-            // case "#/equipements":
-            //     cache = await object.recupDatasInArray();
-            //     RenderingEquipements.renderDisplayEquipements(cache);
-            //     break;
-
-            // case "#/capacites":
-            //     cache = await object.recupDatasInArray();
-            //     Rendering.renderHideCreatedInput();
-            //     RenderingCapacites.renderDisplayCapacites(cache);
-            //     break;
-            
-            case "#/personnages/detail":
-                cache = await object.recupDatasAboutInArray(id);
-                RenderingPersonnage.RenderDisplayDetailPersonnage(cache);
-                break;
-
-            case "#/equipements/detail":
-                cache = await object.recupDatasAboutInArray(id);
-                RenderingEquipements.renderDisplayDetailEquipements(cache);
-                break;
-        
-            case "#/personnages/favoris":
-                object.setURL('/personnages?estFav=1');
-                cache = await object.recupDatasInArray();
-                RenderingFav.renderDisplayFav(cache);
-                break;
             
             case "/personnages?_sort":
                 object.getSortOn();
@@ -169,7 +128,7 @@ function checkParamOnUrl() {
     return null;
 }
 
-function decomposeURLwithParam(URL) {
+function decomposeURLwithParam() {
     const decomposition = window.location.hash.split('/');
     return [
         `${decomposition[0]}/${decomposition[1]}/${decomposition[2]}`,

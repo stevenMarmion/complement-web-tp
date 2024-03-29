@@ -3,10 +3,13 @@ class FilterFactory {
     #personnages = null;
     #url = null;
     #filters = {};
+    ENDPOINTS_FAV = 'personnages?estFav=1';
+    ENDPOINTS_SORT = 'personnages?_sort';
+    ENDPOINTS_PAGE = 'personnages?_page';
 
     constructor(url) {
         console.log('Creating FilterFactory Oject first... with URL :' + url);
-        this.#url = url;
+        url == '#/favoris' ? this.#url = this.ENDPOINTS_FAV : url == 'personnages?_sort' ? ;
     }
 
     getPersonnages() {
@@ -52,7 +55,7 @@ class FilterFactory {
         return await rep.json();
     }
 
-    async recupPersonnagesInArray() {
+    async recupDatasInArray(id) {
         console.log('Recup personnage datas on personnage by filters : \n' + this.#url)
         this.setPersonnages(await this.fetchPersonnages());
         return this.getPersonnages();
