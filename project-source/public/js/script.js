@@ -11,7 +11,7 @@ import FilterFactory from "./services/get/filterFactory.js";
 import Rendering from "./vues/rendering.js";
 import RenderingPersonnage from "./vues/personnages_page/rendering_personnage.js";
 
-import Utils from './utils/inputs.js';
+import Utilitaires from './utils/utilitaires.js';
 import UrlParser from "./utils/url.js";
 
 const route = {
@@ -23,16 +23,16 @@ const route = {
     "#/equipements/detail" : AboutFactory,
     "#/favoris" : GetFactory,
 
-    "/personnages?" : FilterFactory,
     "/personnages?_page" : FilterFactory,
     "/personnages/post" : CreateFactory,
     "/personnages/put" : ModifyFactory,
     "/personnages/delete" : DeleteFactory,
 }
 
-Rendering.createInputsFilters(Utils.inputsMap);
-Rendering.createInputSelect(Utils.inputsMap);
-Rendering.createInputsCreate(Utils.inputMapCreating);
+Rendering.createInputsFilters(Utilitaires.inputsMap);
+Rendering.createInputSelect(Utilitaires.inputsMap);
+Rendering.createInputsCreate(Utilitaires.inputMapCreating);
+UrlParser.makeRedirectionHome();
 
 // Me permet de remplir le cache et de charger les données avant n'importe quelle requête ==> on prédit le clique souris sur "Voir les villes"
 const rep = await fetch('/personnages');
@@ -53,14 +53,6 @@ async function routes(url, id) {
         await object.recupDatasInArray(id);
         object.render();
         switch (url) {
-
-            case "/personnages?_page":
-                currentPage = object.actionPaginationValide(currentPage, perPage, id);
-                object.getDatasByPage(currentPage, perPage);
-                cache = await object.recupPersonnagesInArray();
-                Rendering.renderHideCreatedInput();
-                RenderingPersonnage.renderDisplayPersonnages(cache.data);
-                break;
 
             case "/personnages/post":
                 let data = object.recupValuesOnInputs();
@@ -112,6 +104,17 @@ selectSort.addEventListener('change', async function(e) {
     Rendering.renderHideCreatedInput();
     RenderingPersonnage.renderDisplayPersonnages(cache);
 });
+
+
+// let buttonPage = document.getElementById('#buttonPage');
+// buttonPage.addEventListener('click', async function(e) {
+//     let url = '/personnages?_page';
+//     currentPage = FilterFactory.actionPaginationValide(Utilitaires.currentPage, Utilitaires.perPage, id);
+//     FilterFactory.getDatasByPage(Utilitaires.currentPage, Utilitaires.perPage);
+//     cache = await FilterFactory.recupSortedDatas(url);
+//     Rendering.renderHideCreatedInput();
+//     RenderingPersonnage.renderDisplayPersonnages(cache.data);
+// });
 
 window.addEventListener('hashchange', async function() {
     UrlParser.makeRedirectionHome();

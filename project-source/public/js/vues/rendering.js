@@ -1,4 +1,4 @@
-import inputMapCreating from '../utils/inputs.js';
+import inputMapCreating from '../utils/utilitaires.js';
 
 class Rendering {
     

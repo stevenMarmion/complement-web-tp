@@ -101,11 +101,7 @@ class RenderingPersonnage {
         let buttonAccueil = document.getElementById('go-to-home');
         let detailContainer = document.getElementById('detail-personnage');
 
-        buttonAccueil.addEventListener('click', async function() {
-            console.log('~ Click on Home button... ~ Go to home... ~');
-            let url = '/personnages';
-            await routes(url, null);
-        });
+        buttonAccueil.addEventListener('click', async function() { window.location.hash = '/' });
         Rendering.renderVisible(buttonAccueil);
         Rendering.renderEmpty(detailContainer);
         Rendering.renderVisible(detailContainer);

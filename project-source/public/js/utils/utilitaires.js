@@ -1,4 +1,8 @@
-export default class Utils { 
+export default class Utilitaires { 
+
+    static currentPage = 1;
+    static perPage = 10;
+
     // Me permet de définir au préalable mes champs de filtres sur ma page
     static inputsMap = {
         'nom_prenom': { 
