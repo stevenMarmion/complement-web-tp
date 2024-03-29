@@ -1,64 +1,41 @@
 class FilterFactory {
 
-    #personnages = null;
-    #url = null;
-    #filters = {};
-    ENDPOINTS_FAV = 'personnages?estFav=1';
+    static filters = {};
     ENDPOINTS_SORT = 'personnages?_sort';
     ENDPOINTS_PAGE = 'personnages?_page';
 
-    constructor(url) {
-        console.log('Creating FilterFactory Oject first... with URL :' + url);
-        url == '#/favoris' ? this.#url = this.ENDPOINTS_FAV : url == 'personnages?_sort' ? ;
-    }
-
-    getPersonnages() {
-        return this.#personnages;
-    }
-
-    getURL() {
-        return this.#url;
-    }
-
-    setPersonnages(personnages) {
-        this.#personnages = personnages;
-    }
-
-    setURL(url) {
-        console.log('Setting URL FilterFactory Oject... with URL :' + url);
-        this.#url = url;
-    }
-
-    getFiltersOn() {
-        let inputs = document.querySelectorAll('#all-filters input[type="text"]');
+    static getFiltersOn(url) {
+        let inputs = document.querySelectorAll('all-filters input[type="text"]');
         inputs.forEach(input => {
             if (input.value !== null && input.value !== "" && input.value !== undefined) {
-                this.#filters[input.id] = input.value;
-                if (Object.keys(this.#filters).length == 1) {
-                    this.#url += input.id + '=' + input.value;
+                FilterFactory.filters[input.id] = input.value;
+                if (Object.keys(FilterFactory.filters).length == 1) {
+                    url += input.id + '=' + input.value;
                 } else {
-                    this.#url += '&' + input.id + '=' + input.value;
+                    url += '&' + input.id + '=' + input.value;
                 }
             }
         });
+        console.log(url);
+        return url;
     }
 
-    getSortOn() {
+    static getSortOn(url) {
         let sortedColumns = document.getElementById('input-select-sorted-columns').value;
         if (sortedColumns !== null && sortedColumns !== "" && sortedColumns !== undefined) {
-            this.#url += '=' + sortedColumns;
+            url += '=' + sortedColumns;
         }
+        return url;
     }
 
-    async fetchPersonnages() {
-        const rep = await fetch(this.#url);
+    static async fetchDatas(url) {
+        const rep = await fetch(url);
         return await rep.json();
     }
 
-    async recupDatasInArray(id) {
-        console.log('Recup personnage datas on personnage by filters : \n' + this.#url)
-        this.setPersonnages(await this.fetchPersonnages());
-        return this.getPersonnages();
+    static async recupSortedDatas(url) {
+        console.log('Recup personnage datas on personnage by filters : \n' + url);
+        return await FilterFactory.fetchDatas(url);
     }
 }
 

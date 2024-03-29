@@ -12,6 +12,7 @@ import Rendering from "./vues/rendering.js";
 import RenderingPersonnage from "./vues/personnages_page/rendering_personnage.js";
 
 import Utils from './utils/inputs.js';
+import UrlParser from "./utils/url.js";
 
 const route = {
     "#/home": GetFactory,
@@ -20,16 +21,18 @@ const route = {
     "#/equipements" : GetFactory,
     "#/personnages/detail" : AboutFactory,
     "#/equipements/detail" : AboutFactory,
-    "#/favoris" : FilterFactory,
+    "#/favoris" : GetFactory,
 
     "/personnages?" : FilterFactory,
-    "/personnages?_sort" : FilterFactory,
     "/personnages?_page" : FilterFactory,
     "/personnages/post" : CreateFactory,
     "/personnages/put" : ModifyFactory,
     "/personnages/delete" : DeleteFactory,
 }
 
+Rendering.createInputsFilters(Utils.inputsMap);
+Rendering.createInputSelect(Utils.inputsMap);
+Rendering.createInputsCreate(Utils.inputMapCreating);
 
 // Me permet de remplir le cache et de charger les données avant n'importe quelle requête ==> on prédit le clique souris sur "Voir les villes"
 const rep = await fetch('/personnages');
@@ -41,7 +44,7 @@ const datasLenght = Object.keys(cache).length;
 
 async function routes(url, id) {
     if (id!=null) {
-        const decomposition = decomposeURLwithParam();
+        const decomposition = UrlParser.decomposeURLwithParam();
         url = decomposition[0];
         id = decomposition[1];
     }
@@ -50,13 +53,6 @@ async function routes(url, id) {
         await object.recupDatasInArray(id);
         object.render();
         switch (url) {
-            
-            case "/personnages?_sort":
-                object.getSortOn();
-                cache = await object.recupPersonnagesInArray();
-                Rendering.renderHideCreatedInput();
-                RenderingPersonnage.renderDisplayPersonnages(cache);
-                break;
 
             case "/personnages?_page":
                 currentPage = object.actionPaginationValide(currentPage, perPage, id);
@@ -101,44 +97,22 @@ let buttonSearch = document.getElementById('search-button');
 buttonSearch.addEventListener('click', async function(e) {
     console.log('~ Click on search button... ~ Loading and fetch datas by filters... ~');
     let url = '/personnages?';
-    await routes(url, null);
+    
 });
-
-Rendering.createInputsFilters(Utils.inputsMap);
-Rendering.createInputSelect(Utils.inputsMap);
-Rendering.createInputsCreate(Utils.inputMapCreating);
 
 let selectSort = document.querySelector('#input-select-sorted-columns');
 selectSort.addEventListener('change', async function(e) {
     console.log('~ Click on sort button... ~ Loading and fetch datas by sorted columns... ~');
     let url = '/personnages?_sort';
-    await routes(url, null);
+    url = FilterFactory.getSortOn(url);
+    cache = await FilterFactory.recupSortedDatas(url);
+    Rendering.renderHideCreatedInput();
+    RenderingPersonnage.renderDisplayPersonnages(cache);
 });
 
 window.addEventListener('hashchange', async function() {
-    makeRedirectionHome();
-    await routes(window.location.hash, checkParamOnUrl());
+    UrlParser.makeRedirectionHome();
+    await routes(window.location.hash, UrlParser.checkParamOnUrl());
 });
-
-function checkParamOnUrl() {
-    const decomposition = window.location.hash.split('/');
-    if (decomposition.length === 4) {
-        return decomposition[3];
-    }
-    return null;
-}
-
-function decomposeURLwithParam() {
-    const decomposition = window.location.hash.split('/');
-    return [
-        `${decomposition[0]}/${decomposition[1]}/${decomposition[2]}`,
-        decomposition[3]
-    ];
-}
-
-function makeRedirectionHome() {
-    window.location.hash == "" ? window.location.hash = "#/home" : null;
-}
-makeRedirectionHome();
 
 export default routes;
