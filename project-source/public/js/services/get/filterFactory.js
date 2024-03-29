@@ -5,8 +5,9 @@ class FilterFactory {
     ENDPOINTS_PAGE = 'personnages?_page';
 
     static getFiltersOn(url) {
-        let inputs = document.querySelectorAll('all-filters input[type="text"]');
+        let inputs = document.querySelectorAll('#all-filters input[type="text"]');
         inputs.forEach(input => {
+            console.log(input.value)
             if (input.value !== null && input.value !== "" && input.value !== undefined) {
                 FilterFactory.filters[input.id] = input.value;
                 if (Object.keys(FilterFactory.filters).length == 1) {
@@ -16,7 +17,7 @@ class FilterFactory {
                 }
             }
         });
-        console.log(url);
+        console.log('New URL on by parsing and filtered inputs : ' + url);
         return url;
     }
 

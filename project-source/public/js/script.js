@@ -97,7 +97,10 @@ let buttonSearch = document.getElementById('search-button');
 buttonSearch.addEventListener('click', async function(e) {
     console.log('~ Click on search button... ~ Loading and fetch datas by filters... ~');
     let url = '/personnages?';
-    
+    url = FilterFactory.getFiltersOn(url);
+    cache = await FilterFactory.recupSortedDatas(url);
+    Rendering.renderHideCreatedInput();
+    RenderingPersonnage.renderDisplayPersonnages(cache);
 });
 
 let selectSort = document.querySelector('#input-select-sorted-columns');
