@@ -1,3 +1,4 @@
+import LazyLoading from "../utils/lazy_loading.js";
 import Rendering from "./rendering.js";
 
 export default class Home {
@@ -22,13 +23,16 @@ export default class Home {
         divContainer.appendChild(heading);
         divContainer.appendChild(paragraph2);
         contentContainer.appendChild(divContainer);
-        for (let i = 0 ; i < 50 ; i++) {
+
+        for (let i = 0; i < 50; i++) {
             let card = document.createElement('div');
             card.classList.add('card');
             let image = document.createElement('img');
             image.setAttribute("data-src", '../../assets/default.jpg');
+            image.classList.add('lazy');
             card.appendChild(image);
             contentContainer.appendChild(card);
         }
+        LazyLoading.lazyLoadImages();
     }
 }

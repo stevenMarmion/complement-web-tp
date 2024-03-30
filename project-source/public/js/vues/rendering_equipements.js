@@ -1,4 +1,4 @@
-import routes from '../script.js';
+import LazyLoading from '../utils/lazy_loading.js';
 import Rendering from './rendering.js';
 
 class RenderingEquipements {
@@ -39,7 +39,8 @@ class RenderingEquipements {
             let image = document.createElement('img');
             let divInter = document.createElement('div');
             divInter.classList.add("div-inter-equip");
-            image.setAttribute("src",equipement["image"]);
+            image.setAttribute("data-src", equipement["image"]);
+            image.classList.add('lazy');
             divImage.classList.add("div-image-equip")
             divImage.appendChild(image);
             divInter.appendChild(divInfo);
@@ -54,6 +55,8 @@ class RenderingEquipements {
         Rendering.renderVisible(document.getElementById('manage-fav-button'));
         Rendering.renderHidden(document.getElementById('cacher-capacites'));
         Rendering.renderHidden(document.getElementById('cacher-personnages'));
+
+        LazyLoading.lazyLoadImages();
     }
 
     static renderDisplayDetailEquipements(equipement) {
