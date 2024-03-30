@@ -98,7 +98,7 @@ class RenderingPersonnage {
         
         favButton.addEventListener('click', async function() {
             console.log('~ Click on fav button... ~ Change fav status... ~');
-            if (key == undefined || key == null || key == 0) {
+            if (localStorage.getItem(`fav/personnages/${personnage['id']}`) == undefined || localStorage.getItem(`fav/personnages/${personnage['id']}`) == null || localStorage.getItem(`fav/personnages/${personnage['id']}`) == 0) {
                 localStorage.setItem(`fav/personnages/${personnage['id']}`, 1);
                 favImage.src = '../../../assets/fav.png';
             } else {
