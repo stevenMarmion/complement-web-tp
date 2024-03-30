@@ -1,55 +1,76 @@
 import Utilitaires from "../utils/utilitaires.js";
+import RenderingPersonnage from "../vues/rendering_personnage.js";
 
 class FilterFactory {
 
-    static filters = {};
+    filters = {};
+    #url = ''
+    #datasFetched = null;
 
-    static getFiltersOn() {
-        let url = '/personnages?';
+    constructor(url) {
+        console.log('Creating FilterFactory Oject first... with URL :' + url);
+        this.setInitialURL();
+        this.actionPaginationValide('');
+    }
+
+    setInitialURL() {
+        this.#url = '/personnages?';
+    }
+
+    getDatasFetched() {
+        return this.#datasFetched;
+    }
+
+    setDatasFetched(datasFetched) {
+        this.#datasFetched = datasFetched;
+    }
+
+    getFiltersOn() {
         let inputs = document.querySelectorAll('#all-filters input[type="text"]');
         inputs.forEach(input => {
             console.log(input.value)
             if (input.value !== null && input.value !== "" && input.value !== undefined) {
-                FilterFactory.filters[input.id] = input.value;
-                if (Object.keys(FilterFactory.filters).length == 1) {
-                    url += input.id + '=' + input.value;
-                } else {
-                    url += '&' + input.id + '=' + input.value;
-                }
+                this.#url += '&' + input.id + '=' + input.value;
             }
         });
-        console.log('New URL on by parsing and filtered inputs : ' + url);
-        return url;
+        console.log('New URL on by parsing and filtered inputs : ' + this.#url);
+        return this.#url;
     }
 
-    static getSortOn() {
-        let url = '/personnages?_sort=';
+    getSortOn() {
+        this.#url += '&_sort=';
         let sortedColumns = document.getElementById('input-select-sorted-columns').value;
         if (sortedColumns !== null && sortedColumns !== "" && sortedColumns !== undefined) {
-            url += sortedColumns;
+            this.#url += sortedColumns;
         }
-        return url;
+        return this.#url;
     }
 
-    static async fetchDatas(url) {
+    async fetchDatas(url) {
         const rep = await fetch(url);
         return await rep.json();
     }
 
-    static async recupSortedDatas(url) {
-        console.log('Recup personnage datas on personnage by filters : \n' + url);
-        return await FilterFactory.fetchDatas(url);
+    async recupDatasInArray(id) {
+        console.log('Recup personnages datas by filters : \n' + id);
+        this.setDatasFetched(await this.fetchDatas(this.#url));
+        return this.getDatasFetched();
     }
 
-    static async actionPaginationValide(next_or_previous) {
-        let url = `/personnages?_page=${Utilitaires.currentPage}&_per_page=${Utilitaires.perPage}`;
-        const json = await FilterFactory.recupSortedDatas(url);
+    async actionPaginationValide(next_or_previous) {
+        this.setInitialURL();
+        this.#url += `_page=${Utilitaires.currentPage}&_limit=${Utilitaires.perPage}`;
+        const json = await this.recupDatasInArray(this.#url);
         localStorage.setItem('content', JSON.stringify(json));
         const data = JSON.parse(localStorage.getItem('content'));
-        //console.log(data)
         next_or_previous === 'next' && data.next != null ? Utilitaires.currentPage = data.next : null;
-        next_or_previous === 'previous' && data.prev != null ? Utilitaires.currentPage = data.prev : null;
-        return data.data;
+        next_or_previous === 'previous' && Utilitaires.currentPage > 1 ? Utilitaires.currentPage-- : null;
+        this.setDatasFetched(data);
+    }
+
+    render() {
+        console.log(this.getDatasFetched());
+        RenderingPersonnage.renderDisplayPersonnages(this.getDatasFetched());
     }
 }
 

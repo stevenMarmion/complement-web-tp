@@ -7,13 +7,10 @@ class GetFactory {
 
     #datasFetched = null;
     #url = null;
-    #ENDPOINTFAVORIS = 'personnages?estFav=1'
 
     constructor(url) {
         const urlDecomposition = url.split('/')[1];
-        urlDecomposition != 'favoris' ?
-            this.#url = urlDecomposition : 
-            this.#url = this.#ENDPOINTFAVORIS;
+        this.#url = urlDecomposition;
         console.log('Creating GetFactory Oject first... with URL :' + this.#url);
     }
 
@@ -41,6 +38,9 @@ class GetFactory {
 
     async recupDatasInArray(id) {
         console.log('Recup referentials datas...')
+        if (this.getURL() === 'favoris') {
+            return null;
+        }
         this.setDatasFetched(await this.fetchDatas());
         return this.getDatasFetched();
     }
@@ -59,8 +59,8 @@ class GetFactory {
                 RenderingCapacites.renderDisplayCapacites(this.getDatasFetched());
                 break;
 
-            case this.#ENDPOINTFAVORIS:
-                RenderingFav.renderDisplayFav(this.getDatasFetched());
+            case 'favoris':
+                RenderingFav.renderDisplayFav();
                 break;
         }
     }

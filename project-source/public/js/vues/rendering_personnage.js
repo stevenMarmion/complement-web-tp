@@ -83,7 +83,8 @@ class RenderingPersonnage {
         content.classList.add('card');
         let favButton = document.createElement('button');
         let favImage = document.createElement('img');
-        if (personnage['estFav'] === 0) {
+        let key = localStorage.getItem(`fav/personnages/${personnage['id']}`);
+        if (key == undefined || key == null || key == 0) {
             favImage.src = '../../../assets/not-fav.png';
         } else {
             favImage.src = '../../../assets/fav.png';
@@ -94,21 +95,13 @@ class RenderingPersonnage {
         
         favButton.addEventListener('click', async function() {
             console.log('~ Click on fav button... ~ Change fav status... ~');
-            if (personnage['estFav'] === 0) {
-                personnage['estFav'] = 1;
+            if (key == undefined || key == null || key == 0) {
+                localStorage.setItem(`fav/personnages/${personnage['id']}`, 1);
                 favImage.src = '../../../assets/fav.png';
             } else {
-                personnage['estFav'] = 0;
+                localStorage.setItem(`fav/personnages/${personnage['id']}`, 0);
                 favImage.src = '../../../assets/not-fav.png';
             }
-            console.log('~ Click on fav button... ~ Preparing modify button and datas... ~');
-            await fetch(`/personnages/${personnage['id']}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(personnage)
-            });
         });
         
         content.appendChild(favButton);
