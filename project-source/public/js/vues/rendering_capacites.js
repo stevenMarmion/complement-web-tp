@@ -1,4 +1,3 @@
-import routes from '../script.js';
 import Rendering from './rendering.js';
 
 class RenderingCapacites {

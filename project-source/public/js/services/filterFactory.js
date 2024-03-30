@@ -4,6 +4,7 @@ import RenderingPersonnage from "../vues/rendering_personnage.js";
 class FilterFactory {
 
     filters = {};
+    sortedColumns = null;
     #url = ''
     #datasFetched = null;
 
@@ -30,6 +31,7 @@ class FilterFactory {
         inputs.forEach(input => {
             console.log(input.value)
             if (input.value !== null && input.value !== "" && input.value !== undefined) {
+                this.filters[input.id] = input.value;
                 this.#url += '&' + input.id + '=' + input.value;
             }
         });
@@ -38,10 +40,13 @@ class FilterFactory {
     }
 
     getSortOn() {
-        this.#url += '&_sort=';
         let sortedColumns = document.getElementById('input-select-sorted-columns').value;
         if (sortedColumns !== null && sortedColumns !== "" && sortedColumns !== undefined) {
+            this.#url += '&_sort=';
+            this.sortedColumns = sortedColumns;
             this.#url += sortedColumns;
+        } else {
+            this.sortedColumns = null;
         }
         return this.#url;
     }
@@ -59,17 +64,18 @@ class FilterFactory {
 
     async actionPaginationValide(next_or_previous) {
         this.setInitialURL();
-        this.#url += `_page=${Utilitaires.currentPage}&_limit=${Utilitaires.perPage}`;
+        this.#url += `_start=${((Utilitaires.perPage * Utilitaires.currentPage) - Utilitaires.perPage)}&_limit=${Utilitaires.perPage}`;
+        this.getFiltersOn();
+        this.getSortOn();
         const json = await this.recupDatasInArray(this.#url);
         localStorage.setItem('content', JSON.stringify(json));
         const data = JSON.parse(localStorage.getItem('content'));
-        next_or_previous === 'next' && data.next != null ? Utilitaires.currentPage = data.next : null;
-        next_or_previous === 'previous' && Utilitaires.currentPage > 1 ? Utilitaires.currentPage-- : null;
+        next_or_previous === 'next' && Utilitaires.currentPage < Utilitaires.totalPages ? Utilitaires.currentPage+=1 : null;
+        next_or_previous === 'previous' && Utilitaires.currentPage > 1 ? Utilitaires.currentPage-=1 : null;
         this.setDatasFetched(data);
     }
 
     render() {
-        console.log(this.getDatasFetched());
         RenderingPersonnage.renderDisplayPersonnages(this.getDatasFetched());
     }
 }

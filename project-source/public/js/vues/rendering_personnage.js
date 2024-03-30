@@ -1,4 +1,4 @@
-import routes from '../script.js';
+import LazyLoading from '../utils/lazy_loading.js';
 import Rendering from './rendering.js';
 
 class RenderingPersonnage {
@@ -56,7 +56,8 @@ class RenderingPersonnage {
             content.appendChild(card);
         
             let image = document.createElement('img');
-            image.setAttribute("src", personnage['image']);
+            image.setAttribute("data-src", personnage['image']);
+            image.classList.add('lazy');
             divImage.appendChild(image);
         
             let divIntermediaire = document.createElement('div');
@@ -68,6 +69,8 @@ class RenderingPersonnage {
 
         Rendering.renderHidden(document.getElementById('voir-personnages'));
         Rendering.renderVisible(document.getElementById('cacher-personnages'));
+
+        LazyLoading.lazyLoadImages();
     }
 
     static RenderDisplayDetailPersonnage(personnage) {

@@ -10,6 +10,13 @@ import UrlParser from "./utils/url.js";
 import Erreur_404 from "./vues/rendering_404.js";
 import Home from "./vues/rendering_home.js";
 
+
+Rendering.createInputsFilters(Utilitaires.inputsMap);
+Rendering.createInputSelect(Utilitaires.inputsMap);
+Utilitaires.datasPages();
+
+// ====================== [ ROUTAGE ] ====================== 
+
 const route = {
     "#/home": Home,
     "#/personnages" : FilterFactory,
@@ -20,14 +27,10 @@ const route = {
     "#/favoris" : GetFactory,
 }
 
-Rendering.createInputsFilters(Utilitaires.inputsMap);
-Rendering.createInputSelect(Utilitaires.inputsMap);
-UrlParser.makeRedirectionHome();
-
 async function routes(url, id) {
     if (id!=null) {
         const decomposition = UrlParser.decomposeURLwithParam();
-        url = decomposition[0]; 
+        url = decomposition[0];
         id = decomposition[1];
     }
     if (url in route) {
@@ -43,24 +46,9 @@ async function routes(url, id) {
     }
 }
 
-let buttonSearch = document.getElementById('search-button');
-buttonSearch.addEventListener('click', async function(e) {
-    console.log('~ Click on search button... ~ Loading and fetch datas by filters... ~');
-    let object = new FilterFactory('');
-    let url = object.getFiltersOn();
-    localStorage.setItem('content', JSON.stringify(await object.recupDatasInArray(url)));
-    object.render(JSON.parse(localStorage.getItem('content')));
-});
+UrlParser.makeRedirectionHome();
 
-let selectSort = document.querySelector('#input-select-sorted-columns');
-selectSort.addEventListener('change', async function(e) {
-    console.log('~ Click on sort button... ~ Loading and fetch datas by sorted columns... ~');
-    let object = new FilterFactory('');
-    let url = object.getSortOn();
-    localStorage.setItem('content', JSON.stringify(await object.recupDatasInArray(url)));
-    object.render(JSON.parse(localStorage.getItem('content')));
-});
-
+// ====================== [ EVENTS ] ====================== 
 
 let previous_page = document.getElementById('previous-page');
 let next_page = document.getElementById('next-page');
@@ -77,6 +65,8 @@ addEventListener('hashchange', async function() {
     UrlParser.makeRedirectionHome();
     await routes(location.hash, UrlParser.checkParamOnUrl());
 });
+
+// ====================== [ LAZY LOADING ] ====================== 
 
 document.addEventListener("DOMContentLoaded", function() {
     const images = document.querySelectorAll('img[data-src]');
@@ -98,6 +88,4 @@ document.addEventListener("DOMContentLoaded", function() {
     images.forEach(img => {
       observer.observe(img);
     });
-  });  
-
-export default routes;
+  });
