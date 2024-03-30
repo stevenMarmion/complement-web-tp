@@ -8,9 +8,11 @@ import Rendering from "./vues/rendering.js";
 import RenderingPersonnage from "./vues/rendering_personnage.js";
 import Utilitaires from './utils/utilitaires.js';
 import UrlParser from "./utils/url.js";
+import Erreur_404 from "./vues/rendering_404.js";
+import Home from "./vues/rendering_home.js";
 
 const route = {
-    "#/home": GetFactory,
+    "#/home": Home,
     "#/personnages" : GetFactory,
     "#/capacites" : GetFactory,
     "#/equipements" : GetFactory,
@@ -26,13 +28,19 @@ UrlParser.makeRedirectionHome();
 async function routes(url, id) {
     if (id!=null) {
         const decomposition = UrlParser.decomposeURLwithParam();
-        url = decomposition[0];
+        url = decomposition[0]; 
         id = decomposition[1];
     }
     if (url in route) {
-        let object = new route[url](url) // optimise le switch case, avec le dico, on créer dans tous les cas l'objet dès le début sans condition de test
-        await object.recupDatasInArray(id);
-        object.render();
+        if (url == "#/home") {
+            Home.render();
+        } else {
+            let object = new route[url](url)
+            await object.recupDatasInArray(id);
+            object.render();
+        }
+    } else {
+        Erreur_404.render();
     }
 }
 
@@ -67,5 +75,27 @@ addEventListener('hashchange', async function() {
     UrlParser.makeRedirectionHome();
     await routes(location.hash, UrlParser.checkParamOnUrl());
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const images = document.querySelectorAll('img[data-src]');
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    const observer = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          const src = img.getAttribute('data-src');
+          img.setAttribute('src', src);
+          observer.unobserve(img);
+        }
+      });
+    }, options);
+    images.forEach(img => {
+      observer.observe(img);
+    });
+  });  
 
 export default routes;
