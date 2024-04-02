@@ -61,7 +61,10 @@ async function pagination(next_or_previous) {
     object.render();
 }
 
-addEventListener('hashchange', async function() {
+async function listenRoutes() {
     UrlParser.makeRedirectionHome();
     await routes(location.hash, UrlParser.checkParamOnUrl());
-});
+}
+
+addEventListener('hashchange', async () => await listenRoutes());
+addEventListener('load', async () => await listenRoutes());
