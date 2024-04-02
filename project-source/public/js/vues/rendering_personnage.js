@@ -80,7 +80,6 @@ class RenderingPersonnage {
         Rendering.renderHidden(document.getElementById('button-container'));
         
         let buttonAccueil = document.getElementById('go-to-home');
-        buttonAccueil.addEventListener('click', function() { window.location.hash = '/' });
         Rendering.renderVisible(buttonAccueil);
 
         content.classList.add('card');
