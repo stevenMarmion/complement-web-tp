@@ -66,7 +66,6 @@ class RenderingEquipements {
         Rendering.renderEmpty(content);
         
         let buttonAccueil = document.getElementById('go-to-home');
-        buttonAccueil.addEventListener('click', async function() { window.location.hash = '/' });
         Rendering.renderVisible(buttonAccueil);
 
         content.classList.add('card');
