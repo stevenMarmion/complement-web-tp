@@ -5,7 +5,7 @@ class FilterFactory {
 
     filters = {};
     sortedColumns = null;
-    #url = ''
+    #url = '';
     #datasFetched = null;
 
     constructor(url) {

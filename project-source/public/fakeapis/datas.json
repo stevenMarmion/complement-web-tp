@@ -19,7 +19,7 @@
     {
       "id": "2",
       "nom_prenom": "Marmion Steven",
-      "race": "elf",
+      "race": "elfe",
       "equipements": [
         2,
         3,
@@ -55,7 +55,7 @@
     },
     {
       "id": "4",
-      "nom_prenom": "tretre nio",
+      "nom_prenom": "Tretre Nio",
       "race": "homme rat",
       "equipements": [],
       "capacite": [
@@ -128,17 +128,17 @@
     {
       "id": "1",
       "nom": "labourage",
-      "description": "permet de labourer en seulement une demi-journée douze hectar de champs"
+      "description": "permet de labourer en seulement une demi-journée douze hectares de champs"
     },
     {
       "id": "2",
       "nom": "pluie de flèches",
-      "description": "fait tomber une pluie de flèches sur ces ennemis"
+      "description": "fait tomber une pluie de flèches sur ses ennemis"
     },
     {
       "id": "3",
       "nom": "saut elfique",
-      "description": "une capacite elfique leur permettant de se déplacer rapidement dans les forets, fait un trés grand saut"
+      "description": "une capacité elfique leur permettant de se déplacer rapidement dans les forêts, fait un très grand saut"
     },
     {
       "id": "4",
@@ -148,27 +148,27 @@
     {
       "id": "5",
       "nom": "cri de guerre",
-      "description": "heritage orc, ce cri effraie toute les creatures temporairement"
+      "description": "héritage orc, ce cri effraie toutes les créatures temporairement"
     },
     {
       "id": "6",
-      "nom": "proliferation",
-      "description": "capacite unique aux homme rats, elle permet d'appeller tout les rats proche"
+      "nom": "prolifération",
+      "description": "capacité unique aux hommes-rats, elle permet d'appeler tous les rats proches"
     },
     {
       "id": "7",
       "nom": "nyctalope",
-      "description": "issue de l'origine souterainne des nains, ce trait leur permet de voir la nuit"
+      "description": "issue de l'origine souterraine des nains, ce trait leur permet de voir la nuit"
     },
     {
       "id": "8",
-      "nom": "coups precis",
-      "description": "un coup leur permettant d'infliger un coup critique assurement, fonctionne mieux sur les materiaux dur"
+      "nom": "coups précis",
+      "description": "un coup leur permettant d'infliger un coup critique assurément, fonctionne mieux sur les matériaux durs"
     },
     {
       "id": "9",
-      "nom": "discretion du gnome",
-      "description": "une capacite herité des anciens gnomes qui se cacher des grand-pieds"
+      "nom": "discrétion du gnome",
+      "description": "une capacité héritée des anciens gnomes qui se cachent des grands-pieds"
     },
     {
       "id": "10",
@@ -177,13 +177,13 @@
     },
     {
       "id": "11",
-      "nom": "grolem",
-      "description": "cet capacite unique au golem leur permet d'augmenter leur masse lors d'une roulade"
+      "nom": "groleme",
+      "description": "cette capacité unique au golem leur permet d'augmenter leur masse lors d'une roulade"
     },
     {
       "id": "12",
-      "nom": "guerison golemique",
-      "description": "permet a un golem de se soigenr en mangeant des morceau de sont element"
+      "nom": "guérison golemique",
+      "description": "permet à un golem de se soigner en mangeant des morceaux de son élément"
     }
   ],
   "equipements": [
@@ -191,7 +191,7 @@
       "id": "1",
       "nom": "fourche",
       "rarete": "commun",
-      "description": "un simple fourche de paysan",
+      "description": "une simple fourche de paysan",
       "prerequis_force": 0,
       "prerequis_intelligence": 0,
       "prerequis_agilite": 0,
@@ -201,7 +201,7 @@
       "id": "2",
       "nom": "arc magique",
       "rarete": "rare",
-      "description": "un arc pouvant tiré des flèches magique",
+      "description": "un arc pouvant tirer des flèches imprégnées de magie sylvestre",
       "prerequis_force": 2,
       "prerequis_intelligence": 10,
       "prerequis_agilite": 8,
@@ -211,7 +211,7 @@
       "id": "3",
       "nom": "carquois infini",
       "rarete": "rare",
-      "description": "un carquois permettant de tiré des flèches infiniment",
+      "description": "un carquois permettant de tirer des flèches infiniment",
       "prerequis_force": 0,
       "prerequis_intelligence": 10,
       "prerequis_agilite": 4,
@@ -220,8 +220,8 @@
     {
       "id": "4",
       "nom": "sandales du roi puant",
-      "rarete": "legendaire",
-      "description": "les sandales du roi puant, elles permettent de faire fuir toute créature sensible a l'odeur, ou de les atttirer",
+      "rarete": "légendaire",
+      "description": "les sandales du roi puant, elles permettent de faire fuir toute créature sensible à l'odeur, ou de les attirer",
       "prerequis_force": 0,
       "prerequis_intelligence": 0,
       "prerequis_agilite": 0,
@@ -241,7 +241,7 @@
       "id": "6",
       "nom": "pagne orc",
       "rarete": "commun",
-      "description": "un simple pagne porté par les orcs, il est trés lourd",
+      "description": "un simple pagne porté par les orcs, il est très lourd",
       "prerequis_force": 5,
       "prerequis_intelligence": 0,
       "prerequis_agilite": 0,
@@ -251,7 +251,7 @@
       "id": "7",
       "nom": "le fouet ardent",
       "rarete": "rare",
-      "description": "un fouet pouvant embraser les ennemis toucher",
+      "description": "un fouet pouvant embraser les ennemis touchés",
       "prerequis_force": 5,
       "prerequis_intelligence": 0,
       "prerequis_agilite": 5,
@@ -261,7 +261,7 @@
       "id": "8",
       "nom": "tenue du mineur nain",
       "rarete": "peu commun",
-      "description": "un tenue complète de mineur nain, elle est équper d'une lampe a huile frontale",
+      "description": "une tenue complète de mineur nain, elle est équipée d'une lampe à huile frontale",
       "prerequis_force": 5,
       "prerequis_intelligence": 2,
       "prerequis_agilite": 0,
@@ -271,7 +271,7 @@
       "id": "9",
       "nom": "pioche foreuse",
       "rarete": "rare",
-      "description": "elle est le produit du travaille des plus grands ingénieur nains et permet de creuser 100 fois plus vite qu'avec une pioche standard",
+      "description": "elle est le produit du travail des plus grands ingénieurs nains et permet de creuser 100 fois plus vite qu'avec une pioche standard",
       "prerequis_force": 10,
       "prerequis_intelligence": 0,
       "prerequis_agilite": 5,
@@ -279,9 +279,9 @@
     },
     {
       "id": "10",
-      "nom": "baton de voyage",
+      "nom": "bâton de voyage",
       "rarete": "commun",
-      "description": "le baton typique de tout bon gnome voyageur",
+      "description": "le bâton typique de tout bon gnome voyageur",
       "prerequis_force": 3,
       "prerequis_intelligence": 3,
       "prerequis_agilite": 3,
@@ -289,7 +289,7 @@
     },
     {
       "id": "11",
-      "nom": "dague empoisoné",
+      "nom": "dague empoisonnée",
       "rarete": "rare",
       "description": "une dague enduite d'un poison mortel",
       "prerequis_force": 4,
@@ -301,7 +301,7 @@
       "id": "12",
       "nom": "botte des géants",
       "rarete": "mythique",
-      "description": "on raconte que ces bottes permettent de parcourir mille lieux en une enjambé",
+      "description": "on raconte que ces bottes permettent de parcourir mille lieues en une enjambée",
       "prerequis_force": 5,
       "prerequis_intelligence": 8,
       "prerequis_agilite": 8,
@@ -309,9 +309,9 @@
     },
     {
       "id": "13",
-      "nom": "sac de caillou explosif",
+      "nom": "sac de cailloux explosif",
       "rarete": "mythique",
-      "description": "ce sac infini permet de lancer des caillous explosifs sur vos ennemies",
+      "description": "ce sac infini permet de lancer des cailloux explosifs sur vos ennemis",
       "prerequis_force": 8,
       "prerequis_intelligence": 1,
       "prerequis_agilite": 1,
@@ -321,7 +321,7 @@
       "id": "14",
       "nom": "ceinture du hibou",
       "rarete": "rare",
-      "description": "permet de faire pivoter la partie supérieur de votre corp a 180 degres, d'origine golemique",
+      "description": "permet de faire pivoter la partie supérieure de votre corps à 180 degrés, d'origine golemique",
       "prerequis_force": 1,
       "prerequis_intelligence": 1,
       "prerequis_agilite": 1,

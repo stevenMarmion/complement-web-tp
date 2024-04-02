@@ -131,9 +131,11 @@ class RenderingPersonnage {
             content.appendChild(capacite);
     
             let capaciteList = document.createElement('ul');
-            personnage['capacite'].forEach(cap => {
+            personnage['capacite'].forEach(async cap => {
                 let capaciteItem = document.createElement('li');
-                capaciteItem.textContent = cap;
+                const repJson = await fetch(`capacites/${cap}`);
+                const json = await repJson.json();
+                capaciteItem.textContent = json['nom'];
                 capaciteList.appendChild(capaciteItem);
             });
             content.appendChild(capaciteList);
@@ -145,9 +147,11 @@ class RenderingPersonnage {
             content.appendChild(equipements);
     
             let equipementsList = document.createElement('ul');
-            personnage['equipements'].forEach(equip => {
+            personnage['equipements'].forEach(async equip => {
                 let equipItem = document.createElement('li');
-                equipItem.textContent = equip;
+                const repJson = await fetch(`equipements/${equip}`);
+                const json = await repJson.json();
+                equipItem.textContent = json['nom'];
                 equipementsList.appendChild(equipItem);
             });
             content.appendChild(equipementsList);
