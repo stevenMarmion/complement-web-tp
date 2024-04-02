@@ -43,3 +43,4 @@ gestion de ce type de personnages. Ces bonshommes pourraient évoluer selon cert
   ```bash
   bash json-serv.sh
   ```
+- Si jamais npm ou json-serv pose problème, merci de vous tourner vers cette URL : <https://github.com/typicode/json-server>
