@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/script.js" defer type="module"></script>
+    <link rel="stylesheet" href="style/index.css">
+    <title>Consultation - personnages</title>
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <h1>Bienvenue dans l'univers des personnages fantastiques</h1>
+            <p>Explorez une gamme diversifiée de personnages avec des races, des capacités et des équipements uniques.</p>
+        </div>
+    </header>
+    <main>
+        <div id="button-container" class="button-container">
+            <a id="voir-personnages" class="isVisible" href="#/personnages">
+                <button id="voir-personnages-btn" class="button-primary">Voir les personnages</button>
+            </a>
+            <a id="cacher-personnages" class="isHidden" href="#">
+                <button id="cacher-personnages-btn" class="button-secondary">Cacher les personnages</button>
+            </a>
+            <a id="voir-capacites" class="isVisible" href="#/capacites">
+                <button id="voir-capacites-btn" class="button-primary">Voir les capacités existantes</button>
+            </a>
+            <a id="cacher-capacites" class="isHidden" href="#">
+                <button id="cacher-capacites-btn" class="button-secondary">Cacher les capacités</button>
+            </a>
+            <a id="voir-equipements" class="isVisible" href="#/equipements">
+                <button id="voir-equipements-btn" class="button-primary">Voir les équipements disponibles</button>
+            </a>
+            <a id="cacher-equipements" class="isHidden" href="#">
+                <button id="cacher-equipements-btn" class="button-secondary">Cacher les équipements</button>
+            </a>       
+            <a id="manage-fav-button" class="isVisible" href="#/favoris">
+                <button id="manage-fav-btn" class="button-primary">Gérer ces favoris</button>
+            </a>
+        </div>
+
+        <div id="filters" class="isHidden">
+            <h2 id="title-filters">Rechercher par :</h2>
+            <div id="all-filters"></div>
+
+            <h2 id="title-sort">Trier par :</h2>
+            <div id="select-sorted-columns"></div>
+
+            <div id="pagination" class="isFlexed">
+                <button id="previous-page" class="button-secondary">Page précédente</button>
+                <button id="next-page" class="button-secondary">Page suivante</button>
+            </div>
+        </div>
+    
+        <a id="go-to-home" class="isHidden" href="">
+            <button id="go-to-home-btn" class="button-primary">Accueil</button>
+        </a>
+
+        <div id="content"></div>
+    </main>
+</body>
+</html>
