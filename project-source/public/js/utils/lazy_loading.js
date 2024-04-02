@@ -5,7 +5,7 @@ export default class LazyLoading {
         const options = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.5
+            threshold: 0.1
         };
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {

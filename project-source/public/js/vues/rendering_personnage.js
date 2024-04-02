@@ -80,7 +80,7 @@ class RenderingPersonnage {
         Rendering.renderHidden(document.getElementById('button-container'));
         
         let buttonAccueil = document.getElementById('go-to-home');
-        buttonAccueil.addEventListener('click', async function() { window.location.hash = '/' });
+        buttonAccueil.addEventListener('click', function() { window.location.hash = '/' });
         Rendering.renderVisible(buttonAccueil);
 
         content.classList.add('card');
@@ -96,7 +96,7 @@ class RenderingPersonnage {
         favImage.classList.add('fav-icon');
         favButton.appendChild(favImage);
         
-        favButton.addEventListener('click', async function() {
+        favButton.addEventListener('click', function() {
             console.log('~ Click on fav button... ~ Change fav status... ~');
             if (localStorage.getItem(`fav/personnages/${personnage['id']}`) == undefined || localStorage.getItem(`fav/personnages/${personnage['id']}`) == null || localStorage.getItem(`fav/personnages/${personnage['id']}`) == 0) {
                 localStorage.setItem(`fav/personnages/${personnage['id']}`, 1);

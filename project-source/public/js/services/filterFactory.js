@@ -64,14 +64,14 @@ class FilterFactory {
 
     async actionPaginationValide(next_or_previous) {
         this.setInitialURL();
+        next_or_previous === 'next' && Utilitaires.currentPage < Utilitaires.totalPages ? Utilitaires.currentPage+=1 : null;
+        next_or_previous === 'previous' && Utilitaires.currentPage > 1 ? Utilitaires.currentPage-=1 : null;
         this.#url += `_start=${((Utilitaires.perPage * Utilitaires.currentPage) - Utilitaires.perPage)}&_limit=${Utilitaires.perPage}`;
         this.getFiltersOn();
         this.getSortOn();
         const json = await this.recupDatasInArray(this.#url);
         localStorage.setItem('content', JSON.stringify(json));
         const data = JSON.parse(localStorage.getItem('content'));
-        next_or_previous === 'next' && Utilitaires.currentPage < Utilitaires.totalPages ? Utilitaires.currentPage+=1 : null;
-        next_or_previous === 'previous' && Utilitaires.currentPage > 1 ? Utilitaires.currentPage-=1 : null;
         this.setDatasFetched(data);
     }
 
